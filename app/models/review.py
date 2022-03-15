@@ -10,8 +10,8 @@ class Review(db.Model):
     content = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
-    user = db.relationship('User', back_populates='reviews')
-    game = db.relationship('Game', back_populates='reviews')
+    users = db.relationship('User', back_populates='reviews')
+    games = db.relationship('Game', back_populates='reviews')
 
     def to_dict(self):
         return {
