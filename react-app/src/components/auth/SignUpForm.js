@@ -9,7 +9,9 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [profilePicture, setProfilePicture] = useState('');
   const user = useSelector(state => state.session.user);
+  
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -85,6 +87,16 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input>
+        <div>
+         <label>Profile Picture URL</label>
+          <input
+          type='text'
+          name='profile_;icture'
+          onChange={setProfilePicture}
+          value={profilePicture}
+          required={true}
+        ></input>
+        </div>
       </div>
       <button type='submit'>Sign Up</button>
     </form>
