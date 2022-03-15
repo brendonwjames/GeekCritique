@@ -10,6 +10,9 @@ class Game(db.Model):
     img_src = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime)
 
+    user = db.relationship('User', back_populates='game')
+    review = db.relationship('Review', back_populates='game', cascade='all,delete')
+
     def to_dict(self):
         return {
             'id': self.id,
