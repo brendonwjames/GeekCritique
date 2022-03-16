@@ -24,14 +24,18 @@ export const getAllGames = () => async(dispatch) => {
 
 export const addGame = (formData) => async(dispatch) => {
     console.log('formDATA', formData)
-    const response = await fetch('/new_game', {
+    const { owner_id, name, description, img_src, createdAt } = formData;
+
+    const response = await fetch('/games/new_game', {
         method: 'POST',
-        body: formData
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ owner_id, name, description, img_src, createdAt })
     })
     console.log('RESPONSE:', response)
 
     if (response.ok) {
         const newGame = await response.json();
+        console.log('NEWGAME:', newGame)
         dispatch(createGame(newGame))
         return 'Success'
     }

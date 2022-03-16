@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addGame } from '../../store/games';
 import './PostGame.css'
 
@@ -8,33 +8,18 @@ const PostGame = () => {
     const [description, setDescription] = useState('');
     const [img_src, setImg] = useState('');  
     const [errors, setErrors] = useState([]);
+    const [createdAt, setCreatedAt] = useState(5555);
 
-
+    const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const formData = new FormData();
-        console.log(formData, 'Frontend')
+        const game = {owner_id, name, description, img_src, createdAt } 
 
-        formData.append('name', name);
-        formData.append('description', description);
-        formData.append('img_src', img_src);
+        console.log('time to play the game', game)
 
-        dispatch(addGame(formData))
-
-        // const results = await dispatch(addGame(formData))
-        // console.log('RESULTS:', results)
-        // if (results === 'Success'){
-        //     if(userId){
-        //         dispatch(getUserPosts(userId))
-        //     }
-        //     setShowModal(false)
-        // }else{
-        //     const data = await results.json()
-        //     setErrors([data.errors])
-        // }
-
+        return dispatch(addGame(game))
     }
 
     return (
