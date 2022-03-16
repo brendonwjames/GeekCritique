@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
 
 
-const Game = () => {
+const AllGames = () => {
     const dispatch = useDispatch();
     // const user = useSelector((state) => state.session.user);
     const allGames = useSelector((state => state.game.games))
@@ -32,4 +32,4 @@ return (
 
 }
 
-export default Game;
+export default AllGames;

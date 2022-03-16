@@ -16,8 +16,6 @@ export const getAllGames = () => async(dispatch) => {
     return response;
 }
 
-
-
 const initialState = {games:{}}
 
 export default function gameReducer(state = initialState, action) {

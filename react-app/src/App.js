@@ -8,7 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import Game from './components/Game/Game'
+import AllGames from './components/Game/AllGames';
+import PostGame from './components/Game/PostGame';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,9 +44,13 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <AllGames />
         </ProtectedRoute>
-        <ProtectedRoute path='/games' exact={true}>
+        {/* <ProtectedRoute path='/games' exact={true}>
           <Game />
+        </ProtectedRoute> */}
+        <ProtectedRoute path='/new_game' exact={true}>
+          <PostGame />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
