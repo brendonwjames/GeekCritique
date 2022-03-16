@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from app.routes.games import games_routes
+from .routes.games import games_routes
 
 from app.models.game import Game
 

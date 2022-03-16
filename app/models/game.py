@@ -1,7 +1,5 @@
 from .db import db
 
-
-
 class Game(db.Model):
     __tablename__ = 'games'
 
