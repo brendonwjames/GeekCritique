@@ -19,12 +19,10 @@ const EditGame = ({ game }) => {
 
         const result = await dispatch(updateGame(game.id, editedGame))
 
-        if (editedGame) {
+        if (!editedGame) {
             setErrors(result);
             console.log('ERROR HERE', errors)
-        } else (console.log('didnt work yet'))
-
-        console.log('NOT SO EDITED GAME', editedGame)
+        }
     }
 
     return (

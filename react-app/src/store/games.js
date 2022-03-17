@@ -80,6 +80,7 @@ export default function gameReducer(state = initialState, action) {
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         case EDIT_GAME:
+            console.log('REDUCER ACTION.GAME', action.game)
             newState[action.game.id] = {...action.game};
             return newState
         default:
