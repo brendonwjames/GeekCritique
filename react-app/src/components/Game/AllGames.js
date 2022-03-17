@@ -8,9 +8,8 @@ import EditModal from "../Modals/EditModal";
 const AllGames = () => {
     const dispatch = useDispatch();
     // const user = useSelector((state) => state.session.user);
-    const allGames = useSelector((state => state.game.games))
+    const games = useSelector((state => Object.values(state.game)))
     // console.log('GAMES OBJ:', allGames)
-    const games = Object.values(allGames)
     // console.log(games)
 
     useEffect(() => {

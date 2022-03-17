@@ -4,7 +4,7 @@ const EDIT_GAME = 'games/EDIT_GAME';
 
 const getGames = (allgames) => ({
     type: GET_GAMES,
-    allGames: allgames
+    allgames
 })
 
 const createGame = (game) => ({
@@ -61,20 +61,20 @@ export const updateGame = (formData, gameId) => async (dispatch) => {
     }
 }
 
-const initialState = {games:[]}
+const initialState = {};
 
 export default function gameReducer(state = initialState, action) {
-    let newState;
+    let newState = {...state}
     switch (action.type) {
         case GET_GAMES:
-            newState = {...state}
-            newState.games = [...action.allGames.games]
-            newState.games.forEach(game => newState[game.id] = game)
+            //newState is equivalent to accessing state.game
+            // console.log('********', action.allgames.games)
+            // newState.games = [...action.allGames.games]
+            action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
         case CREATE_GAME:
-            newState = {...state}
             // console.log('CREATEGAME NEWSTATE:', newState)
-            newState.games = [...newState.games, action.newGame];
+            newState[action.newGame.id] = action.newGame;
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         default:

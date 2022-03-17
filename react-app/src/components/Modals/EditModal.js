@@ -5,6 +5,7 @@ import EditGame from "../Game/EditGame";
 
 function EditModal({ game  }) {
   const [showModal, setShowModal] = useState(false);
+  
   return (
     <>
       <button onClick={() => setShowModal(true)}>Edit Game</button>
