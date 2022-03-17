@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
+import EditModal from "../Modals/EditModal";
 
 
 const AllGames = () => {
@@ -19,12 +20,15 @@ const AllGames = () => {
 return (
     <>
         {/* <div>{user.username}</div> */}
-        {games.map((game) => (
+        {games && games.map((game) => (
             <div className='game-post' key={game.id}>
                 <h3>{game.name}</h3>
                 <p>Posted on {game.created_at}</p>
                 <p>{game.description}</p>
                 <img src={game.img_src} alt='Not loading right now'></img>
+                <EditModal games={games}/>
+                {/* this is how I will grab specific information for the post */}
+                {/* <SpecificPageModel modelInfo={post} /> */}
             </div>
         ))}
     </>
