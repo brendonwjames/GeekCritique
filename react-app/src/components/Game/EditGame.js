@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateGame } from '../../store/games';
 import './EditGame.css'
 
-const EditGame = () => {
+const EditGame = ({ game }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [img_src, setImg] = useState('');  
@@ -12,6 +12,7 @@ const EditGame = () => {
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
+    console.log('GAME DETAILS:', game)
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ const EditGame = () => {
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <p className='create-post-text'>Create New Post</p>
+                <p className='create-post-text'>Edit Game</p>
                 <div className='choose-file-container'>
                 </div>
                 <div>
@@ -40,7 +41,7 @@ const EditGame = () => {
                         name='name'
                         onChange={(e) => setName(e.target.value)}
                         value={name}
-                        placeholder='Name'
+                        placeholder={game.name}
                         ></input>
                 </div>
                 <div>
@@ -50,7 +51,7 @@ const EditGame = () => {
                         className='description-field'
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
-                        placeholder='Description'
+                        placeholder={game.description}
                         ></input>
                 </div>
                 <input
@@ -58,7 +59,7 @@ const EditGame = () => {
                         name='img_src'
                         className='img-field'
                         onChange={(e) => setImg(e.target.value)}
-                        placeholder='Image URL'
+                        placeholder={game.img_src}
                     ></input>
                 <button className='post-submit-button' type='submit'>Post</button>
             </form>
