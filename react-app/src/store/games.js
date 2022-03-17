@@ -23,7 +23,7 @@ export const getAllGames = () => async(dispatch) => {
 }
 
 export const addGame = (formData) => async(dispatch) => {
-    console.log('formDATA', formData)
+    // console.log('formDATA', formData)
     const { owner_id, name, description, img_src, createdAt } = formData;
 
     const response = await fetch('/games/new_game', {
@@ -31,7 +31,7 @@ export const addGame = (formData) => async(dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ owner_id, name, description, img_src, createdAt })
     })
-    console.log('RESPONSE:', response)
+    // console.log('RESPONSE:', response)
 
     if (response.ok) {
         const newGame = await response.json();
