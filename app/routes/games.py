@@ -31,11 +31,11 @@ def all_games():
 @login_required
 def create_game():
     form = NewGameForm()
-    print('HITTING THE BACKEND FORM:', (form))
+    # print('HITTING THE BACKEND FORM:', (form))
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print('BACKEND FORMDATA:', form.data)
+        # print('BACKEND FORMDATA:', form.data)
 
         new_game = Game(
             owner_id = current_user.id,
@@ -51,3 +51,20 @@ def create_game():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
    
+@games_routes.route('/edit_game', methods=['POST'])
+@login_required
+def edit_game():
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        edit_game = Game.query.get(id)
+
+        edit_game.name = form.data['name'],
+        edit_game.description = form.data['description'],
+        edit_game.img_src = form.data['img_src']
+
+        db.session.commit()
+        return edit_game.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

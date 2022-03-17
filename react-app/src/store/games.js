@@ -54,7 +54,7 @@ export default function gameReducer(state = initialState, action) {
             return newState
         case CREATE_GAME:
             newState = {...state}
-            console.log('CREATEGAME NEWSTATE:', newState)
+            // console.log('CREATEGAME NEWSTATE:', newState)
             newState.games = [...newState.games, action.newGame];
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState

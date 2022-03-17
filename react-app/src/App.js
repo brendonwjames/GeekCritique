@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import PostGame from './components/Game/PostGame';
+import EditGame from './components/Game/EditGame';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,9 @@ function App() {
         </ProtectedRoute> */}
         <ProtectedRoute path='/new_game' exact={true}>
           <PostGame />
+        </ProtectedRoute>
+        <ProtectedRoute path='/edit_game' exact={true}>
+          <EditGame />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
