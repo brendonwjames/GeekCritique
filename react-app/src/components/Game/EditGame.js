@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addGame } from '../../store/games';
+import { updateGame } from '../../store/games';
 import './EditGame.css'
 
 const EditGame = () => {
@@ -8,7 +8,7 @@ const EditGame = () => {
     const [description, setDescription] = useState('');
     const [img_src, setImg] = useState('');  
     const [errors, setErrors] = useState([]);
-    const [createdAt, setCreatedAt] = useState(5555);
+    const [createdAt, setCreatedAt] = useState(null);
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const EditGame = () => {
 
         console.log('time to play the game', game)
 
-        return dispatch(addGame(game))
+        return dispatch(updateGame(game))
     }
 
     return (

@@ -1,5 +1,6 @@
 const GET_GAMES = 'games/GET_GAMES';
 const CREATE_GAME = 'games/CREATE_GAME';
+const EDIT_GAME = 'games/EDIT_GAME';
 
 const getGames = (allgames) => ({
     type: GET_GAMES,
@@ -9,6 +10,11 @@ const getGames = (allgames) => ({
 const createGame = (game) => ({
     type: CREATE_GAME,
     newGame: game
+})
+
+const editGame = (game) => ({
+    type: EDIT_GAME,
+    game
 })
 
 export const getAllGames = () => async(dispatch) => {
@@ -40,6 +46,19 @@ export const addGame = (formData) => async(dispatch) => {
         return 'Success'
     }
     return response
+}
+
+export const updateGame = (formData, gameId) => async (dispatch) => {
+    const response = await fetch(`/games/${gameId}/edit`, {
+        method: 'POST',
+        body: formData
+    });
+
+    if (response.ok) {
+        const editedGame = await response.json();
+        dispatch(editGame(editedGame))
+        return 'Success!'
+    }
 }
 
 const initialState = {games:[]}
