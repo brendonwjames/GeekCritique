@@ -42,29 +42,7 @@ export const addGame = (formData) => async(dispatch) => {
     return response
 }
 
-// export const add_board = (board) => {
-//     const { name, user_id } = board;
-
-//     const form = new FormData()
-//     form.append('name', name)
-//     form.append('user_id', user_id)
-
-//     const response = await fetch(`/api/boards/`, {
-//         method: "POST",
-//         body: form
-//     });
-
-//     if (response.ok) {
-//         const board = await response.json();
-//         dispatch(add(board));
-//         return board;
-//     } else {
-//         const errors = await response.json();
-//         return errors;
-//     }
-// };
-
-const initialState = {games:{}}
+const initialState = {games:[]}
 
 export default function gameReducer(state = initialState, action) {
     let newState;
@@ -76,7 +54,8 @@ export default function gameReducer(state = initialState, action) {
             return newState
         case CREATE_GAME:
             newState = {...state}
-            newState.games = [action.newGame, ...newState.games];
+            console.log('CREATEGAME NEWSTATE:', newState)
+            newState.games = [...newState.games, action.newGame];
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         default:
