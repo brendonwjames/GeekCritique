@@ -4,30 +4,34 @@ import { updateGame } from '../../store/games';
 import './EditGame.css'
 
 const EditGame = ({ game }) => {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [img_src, setImg] = useState('');  
+    const [name, setName] = useState(game.name)
+    const [description, setDescription] = useState(game.description)
+    const [img_src, setImg] = useState(game.img_src)
     const [errors, setErrors] = useState([]);
-    const [createdAt, setCreatedAt] = useState(null);
 
-    const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
     console.log('GAME DETAILS:', game)
 
-    const handleSubmit = async(e) => {
+    const handleEdit = async(e) => {
         e.preventDefault();
-        const game = {owner_id, name, description, img_src, createdAt } 
 
-        console.log('time to play the game', game)
+        const editedGame = {name, description, img_src}
 
-        return dispatch(updateGame(game))
+        const result = await dispatch(updateGame(game.id, editedGame))
+
+        if (editedGame) {
+            setErrors(result);
+            console.log('ERROR HERE', errors)
+        } else (console.log('didnt work yet'))
+
+        console.log('NOT SO EDITED GAME', editedGame)
     }
 
     return (
         <div className='new-game-form-container'>
-            <form className='new-game-form' onSubmit={handleSubmit}>
+            <form className='new-game-form' onSubmit={handleEdit}>
                 <div className='postErrors'>
-                    {errors.map((error, ind) => (
+                    {errors?.map((error, ind) => (
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
@@ -61,7 +65,7 @@ const EditGame = ({ game }) => {
                         onChange={(e) => setImg(e.target.value)}
                         placeholder={game.img_src}
                     ></input>
-                <button className='post-submit-button' type='submit'>Post</button>
+                <button className='post-submit-button' type='submit'>Confirm Edit</button>
             </form>
         </div>
     )

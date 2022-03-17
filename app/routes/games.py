@@ -51,19 +51,23 @@ def create_game():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
    
-@games_routes.route('/edit_game', methods=['POST'])
+@games_routes.route('/<int:id>/edit', methods=['POST'])
 @login_required
-def edit_game():
-    form = PostForm()
+def edit_game(id):
+    form = NewGameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
-        edit_game = Game.query.get(id)
 
+        edit_game = Game.query.get(id)
+        # print(edit_game.owner_id,  edit_game.name, edit_game.description, edit_game.img_src)
+
+        # edit_game.owner_id = current_user.id,
         edit_game.name = form.data['name'],
         edit_game.description = form.data['description'],
         edit_game.img_src = form.data['img_src']
+        # edit_game.created_at = datetime.now()
 
         db.session.commit()
         return edit_game.to_dict()

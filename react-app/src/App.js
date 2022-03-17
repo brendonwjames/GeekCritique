@@ -53,9 +53,9 @@ function App() {
         <ProtectedRoute path='/new_game' exact={true}>
           <PostGame />
         </ProtectedRoute>
-        <ProtectedRoute path='/edit_game' exact={true}>
+        {/* <ProtectedRoute path='/edit_game' exact={true}>
           <EditGame />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

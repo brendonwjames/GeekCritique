@@ -48,10 +48,12 @@ export const addGame = (formData) => async(dispatch) => {
     return response
 }
 
-export const updateGame = (formData, gameId) => async (dispatch) => {
+export const updateGame = (gameId, editedGame) => async (dispatch) => {
+    console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
-        body: formData
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(editedGame)
     });
 
     if (response.ok) {
@@ -76,6 +78,9 @@ export default function gameReducer(state = initialState, action) {
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
             // newState.userGames = [...newState.userGames, action.newGame]
+            return newState
+        case EDIT_GAME:
+            newState[action.game.id] = {...action.game};
             return newState
         default:
             return state
