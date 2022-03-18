@@ -1,6 +1,7 @@
 const GET_GAMES = 'games/GET_GAMES';
 const CREATE_GAME = 'games/CREATE_GAME';
 const EDIT_GAME = 'games/EDIT_GAME';
+const DELETE_GAME = 'games/DELETE_GAME';
 
 const getGames = (allgames) => ({
     type: GET_GAMES,
@@ -14,6 +15,11 @@ const createGame = (game) => ({
 
 const editGame = (game) => ({
     type: EDIT_GAME,
+    game
+})
+
+const deleteGame = (game) => ({
+    type: DELETE_GAME,
     game
 })
 
@@ -63,6 +69,19 @@ export const updateGame = (gameId, editedGame) => async (dispatch) => {
     }
 }
 
+export const removeGame = (gameId) => async(dispatch) => {
+    console.log('BACKEND DELETE GAMEID:', gameId)
+    const response = await fetch(`/games/${gameId}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+    })
+
+    if (response.ok) {
+        const game = await response.json()
+        dispatch(deleteGame(game))
+    }
+}
+
 const initialState = {};
 
 export default function gameReducer(state = initialState, action) {
@@ -71,7 +90,6 @@ export default function gameReducer(state = initialState, action) {
         case GET_GAMES:
             //newState is equivalent to accessing state.game
             // console.log('********', action.allgames.games)
-            // newState.games = [...action.allGames.games]
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
         case CREATE_GAME:
@@ -80,8 +98,12 @@ export default function gameReducer(state = initialState, action) {
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         case EDIT_GAME:
-            console.log('REDUCER ACTION.GAME', action.game)
+            // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
             newState[action.game.id] = {...action.game};
+            return newState
+        case DELETE_GAME:
+            console.log('DELETEGAME REDUCER:', action.game.id)
+            delete newState[action.game.id]
             return newState
         default:
             return state

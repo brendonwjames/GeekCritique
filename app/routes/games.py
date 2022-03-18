@@ -72,3 +72,12 @@ def edit_game(id):
         db.session.commit()
         return edit_game.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@games_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def delete_game(id):
+    game = Game.query.get(id)
+    db.session.delete(game)
+    db.session.commit()
+
+    return game.to_dict()

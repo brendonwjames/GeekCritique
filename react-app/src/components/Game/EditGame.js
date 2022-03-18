@@ -10,7 +10,7 @@ const EditGame = ({ game }) => {
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    console.log('GAME DETAILS:', game)
+    // console.log('GAME DETAILS:', game)
 
     const handleEdit = async(e) => {
         e.preventDefault();

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
 import EditModal from "../Modals/EditModal";
+import DeleteModal from "../Modals/DeleteModal";
 
 
 const AllGames = () => {
@@ -23,10 +24,9 @@ return (
                 <h3>{game.name}</h3>
                 <p>Posted on {game.created_at}</p>
                 <p>{game.description}</p>
-                <img src={game.img_src} alt='Not loading right now'></img>
+                <img src={game.img_src} alt='Your image is not available. Try a new link!'></img>
                 <EditModal game={game}/>
-                {/* this is how I will grab specific information for the post */}
-                {/* <SpecificPageModel modelInfo={post} /> */}
+                <DeleteModal game={game}/>
             </div>
         ))}
     </>
