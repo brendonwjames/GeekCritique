@@ -11,7 +11,7 @@ function EditModal({ game  }) {
       <button onClick={() => setShowModal(true)}>Edit Game</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditGame setShowModal={setShowModal} game={game}/>
+          <EditGame setShowModal={setShowModal} game={game} />
         </Modal>
       )}
     </>
