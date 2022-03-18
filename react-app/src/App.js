@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import PostGame from './components/Game/PostGame';
 import EditGame from './components/Game/EditGame';
+import GameDetails from './components/Game/GameDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
         {/* <ProtectedRoute path='/edit_game' exact={true}>
           <EditGame />
         </ProtectedRoute> */}
+        <ProtectedRoute path='/games/:gameId' exact={true}>
+          <GameDetails />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

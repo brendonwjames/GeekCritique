@@ -1,4 +1,5 @@
 const GET_GAMES = 'games/GET_GAMES';
+const GET_GAME = 'games/GET_GAME';
 const CREATE_GAME = 'games/CREATE_GAME';
 const EDIT_GAME = 'games/EDIT_GAME';
 const DELETE_GAME = 'games/DELETE_GAME';
@@ -6,6 +7,11 @@ const DELETE_GAME = 'games/DELETE_GAME';
 const getGames = (allgames) => ({
     type: GET_GAMES,
     allgames
+})
+
+const getGame = (game) => ({
+    type: GET_GAME,
+    game
 })
 
 const createGame = (game) => ({
@@ -32,6 +38,15 @@ export const getAllGames = () => async(dispatch) => {
         dispatch(getGames(games))
     }
     return response;
+}
+
+export const getOneGame = (gameId) => async(dispatch) => {
+    const response = await fetch(`/games/${gameId}`);
+
+    if (response.ok) {
+        const game = await response.json();
+        dispatch(getGame(game))
+    }
 }
 
 export const addGame = (formData) => async(dispatch) => {
@@ -92,6 +107,9 @@ export default function gameReducer(state = initialState, action) {
             // console.log('********', action.allgames.games)
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
+        case GET_GAME:
+            newState[action.game.id] = action.game;
+            return newState;
         case CREATE_GAME:
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
