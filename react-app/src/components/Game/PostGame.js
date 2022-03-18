@@ -8,24 +8,23 @@ const PostGame = ({ setShowModal }) => {
     const [description, setDescription] = useState('');
     const [img_src, setImg] = useState('');  
     const [errors, setErrors] = useState([]);
-    const [createdAt, setCreatedAt] = useState(1);
+    const [createdAt, setCreatedAt] = useState(null);
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const game = {owner_id, name, description, img_src, createdAt } 
-        // console.log('time to play the game', game)
+        const game = {owner_id, name, description, img_src, createdAt }
 
         const result = await dispatch(addGame(game))
-        
-        if (result) {
-            // setShowModal(false);
-            setErrors(result)
-            console.log('ERRORS:', errors)
-        } else {
+
+        if (result === 'Success!') {
             setShowModal(false)
+        }
+
+        else if (result) {
+            setErrors(result);
         }
     }
 
@@ -68,6 +67,7 @@ const PostGame = ({ setShowModal }) => {
                         placeholder='Image URL'
                     ></input>
                 <button className='post-submit-button' type='submit'>Post</button>
+                <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
             </form>
         </div>
     )

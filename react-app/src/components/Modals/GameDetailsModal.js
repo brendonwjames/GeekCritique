@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "./ModalContext/Modal";
 import GameDetails from "../Game/GameDetails";
-import { getUsers } from '../../store/session';
 import { useDispatch } from 'react-redux';
 
 
@@ -12,7 +11,7 @@ function GameDetailsModal({ game }) {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        // dispatch(getUsers())
+        
     }, [dispatch, game.id])
 
     return (

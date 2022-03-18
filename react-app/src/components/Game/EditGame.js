@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateGame } from '../../store/games';
 import './EditGame.css'
 
-const EditGame = ({ game }) => {
+const EditGame = ({ setShowModal, game }) => {
     const [name, setName] = useState(game.name)
     const [description, setDescription] = useState(game.description)
     const [img_src, setImg] = useState(game.img_src)
@@ -19,9 +19,8 @@ const EditGame = ({ game }) => {
 
         const result = await dispatch(updateGame(game.id, editedGame))
 
-        if (!editedGame) {
-            setErrors(result);
-            console.log('ERROR HERE', errors)
+        if (result === 'Success!') {
+            setShowModal(false)
         }
     }
 
@@ -64,6 +63,7 @@ const EditGame = ({ game }) => {
                         placeholder={game.img_src}
                     ></input>
                 <button className='post-submit-button' type='submit'>Confirm Edit</button>
+                <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
             </form>
         </div>
     )

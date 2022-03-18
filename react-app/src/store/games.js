@@ -41,7 +41,7 @@ export const getAllGames = () => async(dispatch) => {
 }
 
 export const getOneGame = (gameId) => async(dispatch) => {
-    console.log('GETONEGAME THUNK:', gameId)
+    // console.log('GETONEGAME THUNK:', gameId)
     const response = await fetch(`/games/${gameId}`);
 
     if (response.ok) {
@@ -66,13 +66,20 @@ export const addGame = (formData) => async(dispatch) => {
         const newGame = await response.json();
         console.log('NEWGAME:', newGame)
         dispatch(createGame(newGame))
-        return 'Success'
+        return 'Success!'
     }
-    return response
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const updateGame = (gameId, editedGame) => async (dispatch) => {
-    console.log('EDITED DATA THUNK:', editedGame)
+    // console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -87,7 +94,7 @@ export const updateGame = (gameId, editedGame) => async (dispatch) => {
 }
 
 export const removeGame = (gameId) => async(dispatch) => {
-    console.log('BACKEND DELETE GAMEID:', gameId)
+    // console.log('BACKEND DELETE GAMEID:', gameId)
     const response = await fetch(`/games/${gameId}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},

@@ -10,9 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import PostGame from './components/Game/PostGame';
-import EditGame from './components/Game/EditGame';
 import GameDetails from './components/Game/GameDetails';
-import { getAllGames } from './store/games';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +19,6 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
-      // await dispatch(getAllGames());
       setLoaded(true);
     })();
   }, [dispatch]);

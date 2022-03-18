@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
-import { Modal } from "../Modals/ModalContext/Modal";
-import EditModal from "../Modals/EditModal";
-import DeleteModal from "../Modals/DeleteModal";
+// import { Modal } from "../Modals/ModalContext/Modal";
+// import EditModal from "../Modals/EditModal";
+// import DeleteModal from "../Modals/DeleteModal";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 
 
