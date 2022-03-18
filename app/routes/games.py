@@ -27,6 +27,11 @@ def all_games():
 
     return {'games': [game.to_dict() for game in all_games]}
 
+@games_routes.route('/<int:id>')
+def one_game(id):
+    game = Game.query.get(id)
+    return game.to_dict()
+
 @games_routes.route('/new_game', methods=['POST'])
 @login_required
 def create_game():
