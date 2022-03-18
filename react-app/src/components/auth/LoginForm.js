@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './LoginForm.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -36,35 +37,57 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <div className='login-container'>
+      <img className='login-img' src='https://wallpaperaccess.com/full/1126067.jpg'></img>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+      <form className='form-container' onSubmit={onLogin}>
+        <div className='right-div'>
+        <h3 className='title'>Geek Critique</h3>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+          <div>
+            <label htmlFor='email'></label>
+            <input
+              className='login-input'
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor='password'></label>
+            <input
+            className='login-input'
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <div className='buttons-container'>
+            <div>
+              <button className='login-button' type='submit'>Login</button>
+            </div>
+            <div>
+              <button className='login-button' type='submit' onClick={demoUser}>Demo User</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div className='signup-option'>
+        <p className='signup-text'>
+          Don't have an account?
+        </p>
+        <NavLink to='/sign-up'>Sign Up</NavLink>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-        <button type='submit' onClick={demoUser}>Demo User</button>
-      </div>
-    </form>
+    </div>
   );
 };
 

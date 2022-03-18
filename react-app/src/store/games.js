@@ -102,7 +102,7 @@ export default function gameReducer(state = initialState, action) {
             newState[action.game.id] = {...action.game};
             return newState
         case DELETE_GAME:
-            console.log('DELETEGAME REDUCER:', action.game.id)
+            // console.log('DELETEGAME REDUCER:', action.game.id)
             delete newState[action.game.id]
             return newState
         default:
