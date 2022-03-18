@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const demoUser = async(e) => {
     e.preventDefault();
-    dispatch(login('demo@aa.io', 'password'))
+    await dispatch(login('demo@aa.io', 'password'))
   }
 
   const updateEmail = (e) => {
