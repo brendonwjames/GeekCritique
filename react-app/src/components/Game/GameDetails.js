@@ -5,22 +5,29 @@ import { getOneGame } from '../../store/games'
 
 const GameDetailsPage = () => {
     const dispatch = useDispatch();
-    const { id } = useParams();
+    const { gameId } = useParams();
 
-    const user = useSelector(state => state.session.user);
-    const games = useSelector((state => Object.values(state.game)))
+    // dispatch(getOneGame(gameId))
 
-
+    const games = useSelector((state => state.game[gameId]))
     useEffect(() => {
-        dispatch(getOneGame(id));
-    }, [dispatch, id]);
+        dispatch(getOneGame(gameId));
+    }, [dispatch, gameId]);
 
+    console.log('USE PARAMS:', gameId)
+
+    // const user = useSelector(state => state.session.user);
+    console.log('GAMES from GAME DETAILS', games)
+    // const game = games[0];
 
     return (
-        <main>
+        <div>
             GameDetailsPage
-            <p>{games.id}</p>
-        </main>
+            <img src={games.img_src}></img>
+            {/* <p>{games[0].id}</p>
+            <img src={games[0].img_src}></img>
+            <p>{games[0].id}</p> */}
+        </div>
     );
 };
 

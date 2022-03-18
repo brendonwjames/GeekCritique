@@ -41,11 +41,13 @@ export const getAllGames = () => async(dispatch) => {
 }
 
 export const getOneGame = (gameId) => async(dispatch) => {
+    console.log('GETONEGAME THUNK:', gameId)
     const response = await fetch(`/games/${gameId}`);
 
     if (response.ok) {
         const game = await response.json();
         dispatch(getGame(game))
+        return response
     }
 }
 
@@ -108,8 +110,16 @@ export default function gameReducer(state = initialState, action) {
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
         case GET_GAME:
-            newState[action.game.id] = action.game;
+            // console.log('GET GAME REDUCER:', action.game.id = action.game)
+            // console.log(action.game.id)
+            newState = {...state};
+            newState[action.game.id] = {...action.game};
             return newState;
+
+            // [action.event.id]: {
+            //     ...state[action.event.id],
+            //     ...action.event
+            // }
         case CREATE_GAME:
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
