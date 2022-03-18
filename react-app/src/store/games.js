@@ -110,16 +110,11 @@ export default function gameReducer(state = initialState, action) {
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
         case GET_GAME:
-            // console.log('GET GAME REDUCER:', action.game.id = action.game)
-            // console.log(action.game.id)
-            newState = {...state};
-            newState[action.game.id] = {...action.game};
+            console.log('GET GAME REDUCER:', action.game.id = action.game)
+            // newState[action.game.id] = action.game;
+            newState[action.game.id] = {...action.game}; //possible alternative?
             return newState;
 
-            // [action.event.id]: {
-            //     ...state[action.event.id],
-            //     ...action.event
-            // }
         case CREATE_GAME:
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
