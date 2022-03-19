@@ -18,7 +18,7 @@ const GameDetailsPage = ({ game }) => {
                 {user.id === game.owner_id && <EditModal game={game}/>}
                 {user.id === game.owner_id && <DeleteModal game={game}/>}
             </div>
-            <GameReview game={game}/>
+            <GameReview game={game} />
         </>
     );
 };

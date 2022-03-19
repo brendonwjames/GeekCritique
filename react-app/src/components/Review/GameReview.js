@@ -9,7 +9,7 @@ const GameReview = ({ game }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     // console.log('game from the game review component', game)
-    const review = useSelector((state) => state.review)
+    const review = useSelector((state) => Object.values(state.review))
     console.log('REVIEW:', review)
 
     useEffect(() => {
@@ -21,6 +21,9 @@ const GameReview = ({ game }) => {
     return (
         <div className='game-review-container'>
             Reviews
+            {review.map((review) => (
+                <div className='review-content' key={review.id}>{review.content}</div>
+            ))}
 
         </div>
     );
