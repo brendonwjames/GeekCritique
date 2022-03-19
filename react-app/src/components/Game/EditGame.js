@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateGame } from '../../store/games';
 import './EditGame.css'
 
@@ -22,13 +22,17 @@ const EditGame = ({ setShowModal, game }) => {
         if (result === 'Success!') {
             setShowModal(false)
         }
+
+        else if (result) {
+            setErrors(result);
+        }
     }
 
     return (
         <div className='new-game-form-container'>
             <form className='new-game-form' onSubmit={handleEdit}>
                 <div className='postErrors'>
-                    {errors?.map((error, ind) => (
+                    {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                         ))}
                 </div>

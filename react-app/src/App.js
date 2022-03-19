@@ -46,7 +46,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
-          <h1>My Home Page</h1>
           <AllGames />
         </ProtectedRoute>
         {/* <ProtectedRoute path='/games' exact={true}>

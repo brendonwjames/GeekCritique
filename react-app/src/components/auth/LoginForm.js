@@ -38,7 +38,7 @@ const LoginForm = () => {
 
   return (
     <div className='login-container'>
-      <img className='login-img' src='https://wallpaperaccess.com/full/1126067.jpg'></img>
+      <img className='login-img' src='https://wallpaperaccess.com/full/1126067.jpg' alt='Broken img link'></img>
       <div>
       <form className='form-container' onSubmit={onLogin}>
         <div className='right-div'>

@@ -10,6 +10,7 @@ const PostGame = ({ setShowModal }) => {
     const [errors, setErrors] = useState([]);
     const [createdAt, setCreatedAt] = useState(null);
 
+
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
 
