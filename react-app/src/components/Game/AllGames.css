@@ -1,0 +1,10 @@
+.game-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-post {
+    outline: black solid 5px;
+    margin-bottom: 40px;
+}

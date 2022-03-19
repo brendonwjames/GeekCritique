@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
@@ -6,6 +6,7 @@ import { getAllGames } from "../../store/games";
 // import EditModal from "../Modals/EditModal";
 // import DeleteModal from "../Modals/DeleteModal";
 import GameDetailsModal from "../Modals/GameDetailsModal";
+import './AllGames.css';
 
 
 const AllGames = () => {
@@ -18,11 +19,14 @@ const AllGames = () => {
 
 return (
     <>
-        {games && games.map((game) => (
-            <div className='game-post' key={game.id}>
-                <GameDetailsModal game={game}/>
-            </div>
-        ))}
+        <div className='game-container'>
+        <h1>Games</h1>
+            {games && games.map((game) => (
+                <div className='game-post' key={game.id}>
+                    <GameDetailsModal game={game}/>
+                </div>
+            ))}
+        </div>
     </>
 )
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "./ModalContext/Modal";
 import GameDetails from "../Game/GameDetails";
 import { useDispatch } from 'react-redux';
+import './GameDetailsModal.css';
 
 
 

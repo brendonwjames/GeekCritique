@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignUpForm.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -50,7 +51,14 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='signup-container'>
+      <div className='signup-form'>
+      <div>
+        <h2 className='site-title'>GeekCritique</h2>
+        <h5 className='signup-message'>Sign up to view games!</h5>
+      </div>
+      
+    <form className='form-signup' onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -59,6 +67,7 @@ const SignUpForm = () => {
       <div>
         <label>Username</label>
         <input
+          className='login-input'
           type='text'
           name='username'
           onChange={updateUsername}
@@ -68,6 +77,7 @@ const SignUpForm = () => {
       <div>
         <label>Email</label>
         <input
+          className='login-input'
           type='text'
           name='email'
           onChange={updateEmail}
@@ -77,6 +87,7 @@ const SignUpForm = () => {
       <div>
         <label>Password</label>
         <input
+          className='login-input'
           type='password'
           name='password'
           onChange={updatePassword}
@@ -86,6 +97,7 @@ const SignUpForm = () => {
       <div>
         <label>Repeat Password</label>
         <input
+          className='login-input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
@@ -95,6 +107,7 @@ const SignUpForm = () => {
         <div>
          <label>Profile Picture URL</label>
           <input
+          className='login-input'
           type='text'
           name='profile_picture'
           onChange={updateProfilePicture}
@@ -102,8 +115,14 @@ const SignUpForm = () => {
         ></input>
         </div>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='login-buttons' type='submit'>Sign Up</button>
     </form>
+    </div>
+        <div className='bottom-signup'>
+        <p className='text'>Have an account?</p>
+        <NavLink to="/login">Login</NavLink>
+        </div>
+    </div>
   );
 };
 

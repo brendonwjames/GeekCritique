@@ -1,0 +1,5 @@
+.modal-img {
+    width: 30vw;
+    object-fit: cover;
+    min-width: 300px;
+}
