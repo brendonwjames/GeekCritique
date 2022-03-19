@@ -1,0 +1,12 @@
+.game-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-details-image {
+    width: 30vw;
+    object-fit: fill;
+    min-width: 300px;
+    /* max-width: 300px; */
+}
