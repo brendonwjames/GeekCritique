@@ -22,7 +22,7 @@ export default function reviewReducer(state = initialState, action) {
     switch (action.type) {
         case GET_REVIEWS:
             action.gameReviews.reviews.forEach((review) => newState[review.id] = review)
-            action.postComments.users.forEach((user) => newState.users[user.id] = user)
+            // action.postComments.users.forEach((user) => newState.users[user.id] = user)
             return newState
         default:
             return state

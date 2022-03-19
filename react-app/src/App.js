@@ -17,11 +17,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+      dispatch(authenticate())
+      setLoaded(true)
+    }, [dispatch]);
+
+  // useEffect(() => {
+  //   (async() => {
+  //     await dispatch(authenticate());
+  //     setLoaded(true);
+  //   })();
+  // }, [dispatch]);
 
   if (!loaded) {
     return null;
