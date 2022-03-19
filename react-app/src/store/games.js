@@ -79,7 +79,7 @@ export const addGame = (formData) => async(dispatch) => {
 }
 
 export const updateGame = (gameId, editedGame) => async (dispatch) => {
-    // console.log('EDITED DATA THUNK:', editedGame)
+    console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -90,6 +90,14 @@ export const updateGame = (gameId, editedGame) => async (dispatch) => {
         const editedGame = await response.json();
         dispatch(editGame(editedGame))
         return 'Success!'
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
     }
 }
 

@@ -66,7 +66,6 @@ def edit_game(id):
 
 
         edit_game = Game.query.get(id)
-        # print(edit_game.owner_id,  edit_game.name, edit_game.description, edit_game.img_src)
 
         # edit_game.owner_id = current_user.id,
         edit_game.name = form.data['name'],
