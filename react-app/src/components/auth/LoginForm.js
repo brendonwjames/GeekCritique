@@ -19,11 +19,6 @@ const LoginForm = () => {
     }
   };
 
-  const demoUser = async(e) => {
-    e.preventDefault();
-    await dispatch(login('demo@aa.io', 'password'))
-  }
-
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -31,6 +26,11 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+
+  const demoUser = async(e) => {
+    e.preventDefault();
+    await dispatch(login('demo@aa.io', 'password'))
+  }
 
   if (user) {
     return <Redirect to='/' />;
