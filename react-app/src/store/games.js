@@ -79,7 +79,7 @@ export const addGame = (formData) => async(dispatch) => {
 }
 
 export const updateGame = (gameId, editedGame) => async (dispatch) => {
-    console.log('EDITED DATA THUNK:', editedGame)
+    // console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

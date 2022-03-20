@@ -45,3 +45,21 @@ def create_review():
         return new_review.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@reviews_routes.route('/<int:id>/edit', methods=['POST'])
+@login_required
+def edit_review(id):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+
+        edit_review = Review.query.get(id)
+
+        edit_review.content = form.data['content'],
+        edit_review.rating = form.data['rating'],
+
+        db.session.commit()
+        return edit_review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -1,14 +1,20 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 
 const getReviews = (gameReviews) => ({
     type: GET_REVIEWS,
     gameReviews
 })
 
-const createReview = (game) => ({
+const createReview = (review) => ({
     type: CREATE_REVIEW,
-    newReview: game
+    newReview: review
+})
+
+const editReview = (review) => ({
+    type: EDIT_REVIEW,
+    review
 })
 
 export const allReviews = (id) => async (dispatch) => {
@@ -34,6 +40,28 @@ export const addReview = (newReview) => async (dispatch) => {
         const newReview = await response.json();
         console.log('newReview:', newReview)
         dispatch((createReview(newReview)))
+        return 
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const updateReview = (reviewId, editedReview) => async(dispatch) => {
+    const response = await fetch(`/reviews/${reviewId}/edit`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(editedReview)
+    });
+
+    if (response.ok) {
+        const editedReview = await response.json();
+        console.log('editedReview:', editedReview)
+        dispatch((editReview(editedReview)))
         return 
     } else if (response.status < 500) {
         const data = await response.json();
