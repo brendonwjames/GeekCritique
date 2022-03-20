@@ -10,18 +10,23 @@ const GameDetailsPage = ({ game }) => {
     const user = useSelector((state) => state.session.user);
 
     return (
-        <>
-            <div className='game-details-container'>
-                <img className='game-details-image' src={game.img_src} alt='Faulty URL'></img>
-                <p>{game.name}</p>
-                <p>{game.description}</p>
-                {user.id === game.owner_id && <EditModal game={game}/>}
-                {user.id === game.owner_id && <DeleteModal game={game}/>}
+        <div className='game-details-container'>  
+            <div className='left-half'>
+                    <img className='game-details-image' src={game.img_src} alt='Faulty URL'></img>
+                    <div className='game-details'>
+                        <p>{game.name}</p>
+                        <p>{game.description}</p>
+                        {user.id === game.owner_id && <EditModal game={game}/>}
+                        {user.id === game.owner_id && <DeleteModal game={game}/>}
+                    </div>
+                    <div className='post-review'>
+                        <PostReview game={game} />
+                    </div>
             </div>
-            <GameReview game={game} />
-            <PostReview game={game} />
-            
-        </>
+            <div className='right-half'>
+                    <GameReview game={game} />
+            </div>
+        </div>
     );
 };
 
