@@ -27,3 +27,24 @@ def get_reviews(game_id):
     all_users = User.query.all()
     return {'reviews': [review.to_dict() for review in all_reviews], 'users': [user.to_dict() for user in all_users]}
 
+@reviews_routes.route('/new_review', methods=['POST'])
+@login_required
+def create_review():
+    form = ReviewForm()
+    # print('HITTING THE BACKEND FORM:', (form))
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        # print('BACKEND FORMDATA:', form.data)
+
+        new_review = Review(
+            user_id = current_user.id,
+            game_id = form.data['game_id'],
+            content = form.data['content'],
+            rating = form.data['rating'],
+        )
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

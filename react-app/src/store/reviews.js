@@ -1,8 +1,14 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
+const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 
 const getReviews = (gameReviews) => ({
     type: GET_REVIEWS,
     gameReviews
+})
+
+const createReview = (game) => ({
+    type: CREATE_REVIEW,
+    newReview: game
 })
 
 export const allReviews = (id) => async(dispatch) => {
@@ -15,6 +21,23 @@ export const allReviews = (id) => async(dispatch) => {
     return response
 }
 
+export const addReview = (newReview) => async(dispatch) => {
+    const { user_id, game_id, content, rating } = newReview;
+
+    const response = await fetch('/reviews/new_review', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ user_id, game_id, content, rating })
+    })
+
+    if (response.ok) {
+        const newReview = await response.json();
+        console.log('newReview:', newReview)
+        dispatch((createReview(newReview)))
+        return 'Success!'
+    }
+}
+
 const initialState = {};
 
 export default function reviewReducer(state = initialState, action) {
@@ -25,6 +48,9 @@ export default function reviewReducer(state = initialState, action) {
             action.gameReviews.reviews.forEach((review) => newState[review.id] = review)
             // newState.gameReviews=[...action.reviews];
             // action.gameReviews.users.forEach((user) => newState.users[user.id] = user)
+            return newState
+        case CREATE_REVIEW:
+            newState[action.newReview.id] = action.newReview;
             return newState
         default:
             return state

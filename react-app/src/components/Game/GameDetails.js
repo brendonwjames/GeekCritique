@@ -3,7 +3,7 @@ import EditModal from "../Modals/EditModal";
 import DeleteModal from "../Modals/DeleteModal";
 import { useSelector } from "react-redux";
 import GameReview from "../Review/GameReview";
-
+import PostReview from "../Review/PostReview";
 import './GameDetails.css';
 
 const GameDetailsPage = ({ game }) => {
@@ -19,6 +19,8 @@ const GameDetailsPage = ({ game }) => {
                 {user.id === game.owner_id && <DeleteModal game={game}/>}
             </div>
             <GameReview game={game} />
+            <PostReview game={game} />
+            
         </>
     );
 };

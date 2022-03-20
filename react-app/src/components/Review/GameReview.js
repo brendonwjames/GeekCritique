@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import EditModal from "../Modals/EditModal";
 // import DeleteModal from "../Modals/DeleteModal";
-import { allReviews } from "../../store/reviews";
+import { allReviews, createReview } from "../../store/reviews";
 import './GameReview.css';
 
 const GameReview = ({ game }) => {
@@ -16,13 +16,15 @@ const GameReview = ({ game }) => {
         dispatch(allReviews(game.id));
     }, [dispatch])
 
-
-
     return (
         <div className='game-review-container'>
             Reviews
             {review.map((review) => (
-                <div className='review-content' key={review.id}>{review.content}</div>
+                <div className='review-content' key={review.id}>
+                    {/* <div className='review-owner'>{user}</div> */}
+                    <div className='review-rating'>Rating: {review.rating}</div>
+                    <div className='review-content'>{review.content}</div>
+                </div>
             ))}
 
         </div>
