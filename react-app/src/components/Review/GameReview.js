@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import DeleteModal from "../Modals/DeleteModal";
 import { allReviews, createReview } from "../../store/reviews";
 import EditReviewModal from "../Modals/EditReviewModal";
+import DeleteReview from "./DeleteReview";
 import './GameReview.css';
 
 const GameReview = ({ game }) => {
@@ -25,7 +26,9 @@ const GameReview = ({ game }) => {
                     {/* <div className='review-owner'>{user}</div> */}
                     <div className='review-rating'>Rating: {review.rating}</div>
                     <div className='review-content'>{review.content}</div>
-                    <EditReviewModal game={game} review={review}/>
+                    {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
+                    {user.id === review.user_id && <DeleteReview review={review}/>}
+                    
 
                 </div>
             ))}

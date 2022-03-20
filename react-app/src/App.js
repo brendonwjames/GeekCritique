@@ -9,8 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
-import PostGame from './components/Game/PostGame';
-import GameDetails from './components/Game/GameDetails';
+// import PostGame from './components/Game/PostGame';
+// import GameDetails from './components/Game/GameDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

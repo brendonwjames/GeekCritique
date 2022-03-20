@@ -1,6 +1,7 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
 
 const getReviews = (gameReviews) => ({
     type: GET_REVIEWS,
@@ -14,6 +15,11 @@ const createReview = (review) => ({
 
 const editReview = (review) => ({
     type: EDIT_REVIEW,
+    review
+})
+
+const deleteReview = (review) => ({
+    type: DELETE_REVIEW,
     review
 })
 
@@ -73,6 +79,18 @@ export const updateReview = (reviewId, editedReview) => async(dispatch) => {
     }
 }
 
+export const removeReview = (reviewId) => async(dispatch) => {
+    const response = await fetch(`/reviews/${reviewId}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+    })
+    
+    if (response.ok) {
+        const review = await response.json()
+        dispatch(deleteReview(review))
+    }
+}
+
 const initialState = {};
 
 export default function reviewReducer(state = initialState, action) {
@@ -90,6 +108,9 @@ export default function reviewReducer(state = initialState, action) {
         case EDIT_REVIEW:
             // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
             newState[action.review.id] = {...action.review};
+            return newState
+        case DELETE_REVIEW:
+            delete newState[action.review.id]
             return newState
         default:
             return state
