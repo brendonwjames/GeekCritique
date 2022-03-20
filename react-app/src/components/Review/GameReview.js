@@ -10,7 +10,7 @@ const GameReview = ({ game }) => {
     const user = useSelector((state) => state.session.user);
     // console.log('game from the game review component', game)
     const review = useSelector((state) => Object.values(state.review))
-    console.log('REVIEW:', review)
+    // console.log('REVIEW:', review)
 
     useEffect(() => {
         dispatch(allReviews(game.id));

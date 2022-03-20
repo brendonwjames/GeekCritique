@@ -11,7 +11,7 @@ const createReview = (game) => ({
     newReview: game
 })
 
-export const allReviews = (id) => async(dispatch) => {
+export const allReviews = (id) => async (dispatch) => {
     const response = await fetch(`/reviews/${id}`);
 
     if (response.ok) {
@@ -21,12 +21,12 @@ export const allReviews = (id) => async(dispatch) => {
     return response
 }
 
-export const addReview = (newReview) => async(dispatch) => {
+export const addReview = (newReview) => async (dispatch) => {
     const { user_id, game_id, content, rating } = newReview;
 
     const response = await fetch('/reviews/new_review', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id, game_id, content, rating })
     })
 
@@ -34,14 +34,21 @@ export const addReview = (newReview) => async(dispatch) => {
         const newReview = await response.json();
         console.log('newReview:', newReview)
         dispatch((createReview(newReview)))
-        return 'Success!'
+        return 
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
 const initialState = {};
 
 export default function reviewReducer(state = initialState, action) {
-    let newState = {...state}
+    let newState = { ...state }
     switch (action.type) {
         case GET_REVIEWS:
             newState = {}

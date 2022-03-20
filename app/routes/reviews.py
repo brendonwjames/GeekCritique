@@ -31,12 +31,9 @@ def get_reviews(game_id):
 @login_required
 def create_review():
     form = ReviewForm()
-    # print('HITTING THE BACKEND FORM:', (form))
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        # print('BACKEND FORMDATA:', form.data)
-
         new_review = Review(
             user_id = current_user.id,
             game_id = form.data['game_id'],
