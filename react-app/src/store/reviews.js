@@ -62,7 +62,7 @@ export const updateReview = (reviewId, editedReview) => async(dispatch) => {
         const editedReview = await response.json();
         console.log('editedReview:', editedReview)
         dispatch((editReview(editedReview)))
-        return 
+        return 'Success!'
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -86,6 +86,10 @@ export default function reviewReducer(state = initialState, action) {
             return newState
         case CREATE_REVIEW:
             newState[action.newReview.id] = action.newReview;
+            return newState
+        case EDIT_REVIEW:
+            // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
+            newState[action.review.id] = {...action.review};
             return newState
         default:
             return state
