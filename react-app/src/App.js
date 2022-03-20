@@ -17,11 +17,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
-      await dispatch(authenticate());
-      setLoaded(true);
-    })();
-  }, [dispatch]);
+      dispatch(authenticate())
+      setLoaded(true)
+    }, [dispatch]);
+
+  // useEffect(() => {
+  //   (async() => {
+  //     await dispatch(authenticate());
+  //     setLoaded(true);
+  //   })();
+  // }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -51,15 +56,15 @@ function App() {
         {/* <ProtectedRoute path='/games' exact={true}>
           <Game />
         </ProtectedRoute> */}
-        <ProtectedRoute path='/new_game' exact={true}>
+        {/* <ProtectedRoute path='/new_game' exact={true}>
           <PostGame />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         {/* <ProtectedRoute path='/edit_game' exact={true}>
           <EditGame />
         </ProtectedRoute> */}
-        <ProtectedRoute path='/games/:gameId' exact={true}>
+        {/* <ProtectedRoute path='/games/:gameId' exact={true}>
           <GameDetails />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );
