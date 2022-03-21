@@ -4,9 +4,6 @@ import GameDetails from "../Game/GameDetails";
 import { useDispatch } from 'react-redux';
 import './GameDetailsModal.css';
 
-
-
-
 function GameDetailsModal({ game }) {
     const [showModal, setShowModal] = useState(false);
 
@@ -20,7 +17,7 @@ function GameDetailsModal({ game }) {
             <img className="modal-img" src={game.img_src} alt="Faulty Url" onClick={() => setShowModal(true)} />
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <GameDetails closeModal={() => setShowModal(false) } game={game}/>
+                <GameDetails closeModal={() => setShowModal(false) } setShowModal={setShowModal} game={game}/>
             </Modal>
             )}
         </>

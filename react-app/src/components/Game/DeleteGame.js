@@ -19,7 +19,6 @@ const DeleteGame = ({ setShowModal, game }) => {
                 <button onClick={handleDelete} className='delete-button'>Confirm Delete</button>
                 <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
              </div>
-
         </>
     )
 }

@@ -1,5 +1,8 @@
 .game-details-container {
     display: flex;
+    /* justify-content: space-around; */
+    height: 100%;
+    width: 100%
 }
 
 .left-half {
@@ -8,6 +11,7 @@
     align-items: center;
     border: black solid 3px;
     max-height: 80%;
+    object-fit: contain;
 }
 
 .right-half {
@@ -16,8 +20,9 @@
     border-top: solid 3px black;
     border-right: solid 3px black;
     border-bottom: solid 3px black;
-    width: 50%;
+    width: 100%;
     overflow-y: scroll;
+    object-fit: contain;
 }
 
 .post-review {
