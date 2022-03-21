@@ -8,12 +8,11 @@ const DeleteGame = ({ setShowModal, game }) => {
 
     const dispatch = useDispatch();
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         setShowModal(false)
-        dispatch(removeGame(game.id))
-        dispatch(userGames(game.owner_id))
+        await dispatch(removeGame(game.id))
+        await dispatch(userGames(game.owner_id))
     }
-
 
     return (
         <>
