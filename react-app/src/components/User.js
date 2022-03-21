@@ -33,13 +33,11 @@ function User() {
   }
 
   const defaultImg="https://www.nintendoenthusiast.com/wp-content/uploads/2017/01/mario-sad.jpeg"
-  console.log('pic source', user.profile_img_src)
+  // console.log('pic source', user)
 
   return (
     <div className='profile-page-container'>
-      {/* img class="avatar" src="img/one.jpg" alt="Not Found" onerror=this.src="img/undefined.jpg */}
-          <img className='profile-picture'></img>
-          <img src={user.profile_img_src} alt='Oops, your image didn"t work - try another link' onError={(e)=>{e.target.src=defaultImg}}/>
+          <img className='profile-picture' src={user.profile_picture} alt='Bad link' onError={(e)=>{e.target.src=defaultImg}}/>
           <div>{user.username}</div>
           <div>{user.email}</div>
       {games.userGames && games.userGames.map((game) => (

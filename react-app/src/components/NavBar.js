@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import './NavBar.css';
 
 const NavBar = () => {
-  const userId = useSelector(state => state.session.user.id);
+  const user = useSelector(state => state.session.user);
 
   return (
     <nav className='navbar'>
@@ -14,11 +14,12 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
-          <NavLink to={`/users/${userId}`} exact={true} activeClassName='active'>
+          <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
             My Stuff
           </NavLink>
           <PostGameModal />
           <LogoutButton />
+          <div>Hello, {user.username}</div>
         </div>
     </nav>
   );

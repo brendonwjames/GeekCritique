@@ -12,9 +12,11 @@ function GameDetailsModal({ game }) {
         // dispatch(userGames(game.owner_id))
     }, [dispatch, game.id])
 
+   const faultyImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
+
     return (
         <>
-            <img className="modal-img" src={game.img_src} alt="Faulty Url" onClick={() => setShowModal(true)} />
+            <img className="modal-img" src={game.img_src} alt="Faulty Url" onError={(e)=>{e.target.src=faultyImg}} onClick={() => setShowModal(true)} />
             {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <GameDetails closeModal={() => setShowModal(false) } setShowModal={setShowModal} game={game}/>
