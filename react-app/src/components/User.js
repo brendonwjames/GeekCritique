@@ -12,9 +12,7 @@ function User() {
 
   const games = useSelector((state => state.usergame))
 
-  console.log('GENIUS:', games.userGames)
-
-
+  // console.log('GENIUS:', games.userGames)
 
   useEffect(() => {
     dispatch(getAllGames)
