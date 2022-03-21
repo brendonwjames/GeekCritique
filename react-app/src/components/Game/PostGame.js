@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addGame, getAllGames, userGames } from '../../store/games';
+import { addGame, getAllGames } from '../../store/games';
+import { userGames } from '../../store/usergames';
 import './PostGame.css'
 
 const PostGame = ({ setShowModal }) => {
@@ -9,9 +10,6 @@ const PostGame = ({ setShowModal }) => {
     const [img_src, setImg] = useState('');  
     const [errors, setErrors] = useState([]);
     const [createdAt, setCreatedAt] = useState(null);
-
-
-
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
@@ -24,7 +22,7 @@ const PostGame = ({ setShowModal }) => {
         const result = await dispatch(addGame(game))
 
         if (result === 'Success!') {
-            
+
             dispatch(getAllGames())
             dispatch(userGames(user.id))
             
