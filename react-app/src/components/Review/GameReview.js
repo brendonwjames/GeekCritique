@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import EditModal from "../Modals/EditModal";
-// import DeleteModal from "../Modals/DeleteModal";
-import { allReviews, createReview } from "../../store/reviews";
+import { allReviews } from "../../store/reviews";
 import EditReviewModal from "../Modals/EditReviewModal";
 import DeleteReview from "./DeleteReview";
 import './GameReview.css';
@@ -16,7 +14,7 @@ const GameReview = ({ game }) => {
 
     useEffect(() => {
         dispatch(allReviews(game.id));
-    }, [dispatch])
+    }, [game.id, dispatch])
 
     return (
         <div className='game-review-container'>

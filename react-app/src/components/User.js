@@ -26,7 +26,7 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId, userGames]);
+  }, [userId, dispatch]);
 
   if (!user) {
     return null;

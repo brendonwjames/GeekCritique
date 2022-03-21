@@ -9,7 +9,7 @@ function GameDetailsModal({ game }) {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        
+        // dispatch(userGames(game.owner_id))
     }, [dispatch, game.id])
 
     return (

@@ -5,6 +5,7 @@ import DeleteGame from "../Game/DeleteGame";
 
 function DeleteModal({ game }) {
   const [showModal, setShowModal] = useState(false);
+  // const dispatch = useDispatch();
   
   return (
     <>

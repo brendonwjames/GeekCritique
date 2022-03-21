@@ -1,16 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeGame } from '../../store/games';
+import { userGames } from '../../store/usergames';
 import './DeleteGame.css'
 
 const DeleteGame = ({ setShowModal, game }) => {
-    // console.log('DELETE MODAL:', game)
 
     const dispatch = useDispatch();
 
     const handleDelete = () => {
+        setShowModal(false)
         dispatch(removeGame(game.id))
+        dispatch(userGames(game.owner_id))
     }
+
 
     return (
         <>
