@@ -1,4 +1,5 @@
 const GET_GAMES = 'games/GET_GAMES';
+const GET_USER_GAMES = 'games/GET_USER_GAMES';
 const GET_GAME = 'games/GET_GAME';
 const CREATE_GAME = 'games/CREATE_GAME';
 const EDIT_GAME = 'games/EDIT_GAME';
@@ -7,6 +8,11 @@ const DELETE_GAME = 'games/DELETE_GAME';
 const getGames = (allgames) => ({
     type: GET_GAMES,
     allgames
+})
+
+const getUserGames = (userGames) => ({
+    type: GET_USER_GAMES,
+    userGames
 })
 
 const getGame = (game) => ({
@@ -36,6 +42,17 @@ export const getAllGames = () => async(dispatch) => {
         const games = await response.json();
         console.log('GAMES', games)
         dispatch(getGames(games))
+    }
+    return response;
+}
+
+export const userGames = (userId) => async(dispatch) => {
+    console.log('backend USERID', userId)
+    const response = await fetch(`/api/users/${userId}/games`)
+
+    if (response.ok) {
+        const games = await response.json();
+        dispatch(getUserGames(games))
     }
     return response;
 }
@@ -124,12 +141,20 @@ export default function gameReducer(state = initialState, action) {
             // console.log('********', action.allgames.games)
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
+        case GET_USER_GAMES:
+            console.log('ACTION.USERGAMES', action.userGames.usergames)
+            newState = {...state, userGames: []}
+            // action.userGames.usergames.forEach(game => newState[game.id] = game)
+            newState.userGames = [...action.userGames.usergames]
+            return newState
+            // newState = {...state, userPosts: []}
+            // newState.userPosts = [...action.userPosts.posts];
+            // return newState
         case GET_GAME:
             console.log('GET GAME REDUCER:', action.game.id = action.game)
             // newState[action.game.id] = action.game;
             newState[action.game.id] = {...action.game}; //possible alternative?
             return newState;
-
         case CREATE_GAME:
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;

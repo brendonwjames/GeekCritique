@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addGame } from '../../store/games';
+import { addGame, getAllGames, userGames } from '../../store/games';
 import './PostGame.css'
 
 const PostGame = ({ setShowModal }) => {
@@ -11,8 +11,11 @@ const PostGame = ({ setShowModal }) => {
     const [createdAt, setCreatedAt] = useState(null);
 
 
+
+
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -21,6 +24,10 @@ const PostGame = ({ setShowModal }) => {
         const result = await dispatch(addGame(game))
 
         if (result === 'Success!') {
+            
+            dispatch(getAllGames())
+            dispatch(userGames(user.id))
+            
             setShowModal(false)
         }
 

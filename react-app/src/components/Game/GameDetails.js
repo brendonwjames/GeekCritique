@@ -6,7 +6,7 @@ import GameReview from "../Review/GameReview";
 import PostReview from "../Review/PostReview";
 import './GameDetails.css';
 
-const GameDetailsPage = ({ game }) => {
+const GameDetailsPage = ({ setShowModal, game }) => {
     const user = useSelector((state) => state.session.user);
 
     return (
@@ -16,8 +16,8 @@ const GameDetailsPage = ({ game }) => {
                     <div className='game-details'>
                         <p>{game.name}</p>
                         <p>{game.description}</p>
-                        {user.id === game.owner_id && <EditModal game={game}/>}
-                        {user.id === game.owner_id && <DeleteModal game={game}/>}
+                        {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
+                        {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
                     </div>
                     <div className='post-review'>
                         <PostReview game={game} />
