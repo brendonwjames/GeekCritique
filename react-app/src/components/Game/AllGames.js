@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import GameDetailsModal from "../Modals/GameDetailsModal";
+import { getUsers } from "../../store/session";
 import './AllGames.css';
 
 
@@ -15,6 +16,7 @@ const AllGames = () => {
     useEffect(() => {
         dispatch(getAllGames());
         dispatch(allReviews());
+        dispatch(getUsers())
     }, [dispatch])
 
 return (
