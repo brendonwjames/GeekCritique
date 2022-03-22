@@ -14,7 +14,7 @@ const AllGames = () => {
 
     useEffect(() => {
         dispatch(getAllGames());
-        dispatch(allReviews(1));
+        dispatch(allReviews());
     }, [dispatch])
 
 return (

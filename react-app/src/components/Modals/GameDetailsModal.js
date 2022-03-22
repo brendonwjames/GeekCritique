@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "./ModalContext/Modal";
 import GameDetails from "../Game/GameDetails";
 import { useDispatch } from 'react-redux';
+import { getUsers } from "../../store/session";
 import './GameDetailsModal.css';
 
 function GameDetailsModal({ game }) {
@@ -9,8 +10,8 @@ function GameDetailsModal({ game }) {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        // dispatch(userGames(game.owner_id))
-    }, [dispatch, game.id])
+        // dispatch(getUsers())
+    }, [game.id])
 
    const faultyImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
