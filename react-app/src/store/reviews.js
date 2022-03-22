@@ -97,10 +97,10 @@ export default function reviewReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case GET_REVIEWS:
-            newState = {...state, reviews: {}, users: {}}
-            action.gameReviews.reviews.forEach((review) => newState.reviews[review.id] = review)
+            newState = {comments: {}}
+            action.gameReviews.reviews.forEach((review) => newState[review.id] = review)
             // newState.gameReviews=[...action.reviews];
-            action.gameReviews.users.forEach((user) => newState.users[user.id] = user)
+            // action.gameReviews.users.forEach((user) => newState.users[user.id] = user)
             return newState
         case CREATE_REVIEW:
             newState[action.newReview.id] = action.newReview;
