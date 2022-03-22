@@ -20,5 +20,6 @@ class Game(db.Model):
             'name': self.name,
             'description': self.description,
             'img_src': self.img_src,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            # 'users': self.users.to_dict()
         }

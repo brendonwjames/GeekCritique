@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateGame } from '../../store/games';
+import { updateGame, getOneGame } from '../../store/games';
+import { useHistory } from 'react-router-dom';
 import './EditGame.css'
 
 const EditGame = ({ setShowModal, game }) => {
@@ -21,6 +22,7 @@ const EditGame = ({ setShowModal, game }) => {
 
         if (result === 'Success!') {
             setShowModal(false)
+            // dispatch(getOneGame(game.id))
         }
 
         else if (result) {

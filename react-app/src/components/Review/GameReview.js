@@ -21,10 +21,21 @@ const GameReview = ({ game }) => {
     const review = useSelector((state) => Object.values(state.review))
     const allUsers = useSelector((state) => (state.session.allUsers))
 
-    const all_users = Object.values(allUsers)
+    // const all_users = Object.values(allUsers)
 
     console.log('allusers',allUsers)
     // console.log('TEST', all_users)
+
+    
+    // all_users.forEach(ele => {
+    //     console.log(ele.username)
+    //     return ele
+    // })
+
+    review.forEach(ele => {
+        console.log(ele)
+        return ele
+    })
 
     console.log('REVIEW:', review)
 
@@ -32,7 +43,7 @@ const GameReview = ({ game }) => {
         review.rating
     ))
 
-    console.log('RATINg ARR:', ratingArr)
+    // console.log('RATINg ARR:', ratingArr)
 
     const totalRating = ratingArr.reduce((a, b) => a + b, 0)
 
@@ -41,9 +52,9 @@ const GameReview = ({ game }) => {
         avgRating = (totalRating / ratingArr.length).toFixed(1)
     }
 
-    console.log('AVG RATING:', avgRating)
+    // console.log('AVG RATING:', avgRating)
     
-    console.log('TOTAL RATING:', totalRating)
+    // console.log('TOTAL RATING:', totalRating)
 
     // let test = '';
     // if (allUsers[review.user_id].username !== undefined ) {
@@ -59,7 +70,7 @@ const GameReview = ({ game }) => {
                 <div>
                     <div className='review-content' key={review.id}>
                         <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active'>
-                            {all_users[review.user_id]}
+                            {allUsers[review.user_id].username}
                         </NavLink>
                         <div className='review-content'>{review.content}</div>
                         {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
