@@ -8,11 +8,12 @@ import './GameDetails.css';
 
 const GameDetailsPage = ({ setShowModal, game }) => {
     const user = useSelector((state) => state.session.user);
+    const defaultImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
     return (
         <div className='game-details-container'>  
             <div className='left-half'>
-                    <img className='game-details-image' src={game.img_src} alt='Faulty URL'></img>
+                    <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
                     <div className='game-details'>
                         <p>{game.name}</p>
                         <p>{game.description}</p>
