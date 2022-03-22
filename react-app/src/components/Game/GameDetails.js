@@ -10,6 +10,8 @@ const GameDetailsPage = ({ setShowModal, game }) => {
     const user = useSelector((state) => state.session.user);
     const defaultImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
+    
+
     return (
         <div className='game-details-container'>  
             <div className='left-half'>
