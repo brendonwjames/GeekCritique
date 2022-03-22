@@ -4,21 +4,15 @@ import { updateReview } from "../../store/reviews";
 import './GameReview.css';
 
 const EditReview = ({ setShowModal, game, review }) => {
-    const [content, setContent] = useState('');
-    const [rating, setRating] = useState(3);
+    const [content, setContent] = useState(review.content);
+    const [rating, setRating] = useState(review.rating);
     const [errors, setErrors] = useState([]);
-
-    // console.log('ERROR:', errors)
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
-    // const review = useSelector((state) => state.review)
     const user_id = user.id;
     const game_id = game.id;
 
-    // console.log('REVIEW:', review);
-
-    // console.log('RATING', rating)
 
     const handleEdit = async(e) => {
         e.preventDefault();

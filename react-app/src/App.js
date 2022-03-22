@@ -55,18 +55,6 @@ function App() {
           <NavBar />
           <AllGames />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/games' exact={true}>
-          <Game />
-        </ProtectedRoute> */}
-        {/* <ProtectedRoute path='/new_game' exact={true}>
-          <PostGame />
-        </ProtectedRoute> */}
-        {/* <ProtectedRoute path='/edit_game' exact={true}>
-          <EditGame />
-        </ProtectedRoute> */}
-        {/* <ProtectedRoute path='/games/:gameId' exact={true}>
-          <GameDetails />
-        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

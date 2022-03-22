@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateGame, getOneGame } from '../../store/games';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateGame } from '../../store/games';
+import { userGames } from '../../store/usergames';
 import { useHistory } from 'react-router-dom';
 import './EditGame.css'
 
@@ -11,18 +12,19 @@ const EditGame = ({ setShowModal, game }) => {
     const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
-    // console.log('GAME DETAILS:', game)
+    const user = useSelector((state) => state.session.user)
+
 
     const handleEdit = async(e) => {
         e.preventDefault();
 
-        const editedGame = {name, description, img_src}
+        const editedGame = { name, description, img_src }
 
         const result = await dispatch(updateGame(game.id, editedGame))
 
         if (result === 'Success!') {
             setShowModal(false)
-            // dispatch(getOneGame(game.id))
+            dispatch(userGames(user.id))
         }
 
         else if (result) {

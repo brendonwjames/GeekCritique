@@ -8,10 +8,10 @@ import './GameDetailsModal.css';
 function GameDetailsModal({ game }) {
     const [showModal, setShowModal] = useState(false);
 
-    const dispatch = useDispatch()
-    useEffect(() => {
-        // dispatch(getUsers())
-    }, [game.id])
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     // dispatch(getUsers())
+    // }, [game.id])
 
    const faultyImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
@@ -28,21 +28,3 @@ function GameDetailsModal({ game }) {
 }
 
 export default GameDetailsModal;
-
-
-// function EditModal({ game  }) {
-//   const [showModal, setShowModal] = useState(false);
-  
-//   return (
-//     <>
-//       <button onClick={() => setShowModal(true)}>Edit Game</button>
-//       {showModal && (
-//         <Modal onClose={() => setShowModal(false)}>
-//           <EditGame setShowModal={setShowModal} game={game}/>
-//         </Modal>
-//       )}
-//     </>
-//   );
-// }
-
-// export default EditModal;

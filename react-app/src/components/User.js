@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGames } from '../store/games';
+import { getAllGames, getOneGame } from '../store/games';
 import { userGames } from '../store/usergames';
 import GameDetailsModal from './Modals/GameDetailsModal';
 
@@ -15,6 +15,7 @@ function User() {
   // console.log('GENIUS:', games.userGames)
 
   useEffect(() => {
+    console.log('FIND THIS USEEFFECT')
     dispatch(getAllGames)
     dispatch(userGames(userId))
 
@@ -32,8 +33,24 @@ function User() {
     return null;
   }
 
+//   const handleEdit = async(e) => {
+//     e.preventDefault();
+
+//     const editedGame = {name, description, img_src}
+
+//     const result = await dispatch(updateGame(game.id, editedGame))
+
+//     if (result === 'Success!') {
+//         setShowModal(false)
+//         dispatch(getOneGame(game.id))
+//     }
+
+//     else if (result) {
+//         setErrors(result);
+//     }
+// }
+
   const defaultImg="https://www.nintendoenthusiast.com/wp-content/uploads/2017/01/mario-sad.jpeg"
-  // console.log('pic source', user)
 
   return (
     <div className='profile-page-container'>
