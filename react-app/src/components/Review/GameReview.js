@@ -28,16 +28,18 @@ const GameReview = ({ game }) => {
     console.log('allUSERS:', allUsers)
     console.log('REVIEWARR:', reviewArr)
 
-    // const ratingArr = review.map((review) => (
-    //     review.rating
-    // ))
+    const ratingArr = reviewArr.map((review) => (
+        review.rating
+    ))
 
-    // const totalRating = ratingArr.reduce((a, b) => a + b, 0)
+    console.log('ratingArray:', ratingArr)
 
-    // let avgRating = 0;
-    // if (totalRating > 0) {
-    //     avgRating = (totalRating / ratingArr.length).toFixed(1)
-    // }
+    const totalRating = ratingArr.reduce((a, b) => a + b, 0)
+
+    let avgRating = 0;
+    if (totalRating > 0) {
+        avgRating = (totalRating / ratingArr.length).toFixed(1)
+    }
 
     // console.log('AVG RATING:', avgRating)
     
@@ -49,8 +51,8 @@ const GameReview = ({ game }) => {
         
         <div className='game-review-container'>
             Reviews
-            {/* <div className='review-total-rating'>Total Rating: {totalRating}</div>
-            <div className='review-average-rating'>Average Rating: {avgRating}</div> */}
+            <div className='review-total-rating'>Total Rating: {totalRating}</div>
+            <div className='review-average-rating'>Average Rating: {avgRating}</div>
             {reviewArr.map((review) => (
                 <div className='review-content' key={review.id}>
                     <div>Review By:</div>
