@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allReviews } from "../../store/reviews";
+import { NavLink } from 'react-router-dom';
 import EditReviewModal from "../Modals/EditReviewModal";
 import DeleteReview from "./DeleteReview";
 import './GameReview.css';
@@ -10,6 +11,9 @@ const GameReview = ({ game }) => {
     const user = useSelector((state) => state.session.user);
     // console.log('game from the game review component', game)
     const review = useSelector((state) => Object.values(state.review))
+
+    const state = useSelector((state) => state)
+    console.log('this be the state', state)
 
     console.log('REVIEW:', review)
 
@@ -41,6 +45,9 @@ const GameReview = ({ game }) => {
             {review.map((review) => (
                 <div className='review-content' key={review.id}>
                     {/* <div className='review-owner'>{user}</div> */}
+                    <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active'>
+                        Reviewer Id: {review.user_id}
+                    </NavLink>
                     <div className='review-content'>{review.content}</div>
                     {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
                     {user.id === review.user_id && <DeleteReview review={review}/>}
