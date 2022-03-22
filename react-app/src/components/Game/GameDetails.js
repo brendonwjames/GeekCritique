@@ -10,8 +10,6 @@ const GameDetailsPage = ({ setShowModal, game }) => {
     const user = useSelector((state) => state.session.user);
     const defaultImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
-    
-
     return (
         <div className='game-details-container'>  
             <div className='left-half'>
@@ -27,7 +25,7 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                     </div>
             </div>
             <div className='right-half'>
-                    <GameReview game={game} />
+                    <GameReview key={game.id} game={game} />
             </div>
         </div>
     );
