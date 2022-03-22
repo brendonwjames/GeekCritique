@@ -21,7 +21,7 @@ const GameReview = ({ game }) => {
     const review = useSelector((state) => Object.values(state.review))
     const allUsers = useSelector((state) => (state.session.allUsers))
 
-    // const all_users = Object.values(allUsers)
+    const all_users = Object.values(allUsers)
 
     console.log('allusers',allUsers)
     // console.log('TEST', all_users)
@@ -59,7 +59,7 @@ const GameReview = ({ game }) => {
                 <div>
                     <div className='review-content' key={review.id}>
                         <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active'>
-                            {/* {all_users[review.user_id]} */}
+                            {all_users[review.user_id]}
                         </NavLink>
                         <div className='review-content'>{review.content}</div>
                         {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
