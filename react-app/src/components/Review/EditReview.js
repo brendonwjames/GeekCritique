@@ -39,14 +39,14 @@ const EditReview = ({ setShowModal, game, review }) => {
                 </div>
                 <p className='create-post-text'>Edit Your Review</p>
                 <div>
-                    <input
+                    <textarea
                         type='text'
                         className='content-field'
                         name='content'
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
                         placeholder='Content'
-                        ></input>
+                        ></textarea>
                 </div>
                 <div>
                 <div>

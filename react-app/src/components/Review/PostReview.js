@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../../store/reviews";
-import './GameReview.css';
+import './PostReview.css';
 
 const PostReview = ({ game }) => {
     const [content, setContent] = useState('');
@@ -17,15 +17,26 @@ const PostReview = ({ game }) => {
 
     // console.log('RATING', rating)
 
+    const reset = () => {
+        setContent("");
+        setRating(3);
+        setErrors([]);
+    }
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         const review = {user_id, game_id, content, rating, }
+
 
         const result = await dispatch(addReview(review))
 
         if (result) {
             setErrors(result);
+        } else {
+            reset()
         }
+
+        
     }
 
     return (
@@ -36,28 +47,28 @@ const PostReview = ({ game }) => {
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <p className='create-post-text'>Add New Review</p>
+                <div className='review-top-div'>
+                    <p className='create-review-text'>Add New Review</p>
+                    <div>
+                        <div>Select Game Rating</div>
+                        <select value={rating} onChange={e => setRating(e.target.value)}>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                        </select>
+                    </div>
+                </div>
                 <div>
-                    <input
+                    <textarea
                         type='text'
-                        className='content-field'
+                        className='create-review-input'
                         name='content'
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
-                        placeholder='Content'
-                        ></input>
-                </div>
-                <div>
-                <div>
-                    <div>Select Rating</div>
-                    <select value={rating} onChange={e => setRating(e.target.value)}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                    </select>
-                    </div>
+                        placeholder='Add your review here!'
+                        ></textarea>
                 </div>
                 <button className='review-submit-button' type='submit'>Post Review</button>
                 {/* <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button> */}

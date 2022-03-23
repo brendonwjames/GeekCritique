@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, Length
 from app.models import User
 
 
@@ -24,4 +24,4 @@ class SignUpForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired('Username is required!'), username_exists])
     email = StringField('Email', validators=[DataRequired('Valid email is required!'), user_exists]) # to be added - Email('Please enter a valid email format!'),
     password = StringField('Password', validators=[DataRequired('Password is required!')])
-    profile_img_src = StringField('Profile Picture', validators=[DataRequired('A link to an image is required!')])
+    profile_img_src = StringField('Profile Picture', validators=[DataRequired('A link to an image is required!'), Length(max=255, message='URL too long! Choose a different link')])

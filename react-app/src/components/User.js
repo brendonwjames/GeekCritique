@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGames, getOneGame } from '../store/games';
+import { getAllGames } from '../store/games';
 import { userGames } from '../store/usergames';
 import GameDetailsModal from './Modals/GameDetailsModal';
+import './User.css';
 
 function User() {
   const [user, setUser] = useState({});
@@ -12,10 +13,7 @@ function User() {
 
   const games = useSelector((state => state.usergame))
 
-  // console.log('GENIUS:', games.userGames)
-
   useEffect(() => {
-    console.log('FIND THIS USEEFFECT')
     dispatch(getAllGames)
     dispatch(userGames(userId))
 
@@ -33,35 +31,31 @@ function User() {
     return null;
   }
 
-//   const handleEdit = async(e) => {
-//     e.preventDefault();
+  const defaultImg="https://images.nintendolife.com/428c8ddbb2c32/smm2.large.jpg"
+  // <img className='profilePicMain' src={user.profile_pic ? user.profile_pic : defaultProfilePic}/>
 
-//     const editedGame = {name, description, img_src}
 
-//     const result = await dispatch(updateGame(game.id, editedGame))
-
-//     if (result === 'Success!') {
-//         setShowModal(false)
-//         dispatch(getOneGame(game.id))
-//     }
-
-//     else if (result) {
-//         setErrors(result);
-//     }
-// }
-
-  const defaultImg="https://www.nintendoenthusiast.com/wp-content/uploads/2017/01/mario-sad.jpeg"
 
   return (
     <div className='profile-page-container'>
-          <img className='profile-picture' src={user.profile_picture} alt='Bad link' onError={(e)=>{e.target.src=defaultImg}}/>
+          {/* <img className='profile-picture' alt='Try a new link' src={user.profile_picture ? user.profile_picture : defaultImg }/> */}
+      <div className='profile-page-top-div'>
+        <img className='profile-picture' src={user.profile_picture} alt='Bad link' onError={(e)=>{e.target.src=defaultImg}}/>
+        <div className='user-info'>
           <div>{user.username}</div>
           <div>{user.email}</div>
+        </div>
+      </div>
+      <div className='games-list-title'>
+        {user.username}'s Games
+      </div>
+      <div className='game-post-container'>
       {games.userGames && games.userGames.map((game) => (
                 <div className='game-post' key={game.id}>
                     <GameDetailsModal game={game}/>
                 </div>
             ))}
+      </div>
     </div>
   );
 }

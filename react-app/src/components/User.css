@@ -1,0 +1,31 @@
+.profile-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-page-top-div {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.game-post-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+}

@@ -7,7 +7,7 @@ class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'), nullable=False)
-    content = db.Column(db.String(255), nullable=False)
+    content = db.Column(db.String(10000), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
 
     users = db.relationship('User', back_populates='reviews')

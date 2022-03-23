@@ -11,12 +11,11 @@ import './AllGames.css';
 const AllGames = () => {
     const dispatch = useDispatch();
     const games = useSelector((state => Object.values(state.game)))
-    // console.log('I think I know whats wrong',games)
 
     useEffect(() => {
         dispatch(getAllGames());
         dispatch(allReviews());
-        dispatch(getUsers())
+        dispatch(getUsers());
     }, [dispatch])
 
 return (
