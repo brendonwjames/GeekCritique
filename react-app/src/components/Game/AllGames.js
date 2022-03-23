@@ -21,8 +21,10 @@ const AllGames = () => {
 
 return (
     <>
+        <div className='feed-title'>
+            <h1>Games</h1>
+        </div>
         <div className='game-container'>
-        <h1>Games</h1>
             {games && games.map((game) => (
                 <div className='game-post' key={game.id}>
                     <GameDetailsModal game={game}/>

@@ -1,10 +1,25 @@
-.game-container {
+/* .game-container {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     flex-direction: column;
-}
+    border: solid black 5px;
+    flex-wrap: wrap;
+} */
 
 .game-post {
-    outline: black solid 5px;
-    margin-bottom: 40px;
+    /* border: black solid 5px; */
+    /* margin: 40px; */
+    /* height: 40px; */
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    /* width: 100%; */
+    grid-gap: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 20px;
 }

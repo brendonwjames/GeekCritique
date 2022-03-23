@@ -1,5 +1,36 @@
-.modal-img {
+/* .modal-img {
     width: 30vw;
     object-fit: cover;
     min-width: 300px;
+} */
+  
+  /* .modal-img {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 15px;
+  } */
+  
+  .movieCard p {
+    color: white;
+  }
+  
+  .modal-img {
+    object-fit: scale-down;
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    border-radius: 1em;
+    outline: 2px solid black;
+    background-color: lightgrey;
+}
+
+.modal-img:hover {
+    object-fit: cover;
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    border-radius: 1em;
+    outline: 2px solid black
 }
