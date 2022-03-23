@@ -14,12 +14,12 @@ const GameDetailsPage = ({ setShowModal, game }) => {
         <div className='game-details-container'>  
             <div className='left-half'>
                     <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
-                    <div className='game-details'>
+                    {/* <div className='game-details'> */}
                         <p>{game.name}</p>
                         <p>{game.description}</p>
                         {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
                         {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
-                    </div>
+                    {/* </div> */}
                     <div className='post-review'>
                         <PostReview game={game} />
                     </div>

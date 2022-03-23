@@ -8,11 +8,6 @@ import './GameDetailsModal.css';
 function GameDetailsModal({ game }) {
     const [showModal, setShowModal] = useState(false);
 
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     // dispatch(getUsers())
-    // }, [game.id])
-
    const faultyImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
     return (

@@ -1,22 +1,4 @@
-/* .modal-img {
-    width: 30vw;
-    object-fit: cover;
-    min-width: 300px;
-} */
-  
-  /* .modal-img {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin: 15px;
-  } */
-  
-  .movieCard p {
-    color: white;
-  }
-  
-  .modal-img {
+.modal-img {
     object-fit: scale-down;
     height: 300px;
     width: 200px;
@@ -34,3 +16,4 @@
     border-radius: 1em;
     outline: 2px solid black
 }
+
