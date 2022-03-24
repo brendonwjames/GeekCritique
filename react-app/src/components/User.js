@@ -46,9 +46,9 @@ function User() {
           <div>{user.email}</div>
         </div>
       </div>
-      <div className='games-list-title'>
+      <h2 className='games-list-title'>
         {user.username}'s Games
-      </div>
+      </h2>
       <div className='game-post-container'>
       {games.userGames && games.userGames.map((game) => (
                 <div className='game-post' key={game.id}>

@@ -1,10 +1,11 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: center; */
+    justify-content: space-around;
     width: 100%;
     border-bottom: black 1px solid;
-    background-color: lightgrey;
+    background-color: white;
     margin-bottom: 15px;
     padding: 10px;
     box-sizing: border-box;
@@ -14,7 +15,18 @@
 
 .navlinks {
     display: flex;
-    gap: 15px;
+    gap: 30px;
     align-items: center;
     justify-content: center;
+}
+
+.navbar-profile-picture {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+.username-greeting {
+    font-style: italic;
 }

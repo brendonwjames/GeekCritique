@@ -21,23 +21,14 @@ const GameReview = ({ game }) => {
     const review = useSelector((state) => Object.values(state.review))
     const allUsers = useSelector((state) => (state.session.allUsers))
 
-    // const all_users = Object.values(allUsers)
+    // console.log('allusers',allUsers)
 
-    console.log('allusers',allUsers)
-    // console.log('TEST', all_users)
-
-    
-    // all_users.forEach(ele => {
-    //     console.log(ele.username)
+    // review.forEach(ele => {
+    //     console.log(ele)
     //     return ele
     // })
 
-    review.forEach(ele => {
-        console.log(ele)
-        return ele
-    })
-
-    console.log('REVIEW:', review)
+    // console.log('REVIEW:', review)
 
     const ratingArr = review.map((review) => (
         review.rating
@@ -52,29 +43,28 @@ const GameReview = ({ game }) => {
         avgRating = (totalRating / ratingArr.length).toFixed(1)
     }
 
-    // console.log('AVG RATING:', avgRating)
-    
-    // console.log('TOTAL RATING:', totalRating)
-
-    // let test = '';
-    // if (allUsers[review.user_id].username !== undefined ) {
-    //     test = <div>{allUsers[review.user_id].username}</div>
-    //}
 
     return (
-        <div className='game-review-container'>
-            Reviews
-            <div className='review-total-rating'>Total Rating: {totalRating}</div>
-            <div className='review-average-rating'>Average Rating: {avgRating}</div>
+        <div>
+            <div className='review-top-line'>
+                <div className='review-total-rating'>Total Rating: {totalRating}</div>
+                <h3 className>Reviews</h3>
+                <div className='review-average-rating'>Average Rating: {avgRating}</div>
+            </div>
             {review.map((review) => (
-                <div>
-                    <div className='review-content' key={review.id}>
+                <div className='review-container'>
+                    <div className='review-poster-info'>
                         <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active'>
                             {allUsers[review.user_id].username}
                         </NavLink>
+                        <div>Rating: {review.rating}</div>
+                    </div>
+                    <div className='review-content' key={review.id}>
                         <div className='review-content'>{review.content}</div>
-                        {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
-                        {user.id === review.user_id && <DeleteReview review={review}/>}
+                        <div className='review-buttons'>
+                            {(user.id === review.user_id) && <EditReviewModal game={game} review={review}/>}
+                            {user.id === review.user_id && <DeleteReview review={review}/>}
+                        </div>
                     </div>
                 </div>
             ))}

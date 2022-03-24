@@ -76,7 +76,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password, profile_img_src) => async (dispatch) => {
+export const signUp = (username, email, password, confirm_password, profile_img_src) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -86,6 +86,7 @@ export const signUp = (username, email, password, profile_img_src) => async (dis
       username,
       email,
       password,
+      confirm_password,
       profile_img_src
     }),
   });
@@ -95,7 +96,9 @@ export const signUp = (username, email, password, profile_img_src) => async (dis
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
+   
     const data = await response.json();
+    console.log(data)
     if (data.errors) {
       return data.errors;
     }

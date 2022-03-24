@@ -25,7 +25,11 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto;
     grid-gap: 20px;
-    padding-top: 30px;
+    padding-top: 10px;
     padding-bottom: 30px;
     margin-top: 20px;
+}
+
+.user-info {
+    padding-left: 10px
 }

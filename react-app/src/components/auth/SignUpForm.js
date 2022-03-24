@@ -9,7 +9,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [confirm_password, setConfirmPassword] = useState('');
   const [profile_img_src, setProfileImgSrc] = useState('');
   const user = useSelector(state => state.session.user);
   
@@ -17,13 +17,12 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, profile_img_src));
+
+      const data = await dispatch(signUp(username, email, password, confirm_password, profile_img_src));
       console.log(data)
       if (data) {
         setErrors(data)
       }
-    }
   };
 
   const updateUsername = (e) => {
@@ -38,8 +37,8 @@ const SignUpForm = () => {
     setPassword(e.target.value);
   };
 
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+  const updateConfirm = (e) => {
+    setConfirmPassword(e.target.value);
   };
 
   const updateProfilePicture = (e) => {
@@ -100,8 +99,8 @@ const SignUpForm = () => {
           className='login-input'
           type='password'
           name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
+          onChange={updateConfirm}
+          value={confirm_password}
           // required={true}
         ></input>
         <div>

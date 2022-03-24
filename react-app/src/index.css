@@ -3,3 +3,7 @@
 html {
     background-color: rgb(224, 177, 57);
 }
+
+* {
+    font-family: system-ui;
+}

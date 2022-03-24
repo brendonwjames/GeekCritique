@@ -8,7 +8,7 @@ function PostGameModal() {
   
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add New Game</button>
+      <i className="fa-regular fa-square-plus" onClick={() => setShowModal(true)}></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PostGame setShowModal={setShowModal} />

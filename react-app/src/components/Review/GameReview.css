@@ -8,3 +8,28 @@
     height:100px;
     word-break: break-word;
 }
+
+.review-buttons {
+    display: flex;
+    gap: 5px
+}
+
+.review-container {
+    border: solid black 3px;
+    margin: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 7px;
+}
+
+.review-top-line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.review-poster-info {
+    display: flex;
+    justify-content: space-between;
+}

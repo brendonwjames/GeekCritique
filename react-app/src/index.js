@@ -6,10 +6,9 @@ import App from './App';
 import configureStore from './store';
 import { ModalProvider } from '../src/components/Modals/ModalContext/Modal'
 import { library } from '@fortawesome/fontawesome-svg-core'
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faCirclePlus, faSquarePlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHouse)
+library.add(faHouse, faCirclePlus, faSquarePlus, faRightFromBracket)
 
 const store = configureStore();
 

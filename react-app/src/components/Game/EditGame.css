@@ -1,0 +1,25 @@
+.review-submit-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.review-submit-button:hover {
+    background-color: rgba(0,149,246);
+}
+
+.cancel-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.cancel-button:hover {
+    background-color: rgba(0,149,246);
+}

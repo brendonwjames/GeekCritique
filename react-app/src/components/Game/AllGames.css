@@ -7,3 +7,9 @@
     padding-bottom: 30px;
     margin-top: 20px;
 }
+
+.feed-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

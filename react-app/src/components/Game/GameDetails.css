@@ -1,9 +1,9 @@
 .game-details-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    /* gap: 10px; */
     grid-auto-rows: minmax(100px, auto);
-    grid-auto-columns: minmax(100px, auto);
+    grid-auto-columns: minmax(70px, auto);
     border: solid black 3px;
     /* height: 600px;
     width: 1000px */
@@ -22,7 +22,6 @@
     align-items: center;
     border: black solid 3px;
     object-fit: contain;
-    /* height: 45vw */
 }
 
 .right-half {
@@ -51,3 +50,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+/* .picture-div {
+    display: flex;
+} */
+
+/* .profile-picture-2 {
+    width: 15px;
+    height: 15px
+} */
+
+
