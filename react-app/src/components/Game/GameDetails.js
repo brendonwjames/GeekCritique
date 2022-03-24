@@ -25,7 +25,7 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                     <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
                     {/* <div className='game-details'> */}
                     {/* <img className='profile-picture' src={user.profile_pic ? user.profile_pic : defaultProfileImg}/> */}
-                    <p>Posted By: <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active'>
+                    <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active'>
                         {allUsers[game.owner_id].username}
                     </NavLink> </p>
                     <div className='game-info'>
