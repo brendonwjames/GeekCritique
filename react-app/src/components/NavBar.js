@@ -9,7 +9,7 @@ import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
-  const defaultImg="https://images.nintendolife.com/428c8ddbb2c32/smm2.large.jpg"
+  const defaultImg="https://scienceline.org/wp-content/uploads/2020/01/tetris.jpg"
 
 
   return (
@@ -18,7 +18,7 @@ const NavBar = () => {
           <NavLink to='/' exact={true} activeClassName='active'><FontAwesomeIcon icon="fa-solid fa-house" /></NavLink>
           <PostGameModal />
           <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
-            <img className='navbar-profile-picture' alt='Try a new link' src={user.profile_picture ? user.profile_picture : defaultImg }/>
+            <button className='to-profile-button'>Profile</button>
           </NavLink>
           <div className='username-greeting'>Hello, {user.username}</div>
           <LogoutButton />

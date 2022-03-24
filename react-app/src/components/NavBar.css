@@ -30,3 +30,16 @@
 .username-greeting {
     font-style: italic;
 }
+
+.to-profile-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.to-profile-button:hover {
+    background-color: rgba(0,149,246);
+}
