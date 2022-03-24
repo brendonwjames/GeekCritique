@@ -42,38 +42,44 @@ const PostGame = ({ setShowModal }) => {
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <p className='create-post-text'>Create New Post</p>
+                <div className='title-div'>
+                    <p className='create-post-text'>Create New Post</p>
+                </div>
                 <div className='choose-file-container'>
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        className='name-field'
-                        name='name'
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                        placeholder='Name'
-                        ></input>
-                </div>
-                <div>
-                    <input
-                        type='textarea'
-                        name='description'
-                        className='description-field'
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                        placeholder='Description'
-                        ></input>
-                </div>
-                <input
+                    <div>
+                        <input
+                            type='text'
+                            className='name-field'
+                            name='name'
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                            placeholder='Name'
+                            ></input>
+                    </div>
+                    <div>
+                        <textarea
+                            type='textarea'
+                            name='description'
+                            className='description-field'
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                            placeholder='Description'
+                            ></textarea>
+                    </div>
+                    <div>
+                        <input
                         type='text'
                         name='img_src'
                         className='img-field'
                         onChange={(e) => setImg(e.target.value)}
                         placeholder='Image URL'
                     ></input>
-                <button className='post-submit-button' type='submit'>Post</button>
-                <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
+                    </div>
+                </div>
+                <div className='buttons-div'>
+                    <button className='post-submit-button' type='submit'>Post</button>
+                    <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
+                </div>
             </form>
         </div>
     )

@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     border: solid rgb(182, 179, 179) 1px;
-    height: 500px;
+    height: 550px;
     width: 350px;
     gap: 50px;
 }
@@ -50,4 +50,17 @@
 .site-title {
     margin: 5px 0;
     text-align: center;
+}
+
+.login-buttons {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.login-buttons:hover {
+    background-color: rgba(0,149,246);
 }

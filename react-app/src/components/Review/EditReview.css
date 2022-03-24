@@ -1,0 +1,16 @@
+.edit-review-container {
+    height: 250px;
+    width: 600px;
+    border-radius: 10%;
+}
+
+.rating-top-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons-div {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}

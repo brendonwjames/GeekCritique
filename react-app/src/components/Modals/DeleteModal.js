@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "./ModalContext/Modal";
 import DeleteGame from "../Game/DeleteGame";
+import './DeleteModal.css';
 
 
 function DeleteModal({ game }) {
@@ -9,7 +10,7 @@ function DeleteModal({ game }) {
   
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Delete Game</button>
+      <button className='delete-modal' onClick={() => setShowModal(true)}>Delete Game</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteGame setShowModal={setShowModal} game={game}/>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGame } from '../../store/games';
 import { userGames } from '../../store/usergames';
-import { useHistory } from 'react-router-dom';
 import './EditGame.css'
 
 const EditGame = ({ setShowModal, game }) => {
@@ -54,14 +53,14 @@ const EditGame = ({ setShowModal, game }) => {
                         ></input>
                 </div>
                 <div>
-                    <input
+                    <textarea
                         type='textarea'
                         name='description'
                         className='description-field'
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         placeholder={game.description}
-                        ></input>
+                        ></textarea>
                 </div>
                 <input
                         type='text'

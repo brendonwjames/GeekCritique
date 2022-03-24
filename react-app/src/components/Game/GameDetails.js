@@ -31,8 +31,10 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                     <div className='game-info'>
                         <p>{game.name}</p>
                         <p>{game.description}</p>
-                        {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
-                        {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                        <div className='edit-delete'>
+                            {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
+                            {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                        </div>
                     </div>
                     <div className='post-review'>
                         <PostReview game={game} />

@@ -1,0 +1,54 @@
+.new-game-form-container {
+    height: 320px;
+    width: 420px;
+    border-radius: 10%;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: stretch; */
+}
+
+.buttons-div {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.post-submit-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.post-submit-button:hover {
+    background-color: rgba(0,149,246);
+}
+
+.choose-file-container {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    align-items: center;
+}
+
+.name-field {
+    width: 400px;
+    margin-bottom: 15px;
+}
+
+.description-field {
+    width: 400px;
+    height: 50px;
+    margin-bottom: 15px
+}
+
+.img-field {
+    width: 400px;
+}
+
+.title-div {
+    display: flex;
+    justify-content: center;
+}
