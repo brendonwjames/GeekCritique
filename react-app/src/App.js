@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,21 +31,26 @@ function App() {
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
+          <Footer />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+          <Footer />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <NavBar />
           <UsersList/>
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />
           <User />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <AllGames />
+          <Footer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
