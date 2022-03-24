@@ -14,9 +14,9 @@
     align-items: center;
     justify-content: center;
     border: solid rgb(182, 179, 179) 1px;
-    height: 550px;
+    height: 500px;
     width: 350px;
-    gap: 50px;
+    /* gap: 50px; */
 }
 
 .bottom-signup {
@@ -63,4 +63,8 @@
 
 .login-buttons:hover {
     background-color: rgba(0,149,246);
+}
+
+.errors {
+    font-size: 12px;
 }
