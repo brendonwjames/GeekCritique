@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError, Length, EqualTo
+from wtforms.validators import DataRequired, Email, ValidationError, Length, EqualTo, URL
 from app.models import User
+import re
 
 
 def user_exists(form, field):
@@ -20,9 +21,17 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def image_valid_jpg(form, field):
+    image_url = field.data
+    valid = re.search(r'\.(png|jpeg|jpg|gif)$', image_url.lower())
+    if not valid:
+        raise ValidationError("Valid image URL must end with .png, .jpeg, .jpg or .gif.")
+
+
 class SignUpForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired('Username is required!'), username_exists])
-    email = StringField('Email', validators=[DataRequired('Valid email is required!'), user_exists]) # to be added - Email('Please enter a valid email format!'),
+    email = StringField('Email', validators=[DataRequired('Valid email is required!'), Email('Please enter a valid email format!'), user_exists])
     password = StringField('Password', validators=[DataRequired('Password is required!'), EqualTo("confirm_password", message="Passwords must match"), Length(min=6, message="Passwords must be at least 6 characters long")])
     confirm_password = StringField('Confirm Password', validators=[DataRequired()])
-    profile_img_src = StringField('Profile Picture', validators=[DataRequired('A link to an image is required!'), Length(max=255, message='URL too long! Choose a different link')])
+    profile_img_src = StringField('Profile Picture', validators=[DataRequired('A link to an image is required!'), Length(max=255, message='URL too long! Choose a different link'), URL(require_tld=True, message='The image URL provided is not valid! Choose a different link.'),
+                           image_valid_jpg])

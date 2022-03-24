@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Modal } from "./ModalContext/Modal";
 import GameDetails from "../Game/GameDetails";
-import { useDispatch } from 'react-redux';
-import { getUsers } from "../../store/session";
 import './GameDetailsModal.css';
 
 function GameDetailsModal({ game }) {

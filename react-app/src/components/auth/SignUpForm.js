@@ -58,7 +58,7 @@ const SignUpForm = () => {
       </div>
       
     <form className='form-signup' onSubmit={onSignUp}>
-      <div>
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -94,7 +94,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Confirm Password</label>
         <input
           className='login-input'
           type='password'
@@ -112,8 +112,8 @@ const SignUpForm = () => {
           onChange={updateProfilePicture}
           // required={true}
         ></input>
-        </div>
       </div>
+        </div>
       <button className='login-buttons' type='submit'>Sign Up</button>
     </form>
     </div>

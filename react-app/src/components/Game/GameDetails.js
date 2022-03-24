@@ -10,7 +10,7 @@ import './GameDetails.css';
 
 const GameDetailsPage = ({ setShowModal, game }) => {
     const user = useSelector((state) => state.session.user);
-    const review = useSelector((state) => Object.values(state.review))
+    // const review = useSelector((state) => Object.values(state.review))
     const allUsers = useSelector((state) => (state.session.allUsers))
 
     const defaultImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'

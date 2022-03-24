@@ -9,7 +9,7 @@ const PostGame = ({ setShowModal }) => {
     const [description, setDescription] = useState('');
     const [img_src, setImg] = useState('');  
     const [errors, setErrors] = useState([]);
-    const [createdAt, setCreatedAt] = useState(null);
+    const [createdAt] = useState(null);
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
@@ -37,11 +37,6 @@ const PostGame = ({ setShowModal }) => {
     return (
         <div className='new-game-form-container'>
             <form className='new-game-form' onSubmit={handleSubmit}>
-                <div className='postErrors'>
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                        ))}
-                </div>
                 <div className='title-div'>
                     <p className='create-post-text'>Create New Post</p>
                 </div>
@@ -81,6 +76,11 @@ const PostGame = ({ setShowModal }) => {
                     <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
                 </div>
             </form>
+            <div className='postErrors'>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                        ))}
+                </div>
         </div>
     )
 }
