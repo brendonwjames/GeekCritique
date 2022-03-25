@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import Footer from './components/Footer/Footer';
+import UserShelves from './components/Shelf/UserShelves';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />
           <User />
+          <UserShelves />
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >

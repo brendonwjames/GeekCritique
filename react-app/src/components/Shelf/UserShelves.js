@@ -3,26 +3,28 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGames } from "../../store/games";
 import { allReviews } from "../../store/reviews";
+import { getUserShelves } from "../../store/shelves";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
-import { getUserShelves } from "../../store/shelves";
-import './AllGames.css';
+import './UserShelves.css';
 
 
-const AllGames = () => {
+const UserShelves = () => {
     const dispatch = useDispatch();
-    const games = useSelector((state => Object.values(state.game)))
+    // const shelves = useSelector((state => Object.values(state.shelf)))
 
-    useEffect(() => {
-        dispatch(getAllGames());
-        dispatch(allReviews());
-        dispatch(getUsers());
-        dispatch(getUserShelves());
-    }, [dispatch])
+    // console.log('SHELVES', shelves)
+
+    // useEffect(() => {
+    //     dispatch(getAllGames());
+    //     dispatch(allReviews());
+    //     dispatch(getUsers());
+    // }, [dispatch])
 
 return (
     <>
-        <div className='feed-title'>
+        Coming from usershelves component
+        {/* <div className='feed-title'>
             <h1>Games</h1>
         </div>
         <div className='game-container'>
@@ -31,10 +33,10 @@ return (
                     <GameDetailsModal game={game}/>
                 </div>
             ))}
-        </div>
+        </div> */}
     </>
 )
 
 }
 
-export default AllGames;
+export default UserShelves;

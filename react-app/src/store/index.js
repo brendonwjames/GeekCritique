@@ -4,12 +4,14 @@ import session from './session';
 import gameReducer from './games';
 import reviewReducer from './reviews';
 import userGameReducer from './usergames';
+import shelvesReducer from './shelves';
 
 const rootReducer = combineReducers({
   session,
   game: gameReducer,
   review: reviewReducer,
-  usergame: userGameReducer
+  usergame: userGameReducer,
+  shelf: shelvesReducer
 });
 
 
