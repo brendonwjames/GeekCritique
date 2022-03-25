@@ -21,7 +21,8 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{error}')
     return errorMessages
 
-@shelves_routes.route('/')
-def get_user_shelves():
-    user_shelves = Shelf.query.all()
+@shelves_routes.route('/<int:id>')
+# @login_required
+def get_shelves(id):
+    user_shelves = Shelf.query.filter(id == Shelf.owner_id).all()
     return {'shelves': [shelf.to_dict() for shelf in user_shelves]}

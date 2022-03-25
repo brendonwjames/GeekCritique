@@ -4,6 +4,7 @@ import LogoutButton from './auth/LogoutButton';
 import PostGameModal from '../components/Modals/PostGameModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
+import UserShelves from './Shelf/UserShelves';
 
 import './NavBar.css';
 
@@ -22,6 +23,9 @@ const NavBar = () => {
           </NavLink>
           <div className='username-greeting'>Hello, {user.username}</div>
           <LogoutButton />
+          <NavLink to={`/users/${user.id}/shelves`} exact={true} activeClassName='active'>
+            <button className='to-profile-button'>My Shelves</button>
+          </NavLink>
         </div>
     </nav>
   );

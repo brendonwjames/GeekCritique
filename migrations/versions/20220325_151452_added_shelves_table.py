@@ -1,8 +1,8 @@
-"""adding tables
+"""added shelves table
 
-Revision ID: ba4ae6a3a226
+Revision ID: b04b674cf187
 Revises: 
-Create Date: 2022-03-25 10:12:31.188846
+Create Date: 2022-03-25 15:14:52.246174
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ba4ae6a3a226'
+revision = 'b04b674cf187'
 down_revision = None
 branch_labels = None
 depends_on = None

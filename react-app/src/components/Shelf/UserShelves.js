@@ -11,29 +11,36 @@ import './UserShelves.css';
 
 const UserShelves = () => {
     const dispatch = useDispatch();
-    // const shelves = useSelector((state => Object.values(state.shelf)))
+    const user = useSelector(state => state.session.user);
 
-    // console.log('SHELVES', shelves)
+    useEffect(() => {
+        dispatch(getAllGames());
+        dispatch(allReviews());
+        dispatch(getUsers());
+        dispatch(getUserShelves(user.id));
+    }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(getAllGames());
-    //     dispatch(allReviews());
-    //     dispatch(getUsers());
-    // }, [dispatch])
+    const shelves = useSelector((state => Object.values(state.shelf)))
+
+    console.log('why would I not hit this')
+
+    console.log('SHELVES++++', shelves)
 
 return (
     <>
         Coming from usershelves component
-        {/* <div className='feed-title'>
-            <h1>Games</h1>
+        <div className='feed-title'>
+            <h1>Shelves</h1>
         </div>
         <div className='game-container'>
-            {games && games.map((game) => (
-                <div className='game-post' key={game.id}>
-                    <GameDetailsModal game={game}/>
+            {shelves[0] && shelves[0].map((shelf) => (
+                <div className='game-post' key={shelf.id}>
+                    {shelf.name}
+                    {/* {allUsers[review.user_id].username} */}
+                    {/* {console.log(shelf)} */}
                 </div>
             ))}
-        </div> */}
+        </div>
     </>
 )
 

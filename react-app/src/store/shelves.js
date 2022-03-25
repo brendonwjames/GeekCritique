@@ -5,8 +5,9 @@ const userShelves = (userShelves) => ({
     userShelves
 })
 
-export const getUserShelves = () => async (dispatch) => {
-    const response = await fetch(`/shelves`)
+export const getUserShelves = (userId) => async (dispatch) => {
+    console.log('SHELVES: backend', userId)
+    const response = await fetch(`/shelves/${userId}`)
 
     if (response.ok) {
         const shelves = await response.json();
@@ -22,7 +23,7 @@ export default function shelvesReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case GET_USER_SHELVES:
-            action.userShelves.shelves.forEach(shelf => newState[shelf.id] = shelf)
+            newState.userShelves = [...action.userShelves.shelves]
             return newState
         default:
             return state

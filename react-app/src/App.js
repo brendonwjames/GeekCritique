@@ -46,13 +46,17 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <NavBar />
           <User />
-          <UserShelves />
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <AllGames />
           <Footer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/shelves' exact={true} >
+          <NavBar />
+          <Footer />
+          <UserShelves />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -15,6 +15,6 @@ class Shelf(db.Model):
         return {
             'id': self.id,
             'owner_id': self.owner_id,
-            'user_id': self.owner_id,
+            'game_id': self.game_id,
             'name': self.name,
         }
