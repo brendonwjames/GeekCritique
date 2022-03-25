@@ -1,4 +1,4 @@
-from .db import db
+from .db import db 
 
 class Game(db.Model):
     __tablename__ = 'games'
@@ -12,6 +12,7 @@ class Game(db.Model):
 
     users = db.relationship('User', back_populates='games')
     reviews = db.relationship('Review', back_populates='games', cascade='all,delete')
+    shelves = db.relationship('Shelf', back_populates='games', cascade='all,delete')
 
     def to_dict(self):
         return {

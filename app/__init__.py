@@ -10,9 +10,11 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .routes.games import games_routes
 from .routes.reviews import reviews_routes
+from .routes.shelves import shelves_routes
 
 from app.models.game import Game
 from app.models.review import Review
+from app.models.shelf import Shelf
 
 from .seeds import seed_commands
 
@@ -38,6 +40,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(games_routes, url_prefix='/games')
 app.register_blueprint(reviews_routes, url_prefix='/reviews')
+app.register_blueprint(shelves_routes, url_prefix='/shelves')
 
 db.init_app(app)
 Migrate(app, db)
