@@ -14,7 +14,7 @@ function User() {
   const games = useSelector((state => state.usergame))
 
   useEffect(() => {
-    dispatch(getAllGames)
+    // dispatch(getAllGames)
     dispatch(userGames(userId))
 
     if (!userId) {
