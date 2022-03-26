@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllGames } from '../store/games';
 import { userGames } from '../store/usergames';
+import { allReviews } from '../store/reviews';
+import { getUsers } from '../store/session';
 import GameDetailsModal from './Modals/GameDetailsModal';
 import './User.css';
 
@@ -18,7 +21,22 @@ function User() {
   console.log('USEPARAMS:', userId)
 
   useEffect(() => {
+    dispatch(allReviews(userId))
+    dispatch(getUsers())
+    dispatch(getAllGames())
     dispatch(userGames(userId))
+    
+
+  //   dispatch(userGames(userId)).then(data => {
+  //     console.log('WORKING WITH THIS:', data)
+  //     // if(data.username === undefined) {
+  //     //     history.push('/errors/404')
+  //     // }
+  // })
+
+    // if (!games) {
+    //   history.push('/errors/404')
+    // }
 
     if (!userId) {
       return;
