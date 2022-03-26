@@ -5,7 +5,7 @@ class Shelf(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    game_id = db.Column(db.Integer, db.ForeignKey('games.id'), nullable=False)
+    game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     name = db.Column(db.String(100), nullable=False)
 
     users = db.relationship('User', back_populates='shelves')

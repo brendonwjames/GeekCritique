@@ -27,12 +27,24 @@ def seed_shelves():
         game_id=3,
         name='Hate',
     )
+    demo4 = Shelf(
+        owner_id=1, 
+        game_id=2,
+        name='In Progress',
+    )
+    demo5 = Shelf(
+        owner_id=1, 
+        game_id=3,
+        name='In Progress',
+    )
 
     db.session.add(demo)
     db.session.add(mario)
     db.session.add(chief)
     db.session.add(demo2)
     db.session.add(demo3)
+    db.session.add(demo4)
+    db.session.add(demo5)
 
     db.session.commit()
 
