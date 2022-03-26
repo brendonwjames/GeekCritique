@@ -22,13 +22,12 @@
     align-items: center;
     border: black solid 3px;
     /* object-fit: contain; */
-    word-break: break-all;
     /* overflow-wrap: break-word; */
     /* overflow-y: auto */
     /* word-wrap: break-word;      */
     /* overflow-wrap: break-word; */
 
-    height: 99%%;
+    /* height: 99%; */
     width: 100%;
     overflow-y: auto;
 }
@@ -52,7 +51,7 @@
 .game-details-image {
     object-fit: contain;
     /* width: 30vw; */
-    height: 35%;
+    height: 40%;
     width: auto
 }
 
@@ -71,8 +70,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     max-height: 65%;
     overflow-y: auto;
+    word-break: break-all;
+
 }
 
 .top-of-top {
