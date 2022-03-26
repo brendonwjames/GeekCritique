@@ -10,3 +10,8 @@
 .delete-button:hover {
     background-color: rgba(0,149,246);
 }
+
+.delete-popup-container {
+    display: flex;
+    justify-content: space-around;
+}

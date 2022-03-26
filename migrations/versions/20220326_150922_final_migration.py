@@ -1,8 +1,8 @@
-"""empty message
+"""final migration
 
-Revision ID: 2f4340e16860
+Revision ID: 815591c4620a
 Revises: 
-Create Date: 2022-03-24 03:54:52.656954
+Create Date: 2022-03-26 15:09:22.644845
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2f4340e16860'
+revision = '815591c4620a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,8 +31,8 @@ def upgrade():
     op.create_table('games',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=100), nullable=False),
-    sa.Column('description', sa.String(length=100), nullable=True),
+    sa.Column('name', sa.String(length=65), nullable=False),
+    sa.Column('description', sa.String(length=65), nullable=True),
     sa.Column('img_src', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),

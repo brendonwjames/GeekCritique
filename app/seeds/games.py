@@ -5,7 +5,7 @@ def seed_games():
     demo = Game(
         owner_id=1,
         name='The Legend of Zelda: Breath of the Wild', 
-        description='Arguable the greatest game of all time. Currently on my 3rd playthrough, 1st master mode run.', 
+        description='Arguable the greatest game of all time. Currently on my 3rd run.', 
         img_src='https://images.igdb.com/igdb/image/upload/t_cover_big/co3p2d.png', 
         created_at=datetime.now()
     )
