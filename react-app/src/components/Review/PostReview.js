@@ -48,7 +48,7 @@ const PostReview = ({ game }) => {
                         ))}
                 </div>
                 <div className='review-top-div'>
-                    <p className='create-review-text'>Add New Review</p>
+                    {/* <p className='create-review-text'>Add New Review</p> */}
                     <button className='review-submit-button' type='submit'>Post Review</button>
                     <div>
                         <div>Select Game Rating</div>
