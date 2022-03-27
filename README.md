@@ -1,13 +1,40 @@
-## Installation
+# GeekCritique
+GeekCritique is an app designed for users to create posts and reviews centered around video games. The current version of the application allows users to sign up for an account, create and manage their own posts, and create and manage reviews on any post created on the application by all users. The site is Instagram focused, with Yelp and Goodreads influences.
 
-GeekCritique is a Yelp/Instagram based video game review site built with the following software:
-Node
-Python
-SQLAlchemy
-Flask
-React
-Redux
-PostgresSQL
+## Software
+GeekCritique is an Instragram/Yelp style video game review site built with the following software:
+
+Backend - Python, Flask
+
+Frontend - React/Redux, Javascript
+
+Database - PostgresSQL
+
+Styling - HTML, CSS
+
+## Features
+The current version of the site has the following fully implemented features
+
+### Games
+Users are able to create a post from anywhere on the site by using the plus (+) icon on their navbar, and immediately be able to see it on the main page feed, or see it listed under their own list of games on their profile page.
+
+### Reviews
+Users are able to post a review about any and all games that are posted on the site. Reviews have a text box for users to leave the content of their review, and a rating to choose from 1-5. All games have an average rating and total rating from all reviews left on the game.
+
+### Features in the Works
+This project is still currently being improved, with the following features planned, or in progress, for implementation:
+
+Shelves - users will be able to save any game to a shelf, or list, to track and organize posts found on the site.
+
+Followers - users will be able to follow other users, giving them an option to toggle a custom feed based on the other users that have been followed.
+
+Search - users will be able to use a search function to quickly find games that already exist on the site.
+
+AWS - images will be able to be uploaded via AWS services in addition to URL images.
+
+
+## Installation
+To install and start using GeekCritique, follow the instructions below:
 
 1. Clone the repository from the main branch (link directly below)
 
