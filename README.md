@@ -26,8 +26,7 @@ Users are able to create a post from anywhere on the site by using the plus (+) 
 ### Reviews
 Users are able to post a review about any and all games that are posted on the site. Reviews have a text box for users to leave the content of their review, and a rating to choose from 1-5. All games have an average rating and total rating from all reviews left on the game.
 
-<img width="930" alt="ReviewPage" src="https://user-images.githubusercontent.com/92548825/160266226-6cf3f78b-63e6-41d8-ab70-4bb5c77157b6.png">
-
+<img width="1267" alt="ReviewPage" src="https://user-images.githubusercontent.com/92548825/160266303-4e320cf5-b708-4ddd-a649-b39c747afbb4.png">
 
 ### Features in the Works
 This project is still currently being improved, with the following features planned, or in progress, for implementation:
