@@ -1,0 +1,22 @@
+.logout-button-container:hover {
+    transform: scale(1.5)
+}
+
+.logout-button-container:hover .text-box {
+    visibility: visible;
+    transition-delay:.5s;
+}
+
+.text-box {
+    visibility: hidden;
+    width: 75px;
+    background-color: lightgrey;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 10px;
+   
+    position: absolute;
+    z-index: 1;
+}

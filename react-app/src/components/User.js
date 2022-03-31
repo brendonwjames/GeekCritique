@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGames } from '../store/games';
 import { userGames } from '../store/usergames';
+import { allReviews } from '../store/reviews';
+import { getUsers } from '../store/session';
 import GameDetailsModal from './Modals/GameDetailsModal';
 import './User.css';
 
@@ -10,18 +12,39 @@ function User() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const games = useSelector((state => state.usergame))
+  const allUsers = useSelector((state) => state.session.allUsers)
+
+  console.log('THESE ARE THE ALLUSERs:', allUsers)
+  console.log('USEPARAMS:', userId)
 
   useEffect(() => {
-    dispatch(getAllGames)
+    dispatch(allReviews(userId))
+    dispatch(getUsers())
+    dispatch(getAllGames())
     dispatch(userGames(userId))
+    
+
+  //   dispatch(userGames(userId)).then(data => {
+  //     console.log('WORKING WITH THIS:', data)
+  //     // if(data.username === undefined) {
+  //     //     history.push('/errors/404')
+  //     // }
+  // })
+
+    // if (!games) {
+    //   history.push('/errors/404')
+    // }
 
     if (!userId) {
       return;
     }
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
+      console.log('this one',response)
+      if (response.status === 500) history.push('/errors/404')
       const user = await response.json();
       setUser(user);
     })();

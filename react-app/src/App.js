@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import Footer from './components/Footer/Footer';
 import UserShelves from './components/Shelf/UserShelves';
+import Error404 from './components/Error/Error404';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,9 @@ function App() {
           <Footer />
           <UserShelves />
         </ProtectedRoute>
+        <Route path='/errors/404'>
+          <Error404 />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

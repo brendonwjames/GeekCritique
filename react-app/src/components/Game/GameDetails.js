@@ -20,22 +20,24 @@ const GameDetailsPage = ({ setShowModal, game }) => {
         <div className='game-details-container'> 
              
             <div className='left-half'>
-                    <div className='picture-div'>
-                    </div>
-                    <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
-                    {/* <div className='game-details'> */}
-                    {/* <img className='profile-picture' src={user.profile_pic ? user.profile_pic : defaultProfileImg}/> */}
-                    <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active'>
-                        {allUsers[game.owner_id].username}
-                    </NavLink> </p>
-                    <div className='game-info'>
-                        <p>{game.name}</p>
-                        <p>{game.description}</p>
-                        <div className='edit-delete'>
-                            {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
-                            {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                    <div className='left-half-top'>
+                        {/* <div className='top-of-top'> */}
+                            <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
+                            <p>{game.name}</p>
+                            <p>{game.description}</p>
+                            <div className='edit-delete'>
+                                    {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
+                                    {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                            </div>
+                        {/* </div> */}
+                        <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active' >
+                            {allUsers[game.owner_id].username}
+                        </NavLink> </p>
+                        <div className='game-info'>
                         </div>
                     </div>
+                    {/* <div className='game-details'> */}
+                    {/* <img className='profile-picture' src={user.profile_pic ? user.profile_pic : defaultProfileImg}/> */}
                     <div className='post-review'>
                         <PostReview game={game} />
                     </div>
