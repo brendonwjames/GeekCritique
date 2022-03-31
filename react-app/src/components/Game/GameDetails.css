@@ -50,14 +50,9 @@
 
 .game-details-image {
     object-fit: contain;
-<<<<<<< Updated upstream
     /* width: 30vw; */
     height: 40%;
     width: auto
-=======
-    width: auto;
-    height: 150px;
->>>>>>> Stashed changes
 }
 
 .game-details {
