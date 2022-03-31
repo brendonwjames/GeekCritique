@@ -1,0 +1,22 @@
+.fa-square-plus:hover {
+    transform: scale(1.5)
+}
+
+.fa-square-plus:hover .tooltip-box {
+    visibility: visible;
+    transition-delay:.5s;
+}
+
+.tooltip-box {
+    visibility: hidden;
+    width: 75px;
+    background-color: lightgrey;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 10px;
+   
+    position: absolute;
+    z-index: 1;
+}
