@@ -6,6 +6,7 @@ import { allReviews } from "../../store/reviews";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
 import { getUserShelves } from "../../store/shelves";
+import UserShelves from "../Shelf/UserShelves";
 import './AllGames.css';
 
 
@@ -34,6 +35,7 @@ return (
                 </div>
             ))}
         </div>
+        <UserShelves />
     </>
 )
 

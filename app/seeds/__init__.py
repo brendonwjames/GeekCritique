@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .games import seed_games, undo_games
 from .reviews import seed_reviews, undo_reviews
 from .shelves import seed_shelves, undo_shelves
+from .gamesshelves import seed_gamesshelves, undo_gamesshelves
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -16,6 +17,7 @@ def seed():
     seed_games()
     seed_reviews()
     seed_shelves()
+    # seed_gamesshelves()
     # Add other seed functions here
 
 
@@ -26,4 +28,5 @@ def undo():
     undo_games()
     undo_reviews()
     undo_shelves()
+    # undo_gamesshelves()
     # Add other undo functions here
