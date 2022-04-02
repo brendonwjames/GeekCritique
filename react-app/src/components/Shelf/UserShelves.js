@@ -23,20 +23,7 @@ const UserShelves = () => {
     }, [dispatch])
 
     const shelves = useSelector((state => Object.values(state.shelf)))
-    
-    
-
-
-
-// const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
-
-// console.log([...new Set(numbers)])
-
-    // console.log('UNIQUE SHELVES', uniqueShelves, theseShelves)
-    
-    console.log('why would I not hit this')
-
-    console.log('SHELVES++++', shelves)
+    console.log('SHELVES:',shelves)
 
 return (
     <>
@@ -47,10 +34,12 @@ return (
         <div className='game-container'>
             {shelves[0] && shelves[0].map((shelf) => (
                 <div className='game-post' key={shelf.id}>
-                    {shelf.name}
-
-                    {/* {allUsers[review.user_id].username} */}
-                    {/* {console.log(shelf)} */}
+                    <div>
+                        {shelf.name}
+                        {shelf.games && shelf.games.map((game) => 
+                        <div>{game.name}</div>
+                    )}
+                    </div>
                 </div>
             ))}
         </div>

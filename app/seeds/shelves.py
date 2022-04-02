@@ -9,7 +9,6 @@ def seed_shelves():
     )
 
     game = Game.query.get(1)
-    print(game, '***************************************')
     game.shelves.append(demo)
     db.session.add(demo)
     

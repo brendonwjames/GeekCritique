@@ -33,5 +33,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'profile_picture': self.profile_img_src,
-            'shelves': [shelves.to_dict() for campaign in self.shelves]
+            # 'shelves': [shelf.to_dict() for shelf in self.shelves]
         }
