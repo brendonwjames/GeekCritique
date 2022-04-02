@@ -1,6 +1,6 @@
-from app.models.db import db
+from .db import db
 
-gamesshelves = db.Table('gamesshelves',
+games_shelves = db.Table('games_shelves',
 
 db.Column('shelf_id',
 db.Integer,

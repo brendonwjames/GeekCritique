@@ -1,5 +1,5 @@
 from app.models import db
-from app.models.gamesshelves import gamesshelves
+from app.models.gamesshelves import games_shelves
 
 def seed_gamesshelves():
     demo = gamesshelves(

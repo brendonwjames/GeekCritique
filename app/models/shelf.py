@@ -1,5 +1,5 @@
 from .db import db
-from app.models.gamesshelves import gamesshelves
+from app.models.gamesshelves import games_shelves
 
 class Shelf(db.Model):
     __tablename__ = 'shelves'
@@ -9,11 +9,7 @@ class Shelf(db.Model):
     # game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     name = db.Column(db.String(100), nullable=False)
 
-    games = db.relationship('Game',
-    secondary=gamesshelves,
-    primaryjoin=(gamesshelves.c.game_id == id),
-    secondaryjoin=(gamesshelves.c.shelf_id == id),
-    backref=db.backref('games', lazy='dynamic'), lazy='dynamic')
+    games = db.relationship('Game', secondary='games_shelves', back_populates='shelves')
 
     def to_dict(self):
         return {
@@ -21,4 +17,5 @@ class Shelf(db.Model):
             'owner_id': self.owner_id,
             'game_id': self.game_id,
             'name': self.name,
+            'games': [game.to_dict() for game in self.games]
         }
