@@ -1,40 +1,42 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addReview } from "../../store/reviews";
-import './PostReview.css';
+import { addGameToShelf } from "../../store/shelves";
+import './AddGameToShelf.css';
 
-const PostReview = ({ game }) => {
-    const [content, setContent] = useState('');
-    const [rating, setRating] = useState(3);
+const AddGameToShelf = ({ game }) => {
+    const [shelf, setShelf] = useState(1);
     const [errors, setErrors] = useState([]);
 
     // console.log('ERROR:', errors)
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
-    const user_id = user.id;
     const game_id = game.id;
 
     // console.log('RATING', rating)
 
-    const reset = () => {
-        setContent("");
-        setRating(3);
-        setErrors([]);
-    }
+    // const reset = () => {
+    //     setContent("");
+    //     setRating(3);
+    //     setErrors([]);
+    // }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const review = {user_id, game_id, content, rating, }
+        const gameToShelf = { shelf, game_id }
 
 
-        const result = await dispatch(addReview(review))
+        const result = await dispatch(addGameToShelf(gameToShelf))
 
         if (result) {
             setErrors(result);
-        } else {
-            reset()
-        }
+        } 
+        
+        // else {
+        //     reset()
+        // }
+
+        
     }
 
     return (
@@ -47,10 +49,10 @@ const PostReview = ({ game }) => {
                 </div>
                 <div className='review-top-div'>
                     {/* <p className='create-review-text'>Add New Review</p> */}
-                    <button className='review-submit-button' type='submit'>Post Review</button>
+                    <button className='review-submit-button' type='submit'>Add to Shelf</button>
                     <div>
-                        <div>Select Game Rating</div>
-                        <select value={rating} onChange={e => setRating(e.target.value)}>
+                        <div>Select Shelf</div>
+                        <select value={shelf} onChange={e => setShelf(e.target.value)}>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
@@ -59,20 +61,9 @@ const PostReview = ({ game }) => {
                         </select>
                     </div>
                 </div>
-                <div>
-                    <textarea
-                        type='text'
-                        className='create-review-input'
-                        name='content'
-                        onChange={(e) => setContent(e.target.value)}
-                        value={content}
-                        placeholder='Add your review here!'
-                        ></textarea>
-                </div>
-                {/* <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button> */}
             </form>
         </div>
     );
 };
 
-export default PostReview;
+export default AddGameToShelf;

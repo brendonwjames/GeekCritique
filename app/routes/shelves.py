@@ -7,7 +7,7 @@ from app.models.game import Game
 from app.models.user import User
 from app.models.shelf import Shelf
 
-from app.forms.review_form import ReviewForm
+from app.forms.shelf_form import ShelfForm
 
 shelves_routes = Blueprint('shelves', __name__)
 
@@ -26,3 +26,34 @@ def validation_errors_to_error_messages(validation_errors):
 def get_shelves(id):
     user_shelves = Shelf.query.filter(id == Shelf.owner_id).all()
     return {'shelves': [shelf.to_dict() for shelf in user_shelves]}
+
+@shelves_routes.route('/new_shelf', methods=['POST'])
+@login_required
+def create_shelf():
+    form = ShelfForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        new_shelf = Shelf(
+            owner_id = current_user.id,
+            name = form.data['name']
+        )
+
+        db.session.add(new_shelf)
+        db.session.commit()
+        return new_shelf.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@shelves_routes.route('/', methods=['POST'])
+@login_required
+def add_game_to_shelf(shelf_id):
+    game_to_add = request.json
+    shelf = Shelf.query.get(shelf_id)
+    
+    for data in game_to_add:
+        user = User.query.get(data['id'])
+        user.shelves.append(shelf)
+    
+    db.session.commit()
+    return shelf.to_dict()

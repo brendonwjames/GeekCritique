@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import GameReview from "../Review/GameReview";
 import PostReview from "../Review/PostReview";
 import { NavLink } from 'react-router-dom';
+import AddGameToShelf from "../Shelf/AddGameToShelf";
 
 import './GameDetails.css';
 
@@ -28,6 +29,7 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                             <div className='edit-delete'>
                                     {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
                                     {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                                    <AddGameToShelf className='add-game-to-shelf-field' game={game}/>
                             </div>
                         {/* </div> */}
                         <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active' >

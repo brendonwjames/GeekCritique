@@ -1,13 +1,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { getAllGames, updateGame } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import { getUserShelves } from "../../store/shelves";
 import { userGames } from "../../store/usergames";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
+import PostShelf from "./PostShelf";
 import './UserShelves.css';
 
 
@@ -35,6 +36,8 @@ return (
         <div className='feed-title'>
             <h1>Shelves</h1>
         </div>
+        <PostShelf />
+
         <div className='game-container'>
             {shelves[0] && shelves[0].map((shelf) => (
                 <div className='game-post' key={shelf.id}>
