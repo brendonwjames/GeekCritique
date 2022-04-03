@@ -23,6 +23,7 @@ export default function shelvesReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case GET_USER_SHELVES:
+            // newState[action.game.id] = {...action.game}; //possible alternative?
             newState.userShelves = [...action.userShelves.shelves]
             return newState
         default:

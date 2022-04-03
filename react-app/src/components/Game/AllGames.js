@@ -12,7 +12,7 @@ import './AllGames.css';
 
 const AllGames = () => {
     const dispatch = useDispatch();
-    const games = useSelector((state => Object.values(state.game)))
+    const games = useSelector((state => Object.values(state.game)));
     const user = useSelector(state => state.session.user);
 
 

@@ -15,16 +15,17 @@ function User() {
   const history = useHistory()
 
   const games = useSelector((state => state.usergame))
-  const allUsers = useSelector((state) => state.session.allUsers)
+  // const allUsers = useSelector((state) => state.session.allUsers)
 
-  console.log('THESE ARE THE ALLUSERs:', allUsers)
-  console.log('USEPARAMS:', userId)
+  // console.log('THESE ARE THE ALLUSERs:', allUsers)
+  // console.log('USEPARAMS:', userId)
 
   useEffect(() => {
-    dispatch(allReviews(userId))
-    dispatch(getUsers())
-    dispatch(getAllGames())
-    dispatch(userGames(userId))
+    dispatch(getUsers());
+    dispatch(getAllGames());
+    dispatch(userGames(userId));
+    dispatch(allReviews(userId));
+    
     
 
   //   dispatch(userGames(userId)).then(data => {

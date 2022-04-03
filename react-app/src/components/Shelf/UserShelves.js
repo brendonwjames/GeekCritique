@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGames } from "../../store/games";
+import { useParams } from 'react-router-dom';
+import { getAllGames, updateGame } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import { getUserShelves } from "../../store/shelves";
 import { userGames } from "../../store/usergames";
@@ -12,17 +13,20 @@ import './UserShelves.css';
 
 const UserShelves = () => {
     const dispatch = useDispatch();
+    // const { userId } = useParams();
     const user = useSelector(state => state.session.user);
+    const shelves = useSelector((state => Object.values(state.shelf)))
 
     useEffect(() => {
         dispatch(getUsers());
         dispatch(getAllGames());
         dispatch(userGames(user.id))
-        dispatch(allReviews());
+        dispatch(allReviews(user.id));
         dispatch(getUserShelves(user.id));
+
     }, [dispatch])
 
-    const shelves = useSelector((state => Object.values(state.shelf)))
+    
     console.log('SHELVES:',shelves)
 
 return (
@@ -37,7 +41,10 @@ return (
                     <div>
                         {shelf.name}
                         {shelf.games && shelf.games.map((game) => 
-                        <div>{game.name}</div>
+                        <div className='game-post' key={game.id}>
+                            <GameDetailsModal game={game}/>
+                        </div>
+                        // <div className='shelf-game-name' key={game.id}>{game.name}</div>
                     )}
                     </div>
                 </div>

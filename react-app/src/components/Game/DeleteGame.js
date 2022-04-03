@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeGame } from '../../store/games';
 import { userGames } from '../../store/usergames';
+import { getUserShelves } from '../../store/shelves';
 import './DeleteGame.css'
 
 const DeleteGame = ({ setShowModal, game }) => {
@@ -12,6 +13,7 @@ const DeleteGame = ({ setShowModal, game }) => {
         setShowModal(false)
         await dispatch(removeGame(game.id))
         await dispatch(userGames(game.owner_id))
+        // await dispatch(getUserShelves(game.owner_id))
     }
 
     return (

@@ -8,6 +8,8 @@ def seed_shelves():
         name='DemoShelf',
     )
 
+
+
     game = Game.query.get(1)
     game.shelves.append(demo)
     db.session.add(demo)
