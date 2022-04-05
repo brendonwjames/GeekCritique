@@ -25,7 +25,7 @@ const PostReview = ({ game }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const review = {user_id, game_id, content, rating, }
+        const review = {user_id, game_id, content, rating }
 
 
         const result = await dispatch(addReview(review))

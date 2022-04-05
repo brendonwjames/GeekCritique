@@ -7,7 +7,7 @@ import { userGames } from '../../store/usergames';
 import './AddGameToShelf.css';
 
 const AddGameToShelf = ({ game }) => {
-    const [shelf, setShelf] = useState(1);
+    const [shelf, setShelf] = useState();
     const [errors, setErrors] = useState([]);
 
     // console.log('ERROR:', errors)
@@ -15,6 +15,7 @@ const AddGameToShelf = ({ game }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const game_id = game.id;
+    const shelves = useSelector((state => Object.values(state.shelf)))
 
     // console.log('RATING', rating)
 
@@ -25,6 +26,7 @@ const AddGameToShelf = ({ game }) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const gameToShelf = { shelf, game_id }
+        console.log('SHELF IN HANDLESUBMIT', shelf)
         
         const result = await dispatch(addGameToShelf(gameToShelf, shelf, game_id))
 
@@ -56,11 +58,11 @@ const AddGameToShelf = ({ game }) => {
                     <div>
                         <div>Select Shelf</div>
                         <select value={shelf} onChange={e => setShelf(e.target.value)}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
+                            <option value={-1}>--Choose a Shelf--</option>
+                        {shelves[0] && shelves[0].map((shelf) => (
+                            <option value={shelf.id}>{shelf.name}</option>
+                            // console.log(shelf.id)
+                        ))}
                         </select>
                     </div>
                 </div>
