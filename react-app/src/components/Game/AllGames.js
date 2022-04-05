@@ -35,7 +35,7 @@ return (
                 </div>
             ))}
         </div>
-        <UserShelves />
+        {/* <UserShelves /> */}
     </>
 )
 

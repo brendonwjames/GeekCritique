@@ -25,7 +25,7 @@ const PostShelf = ({ setShowModal }) => {
             dispatch(getUserShelves(user.id))
             dispatch(userGames(user.id))
             
-            setShowModal(false)
+            // setShowModal(false)
         }
 
         else if (result) {

@@ -54,10 +54,11 @@ export const newShelf = (newShelf) => async (dispatch) => {
 
 }
 
-export const addGameToShelf = (gameToShelf) => async (dispatch) => {
+export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispatch) => {
     const { shelf_id, game_id } = gameToShelf;
+    console.log('this be the shelf id', shelf_Id)
 
-    const response = await fetch('/shelves/add_to_shelf', {
+    const response = await fetch(`/shelves/add_to_shelf/${shelf_Id}/games/${game_Id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ shelf_id, game_id })
@@ -76,7 +77,6 @@ export const addGameToShelf = (gameToShelf) => async (dispatch) => {
     } else {
         return ['An error occurred. Please try again.']
     }
-
 }
 
 const initialState = {};

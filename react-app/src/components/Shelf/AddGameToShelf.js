@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addGameToShelf } from "../../store/shelves";
+import { getUserShelves } from '../../store/shelves';
+import { getAllGames } from '../../store/games';
+import { userGames } from '../../store/usergames';
 import './AddGameToShelf.css';
 
 const AddGameToShelf = ({ game }) => {
@@ -15,28 +18,28 @@ const AddGameToShelf = ({ game }) => {
 
     // console.log('RATING', rating)
 
-    // const reset = () => {
-    //     setContent("");
-    //     setRating(3);
-    //     setErrors([]);
-    // }
+    const reset = () => {
+        setErrors([]);
+    }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         const gameToShelf = { shelf, game_id }
+        
+        const result = await dispatch(addGameToShelf(gameToShelf, shelf, game_id))
 
+        if (result === 'Success!') {
 
-        const result = await dispatch(addGameToShelf(gameToShelf))
+            dispatch(getAllGames())
+            dispatch(getUserShelves(user.id))
+            dispatch(userGames(user.id))
+        }
 
-        if (result) {
+        else if (result) {
             setErrors(result);
-        } 
-        
-        // else {
-        //     reset()
-        // }
-
-        
+        } else {
+            reset()
+        }
     }
 
     return (

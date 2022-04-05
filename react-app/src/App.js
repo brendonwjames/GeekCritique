@@ -56,8 +56,8 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId/shelves' exact={true} >
           <NavBar />
-          <Footer />
           <UserShelves />
+          <Footer />
         </ProtectedRoute>
         <Route path='/errors/404'>
           <Error404 />

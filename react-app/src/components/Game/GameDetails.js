@@ -29,7 +29,7 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                             <div className='edit-delete'>
                                     {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
                                     {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
-                                    <AddGameToShelf className='add-game-to-shelf-field' game={game}/>
+                                    <AddGameToShelf className='add-game-to-shelf-field' setShowModal={setShowModal} game={game}/>
                             </div>
                         {/* </div> */}
                         <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active' >

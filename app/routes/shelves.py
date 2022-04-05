@@ -45,15 +45,16 @@ def create_shelf():
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@shelves_routes.route('/', methods=['POST'])
+@shelves_routes.route('/add_to_shelf/<int:shelf_id>/games/<int:game_id>', methods=['POST'])
 @login_required
-def add_game_to_shelf(shelf_id):
+def add_game_to_shelf(shelf_id, game_id):
+    
     game_to_add = request.json
-    shelf = Shelf.query.get(shelf_id)
+    game = Game.query.get(game_id)
     
     for data in game_to_add:
-        user = User.query.get(data['id'])
-        user.shelves.append(shelf)
+        shelf = Shelf.query.get(shelf_id)
+        shelf.games.append(game)
     
     db.session.commit()
     return shelf.to_dict()
