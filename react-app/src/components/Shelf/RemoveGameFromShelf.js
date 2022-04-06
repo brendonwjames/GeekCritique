@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { removeGameFromShelf } from '../../store/shelves';
-import { getAllGames } from '../../store/games';
 import { getUserShelves } from '../../store/shelves';
-import { userGames } from '../../store/usergames';
 import './RemoveGameFromShelf.css';
 
 const RemoveGameFromShelf = ({ shelf, game }) => {
@@ -25,7 +23,7 @@ const RemoveGameFromShelf = ({ shelf, game }) => {
     return (
         <>
             <div className='delete-from-shelf-button'>
-                <button onClick={handleDelete} className='delete-button'>Delete From Shelf</button>
+                <button onClick={handleDelete} className='delete-button'>Remove From Shelf</button>
             </div>
         </>
     )

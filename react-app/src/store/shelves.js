@@ -1,5 +1,6 @@
 const GET_USER_SHELVES = 'shelves/GET_USER_SHELVES';
 const CREATE_SHELF = 'shelves/CREATE_SHELF';
+const DELETE_SHELF = 'shelves/DELETE_SHELF';
 const ADD_GAME_TO_SHELF = 'shelves/ADD_GAME_TO_SHELF';
 const REMOVE_GAME_FROM_SHELF = 'shelves/REMOVE_GAME_FROM_SHELF';
 
@@ -10,6 +11,11 @@ const userShelves = (userShelves) => ({
 
 const createShelf = (shelf) => ({
     type: CREATE_SHELF,
+    shelf
+})
+
+const deleteShelf = (shelf) => ({
+    type: DELETE_SHELF,
     shelf
 })
 
@@ -58,6 +64,18 @@ export const newShelf = (newShelf) => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 
+}
+
+export const removeShelf = (shelf_Id) => async(dispatch) => {
+    const response = await fetch(`/shelves/${shelf_Id}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+    })
+
+    if (response.ok) {
+        const game = await response.json()
+        dispatch(deleteShelf(shelf_Id))
+    }
 }
 
 export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispatch) => {
@@ -112,6 +130,9 @@ export default function shelvesReducer(state = initialState, action) {
             console.log('CREATE SHELF REDUCER:', action.shelf)
             newState[action.shelf] = action.shelf.userShelves; //works, has unused undefined in it
             return  newState
+        case DELETE_SHELF:
+            delete newState[action.shelf.id]
+            return newState
         default:
             return state
     }

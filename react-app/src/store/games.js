@@ -52,7 +52,6 @@ export const getOneGame = (gameId) => async(dispatch) => {
 }
 
 export const addGame = (formData) => async(dispatch) => {
-    // console.log('formDATA', formData)
     const { owner_id, name, description, img_src, createdAt } = formData;
 
     const response = await fetch('/games/new_game', {
@@ -60,7 +59,6 @@ export const addGame = (formData) => async(dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ owner_id, name, description, img_src, createdAt })
     })
-    // console.log('RESPONSE:', response)
 
     if (response.ok) {
         const newGame = await response.json();
@@ -102,7 +100,6 @@ export const updateGame = (gameId, editedGame) => async (dispatch) => {
 }
 
 export const removeGame = (gameId) => async(dispatch) => {
-    // console.log('BACKEND DELETE GAMEID:', gameId)
     const response = await fetch(`/games/${gameId}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
