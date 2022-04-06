@@ -58,3 +58,16 @@ def add_game_to_shelf(shelf_id, game_id):
     
     db.session.commit()
     return shelf.to_dict()
+
+@shelves_routes.route('/remove_from_shelf/<int:shelf_id>/games/<int:game_id>', methods=['DELETE'])
+@login_required
+def remove_game_from_shelf(shelf_id, game_id):
+    game_to_remove = request.json
+    shelf = Shelf.query.get(shelf_id)
+
+    for data in game_to_remove:
+        game = Game.query.get(game_id)
+        shelf.games.remove(game)
+
+    db.session.commit()
+    return shelf.to_dict()

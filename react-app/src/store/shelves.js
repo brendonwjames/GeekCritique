@@ -1,6 +1,7 @@
 const GET_USER_SHELVES = 'shelves/GET_USER_SHELVES';
 const CREATE_SHELF = 'shelves/CREATE_SHELF';
 const ADD_GAME_TO_SHELF = 'shelves/ADD_GAME_TO_SHELF';
+const REMOVE_GAME_FROM_SHELF = 'shelves/REMOVE_GAME_FROM_SHELF';
 
 const userShelves = (userShelves) => ({
     type: GET_USER_SHELVES,
@@ -14,6 +15,11 @@ const createShelf = (shelf) => ({
 
 const addToShelf = (game) => ({
     type: ADD_GAME_TO_SHELF,
+    game
+})
+
+const removeFromShelf = (game) => ({
+    type: REMOVE_GAME_FROM_SHELF,
     game
 })
 
@@ -67,7 +73,7 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
     if (response.ok) {
         const shelf = await response.json();
         console.log('added to Shelf:', shelf)
-        dispatch((addGameToShelf(shelf)))
+        dispatch((addToShelf(shelf)))
         return 'Success!'
     } else if (response.status < 500) {
         const data = await response.json();
@@ -78,6 +84,20 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
         return ['An error occurred. Please try again.']
     }
 }
+
+export const removeGameFromShelf = ((gameShelf, shelf_Id, game_Id ) => async (dispatch) => {
+    const { shelf_id, game_id } = gameShelf;
+    const response = await fetch(`/shelves/remove_from_shelf/${shelf_Id}/games/${game_Id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ shelf_id, game_id })
+    })
+
+    if (response.ok) {
+        const game = await response.json()
+        dispatch(removeFromShelf(game))
+    }
+})
 
 const initialState = {};
 

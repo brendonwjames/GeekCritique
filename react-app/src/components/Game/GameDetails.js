@@ -6,6 +6,7 @@ import GameReview from "../Review/GameReview";
 import PostReview from "../Review/PostReview";
 import { NavLink } from 'react-router-dom';
 import AddGameToShelf from "../Shelf/AddGameToShelf";
+import RemoveGameFromShelf from "../Shelf/RemoveGameFromShelf";
 
 import './GameDetails.css';
 
