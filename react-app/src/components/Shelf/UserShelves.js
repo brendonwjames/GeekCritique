@@ -9,9 +9,8 @@ import { userGames } from "../../store/usergames";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
 import PostShelf from "./PostShelf";
-import RemoveGameFromShelf from "./RemoveGameFromShelf";
-import DeleteShelf from "./DeleteShelf";
 import DeleteShelfModal from "../Modals/DeleteShelfModal";
+import EditShelfModal from "../Modals/EditShelfModal";
 import './UserShelves.css';
 
 
@@ -44,6 +43,7 @@ return (
         <div className='game-container'>
             {shelves[0] && shelves[0].map((shelf) => (
                 <div className='game-post' key={shelf.id}>
+                    <EditShelfModal className='edit-shelf-name' shelf={shelf} />
                     <DeleteShelfModal className='remove-game-from-shelf-field' shelf={shelf} />
                     <div>
                         {shelf.name}

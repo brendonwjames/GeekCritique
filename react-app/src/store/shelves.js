@@ -1,5 +1,6 @@
 const GET_USER_SHELVES = 'shelves/GET_USER_SHELVES';
 const CREATE_SHELF = 'shelves/CREATE_SHELF';
+const EDIT_SHELF = 'shelves/EDIT_SHELF';
 const DELETE_SHELF = 'shelves/DELETE_SHELF';
 const ADD_GAME_TO_SHELF = 'shelves/ADD_GAME_TO_SHELF';
 const REMOVE_GAME_FROM_SHELF = 'shelves/REMOVE_GAME_FROM_SHELF';
@@ -11,6 +12,11 @@ const userShelves = (userShelves) => ({
 
 const createShelf = (shelf) => ({
     type: CREATE_SHELF,
+    shelf
+})
+
+const editShelf = (shelf) => ({
+    type: EDIT_SHELF,
     shelf
 })
 
@@ -64,6 +70,29 @@ export const newShelf = (newShelf) => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 
+}
+
+export const updateShelf = (shelf_Id, editedShelf) => async (dispatch) => {
+    console.log('EDITED SHELF', editedShelf)
+    const response = await fetch(`/shelves/${shelf_Id}/edit`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(editedShelf)
+    })
+
+    if (response.ok) {
+        const editedShelf = await response.json();
+        dispatch(editShelf(editedShelf))
+        return 'Success!'
+    }
+    else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+          return data.errors;
+        }
+      } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 export const removeShelf = (shelf_Id) => async(dispatch) => {
@@ -130,6 +159,10 @@ export default function shelvesReducer(state = initialState, action) {
             console.log('CREATE SHELF REDUCER:', action.shelf)
             newState[action.shelf] = action.shelf.userShelves; //works, has unused undefined in it
             return  newState
+        // case EDIT_SHELF:
+        //     console.log('EDIT SHELF CASE STORE', action)
+        //     newState[action.shelf.id] = {...action.shelf};
+        //     return newState
         case DELETE_SHELF:
             delete newState[action.shelf.id]
             return newState

@@ -72,6 +72,24 @@ def remove_game_from_shelf(shelf_id, game_id):
     db.session.commit()
     return shelf.to_dict()
 
+@shelves_routes.route('/<int:id>/edit', methods=['POST'])
+@login_required
+def edit_shelf(id):
+    form = ShelfForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        edit_shelf = Shelf.query.get(id)
+
+        edit_shelf.name = form.data['name']
+
+        db.session.commit()
+        return edit_shelf.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
 @shelves_routes.route('/<int:id>/delete', methods=['DELETE'])
 @login_required
 def delete_shelf(id):
