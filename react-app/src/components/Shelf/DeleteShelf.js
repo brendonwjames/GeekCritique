@@ -3,23 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeShelf } from '../../store/shelves';
 import { getUserShelves } from '../../store/shelves';
 
-const DeleteShelf = ({ shelf }) => {
+const DeleteShelf = ({ setShowModal, shelf }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
 
     const handleDelete = async (e) => {
-        e.preventDefault();
+        setShowModal(false)
         await dispatch(removeShelf(shelf.id))
         await dispatch(getUserShelves(user.id));
     }
 
     return (
         <>
-            <div className='delete-review-button'>
-                <button onClick={handleDelete} className='delete-button'>Delete Shelf</button>
-                {/* <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button> */}
+            <h3>Are you sure you want to delete your shelf? You will lose all of your games on this shelf!</h3>
+            <div className='delete-popup-container'>
+                <button onClick={handleDelete} className='delete-button'>Confirm Delete</button>
+                <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
              </div>
-
         </>
     )
 }

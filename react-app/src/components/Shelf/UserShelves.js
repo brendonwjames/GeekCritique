@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from 'react-router-dom';
-import { getAllGames, updateGame } from "../../store/games";
+import { getAllGames } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import { getUserShelves } from "../../store/shelves";
 import { userGames } from "../../store/usergames";
@@ -11,6 +11,7 @@ import { getUsers } from "../../store/session";
 import PostShelf from "./PostShelf";
 import RemoveGameFromShelf from "./RemoveGameFromShelf";
 import DeleteShelf from "./DeleteShelf";
+import DeleteShelfModal from "../Modals/DeleteShelfModal";
 import './UserShelves.css';
 
 
@@ -43,13 +44,12 @@ return (
         <div className='game-container'>
             {shelves[0] && shelves[0].map((shelf) => (
                 <div className='game-post' key={shelf.id}>
+                    <DeleteShelfModal className='remove-game-from-shelf-field' shelf={shelf} />
                     <div>
                         {shelf.name}
-                        <DeleteShelf shelf={shelf} />
                         {shelf.games && shelf.games.map((game) => 
                         <div className='game-post' key={game.id}>
                             <GameDetailsModal game={game}/>
-                            <RemoveGameFromShelf className='remove-game-from-shelf-field' shelf={shelf} game={game}/>
                         </div>
                         // <div className='shelf-game-name' key={game.id}>{game.name}</div>
                     )}
