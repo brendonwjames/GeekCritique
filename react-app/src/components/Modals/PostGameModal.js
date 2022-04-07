@@ -10,7 +10,7 @@ function PostGameModal() {
   return (
     <div>
       <i className='fa-regular fa-square-plus' onClick={() => setShowModal(true)}>
-        <div className='tooltip-box'>NewGame</div>
+        <div className='tooltip-box'>New Game+</div>
       </i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
