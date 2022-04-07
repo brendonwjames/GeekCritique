@@ -10,7 +10,7 @@ function EditShelfModal({ shelf  }) {
   
   return (
     <>
-      <button className='edit-button' onClick={() => setShowModal(true)}>Edit Shelf</button>
+      <button className='edit-button' onClick={() => setShowModal(true)}>Rename Shelf</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditShelf setShowModal={setShowModal} shelf={shelf} />

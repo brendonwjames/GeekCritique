@@ -44,15 +44,29 @@
     font-style: italic;
 }
 
-/* .to-profile-button {
-    width: 100px;
-    background-color: rgba(0,149,246,.3);
-    color: black;
-    border: none;
-    border-radius: 3px;
-    padding: 5px;
-} */
-
 .to-profile-button:hover {
     background-color: rgba(0,149,246);
+}
+
+.fa-book-bookmark:hover {
+    transform: scale(1.5);
+}
+
+.fa-book-bookmark:hover .tooltip-box-3 {
+    visibility: visible;
+    transition-delay:.5s;
+}
+
+.tooltip-box-3 {
+    visibility: hidden;
+    width: 75px;
+    background-color: lightgrey;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-weight: normal;
+    font-size: 10px;
+    position: absolute;
+    z-index: 1;
 }

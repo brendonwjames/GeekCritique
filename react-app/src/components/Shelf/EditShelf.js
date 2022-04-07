@@ -37,7 +37,7 @@ const EditShelf = ({ setShowModal, shelf }) => {
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <p className='create-post-text'>Edit Shelf</p>
+                <p className='create-post-text'>Rename Shelf</p>
                 <div className='choose-file-container'>
                 </div>
                 <div>

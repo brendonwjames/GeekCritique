@@ -10,6 +10,7 @@ import { getUsers } from "../../store/session";
 import PostShelf from "./PostShelf";
 import DeleteShelfModal from "../Modals/DeleteShelfModal";
 import EditShelfModal from "../Modals/EditShelfModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './UserShelves.css';
 
 const UserShelves = () => {
