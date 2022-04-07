@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userGames } from '../../store/usergames';
 import { getUserShelves } from '../../store/shelves';
 import { updateShelf } from '../../store/shelves';
-import { getAllGames } from '../../store/games';
-import { allReviews } from '../../store/reviews';
-import { getUsers } from '../../store/session';
 import './EditShelf.css'
 
 const EditShelf = ({ setShowModal, shelf }) => {
@@ -13,16 +10,6 @@ const EditShelf = ({ setShowModal, shelf }) => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)
-    // const shelf_Id = shelf.id;
-    // const user_Id = user.id;
-
-    // useEffect(() => {
-    //     dispatch(getAllGames());
-    //     dispatch(allReviews());
-    //     dispatch(getUsers());
-    //     dispatch(getUserShelves(user.id));
-    // }, [dispatch])
-
 
     const handleEdit = async(e) => {
         e.preventDefault();

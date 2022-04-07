@@ -6,15 +6,12 @@ import { allReviews } from "../../store/reviews";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
 import { getUserShelves } from "../../store/shelves";
-import UserShelves from "../Shelf/UserShelves";
 import './AllGames.css';
-
 
 const AllGames = () => {
     const dispatch = useDispatch();
     const games = useSelector((state => Object.values(state.game)));
     const user = useSelector(state => state.session.user);
-
 
     useEffect(() => {
         dispatch(getAllGames());
@@ -35,7 +32,6 @@ return (
                 </div>
             ))}
         </div>
-        {/* <UserShelves /> */}
     </>
 )
 

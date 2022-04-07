@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useParams } from 'react-router-dom';
 import { getAllGames } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import { getUserShelves } from "../../store/shelves";
@@ -13,10 +12,8 @@ import DeleteShelfModal from "../Modals/DeleteShelfModal";
 import EditShelfModal from "../Modals/EditShelfModal";
 import './UserShelves.css';
 
-
 const UserShelves = () => {
     const dispatch = useDispatch();
-    // const { userId } = useParams();
     const user = useSelector(state => state.session.user);
     const shelves = useSelector((state => Object.values(state.shelf)))
 
@@ -33,33 +30,36 @@ const UserShelves = () => {
     console.log('SHELVES:',shelves)
 
 return (
-    <>
-        Coming from usershelves component
-        <div className='feed-title'>
+    <div>
+        <div className='feed-title'> 
             <h1>Shelves</h1>
         </div>
-        <PostShelf />
-
-        <div className='game-container'>
-            {shelves[0] && shelves[0].map((shelf) => (
-                <div className='game-post' key={shelf.id}>
-                    <EditShelfModal className='edit-shelf-name' shelf={shelf} />
-                    <DeleteShelfModal className='remove-game-from-shelf-field' shelf={shelf} />
-                    <div>
-                        {shelf.name}
-                        {shelf.games && shelf.games.map((game) => 
-                        <div className='game-post' key={game.id}>
-                            <GameDetailsModal game={game}/>
+        <div className='shelf-page-container'>
+            <PostShelf />
+            <div className='shelf-container'>
+                {shelves[0] && shelves[0].map((shelf) => (
+                    <div className='games-post' key={shelf.id}>
+                        <div className='shelf-details-left'>
+                            {shelf.name}
                         </div>
-                        // <div className='shelf-game-name' key={game.id}>{game.name}</div>
-                    )}
+                        <div className='shelf-inner-container'>
+                            <div className='shelf-container'>
+                                
+                            </div>
+                            {shelf.games && shelf.games.map((game) => 
+                            <div className='games-post' key={game.id}>
+                                <GameDetailsModal game={game}/>
+                            </div>
+                        )}
+                        </div>
+                        <EditShelfModal className='edit-shelf-name' shelf={shelf} />
+                        <DeleteShelfModal className='remove-game-from-shelf-field' shelf={shelf} />
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
-    </>
-)
-
+    </div>
+    )
 }
 
 export default UserShelves;

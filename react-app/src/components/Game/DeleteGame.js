@@ -14,7 +14,6 @@ const DeleteGame = ({ setShowModal, game }) => {
         await dispatch(removeGame(game.id))
         await dispatch(userGames(game.owner_id))
         await dispatch((getUserShelves(game.owner_id)))
-        // await dispatch(getUserShelves(game.owner_id))
     }
 
     return (
@@ -27,6 +26,5 @@ const DeleteGame = ({ setShowModal, game }) => {
         </>
     )
 }
-
 
 export default DeleteGame;

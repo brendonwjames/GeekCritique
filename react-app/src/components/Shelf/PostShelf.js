@@ -5,13 +5,18 @@ import { getAllGames } from '../../store/games';
 import { userGames } from '../../store/usergames';
 import './PostShelf.css'
 
-const PostShelf = ({ setShowModal }) => {
+const PostShelf = () => {
     const [name, setName] = useState('');
     const [errors, setErrors] = useState([]);
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
+
+    const reset = () => {
+        setName("");
+        setErrors([]);
+    }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -24,12 +29,13 @@ const PostShelf = ({ setShowModal }) => {
             dispatch(getAllGames())
             dispatch(getUserShelves(user.id))
             dispatch(userGames(user.id))
-            
-            // setShowModal(false)
+            reset()
         }
 
         else if (result) {
             setErrors(result);
+        } else {
+            reset()
         }
     }
 
@@ -43,17 +49,16 @@ const PostShelf = ({ setShowModal }) => {
                     <div>
                         <input
                             type='text'
-                            className='name-field'
+                            className='shelf-name-field'
                             name='name'
                             onChange={(e) => setName(e.target.value)}
                             value={name}
-                            placeholder='Name'
+                            placeholder='Type Shelf Name Here'
                             ></input>
                     </div>
                 </div>
                 <div className='buttons-div'>
-                    <button className='post-submit-button' type='submit'>Post</button>
-                    <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
+                    <button className='post-submit-button' type='submit'>Add Shelf</button>
                 </div>
             </form>
             <div className='postErrors'>
