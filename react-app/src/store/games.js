@@ -52,7 +52,6 @@ export const getOneGame = (gameId) => async(dispatch) => {
 }
 
 export const addGame = (formData) => async(dispatch) => {
-    // console.log('formDATA', formData)
     const { owner_id, name, description, img_src, createdAt } = formData;
 
     const response = await fetch('/games/new_game', {
@@ -60,7 +59,6 @@ export const addGame = (formData) => async(dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ owner_id, name, description, img_src, createdAt })
     })
-    // console.log('RESPONSE:', response)
 
     if (response.ok) {
         const newGame = await response.json();
@@ -79,7 +77,7 @@ export const addGame = (formData) => async(dispatch) => {
 }
 
 export const updateGame = (gameId, editedGame) => async (dispatch) => {
-    // console.log('EDITED DATA THUNK:', editedGame)
+    console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -102,7 +100,6 @@ export const updateGame = (gameId, editedGame) => async (dispatch) => {
 }
 
 export const removeGame = (gameId) => async(dispatch) => {
-    // console.log('BACKEND DELETE GAMEID:', gameId)
     const response = await fetch(`/games/${gameId}/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
@@ -144,7 +141,7 @@ export default function gameReducer(state = initialState, action) {
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         case EDIT_GAME:
-            // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
+            console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
             newState[action.game.id] = {...action.game};
             return newState
         case DELETE_GAME:

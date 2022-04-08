@@ -2,6 +2,9 @@
     height: 250px;
     width: 600px;
     border-radius: 10%;
+
+    border: solid black 3px;
+    border-radius: 3px;
 }
 
 .rating-top-div {

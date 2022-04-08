@@ -5,17 +5,19 @@ import { getAllGames } from "../../store/games";
 import { allReviews } from "../../store/reviews";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
+import { getUserShelves } from "../../store/shelves";
 import './AllGames.css';
-
 
 const AllGames = () => {
     const dispatch = useDispatch();
-    const games = useSelector((state => Object.values(state.game)))
+    const games = useSelector((state => Object.values(state.game)));
+    const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(getAllGames());
         dispatch(allReviews());
         dispatch(getUsers());
+        dispatch(getUserShelves(user.id));
     }, [dispatch])
 
 return (

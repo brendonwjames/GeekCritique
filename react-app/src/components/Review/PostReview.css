@@ -12,6 +12,7 @@
 .review-top-div {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .review-submit-button {
@@ -20,7 +21,7 @@
     color: black;
     border: none;
     border-radius: 3px;
-    /* padding: 5px; */
+    padding: 5px;
 }
 
 .review-submit-button:hover {

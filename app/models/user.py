@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     games = db.relationship('Game', back_populates='users')
     reviews = db.relationship('Review', back_populates='users')
 
+
     @property
     def password(self):
         return self.hashed_password
@@ -31,5 +32,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'profile_picture': self.profile_img_src
+            'profile_picture': self.profile_img_src,
+            # 'shelves': [shelf.to_dict() for shelf in self.shelves]
         }

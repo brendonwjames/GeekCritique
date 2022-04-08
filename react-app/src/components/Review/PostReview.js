@@ -25,7 +25,7 @@ const PostReview = ({ game }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const review = {user_id, game_id, content, rating, }
+        const review = {user_id, game_id, content, rating }
 
 
         const result = await dispatch(addReview(review))
@@ -35,8 +35,6 @@ const PostReview = ({ game }) => {
         } else {
             reset()
         }
-
-        
     }
 
     return (
@@ -48,7 +46,6 @@ const PostReview = ({ game }) => {
                         ))}
                 </div>
                 <div className='review-top-div'>
-                    {/* <p className='create-review-text'>Add New Review</p> */}
                     <button className='review-submit-button' type='submit'>Post Review</button>
                     <div>
                         <div>Select Game Rating</div>
@@ -71,7 +68,6 @@ const PostReview = ({ game }) => {
                         placeholder='Add your review here!'
                         ></textarea>
                 </div>
-                {/* <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button> */}
             </form>
         </div>
     );

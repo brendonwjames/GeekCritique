@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateGame } from '../../store/games';
 import { userGames } from '../../store/usergames';
+import { getUserShelves } from '../../store/shelves';
+import UserShelves from '../Shelf/UserShelves';
 import './EditGame.css'
 
 const EditGame = ({ setShowModal, game }) => {
@@ -24,6 +26,7 @@ const EditGame = ({ setShowModal, game }) => {
         if (result === 'Success!') {
             setShowModal(false)
             dispatch(userGames(user.id))
+            dispatch(getUserShelves(user.id)) 
         }
 
         else if (result) {
@@ -32,7 +35,7 @@ const EditGame = ({ setShowModal, game }) => {
     }
 
     return (
-        <div className='new-game-form-container'>
+        <div className='edit-game-form-container'>
             <form className='new-game-form' onSubmit={handleEdit}>
                 <div className='postErrors'>
                     {errors.map((error, ind) => (
@@ -69,8 +72,10 @@ const EditGame = ({ setShowModal, game }) => {
                         onChange={(e) => setImg(e.target.value)}
                         placeholder={game.img_src}
                     ></input>
-                <button className='post-submit-button' type='submit'>Confirm Edit</button>
-                <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
+                <div className='confirm-edit-buttons'>
+                    <button className='post-submit-button' type='submit'>Confirm Edit</button>
+                    <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
+                </div>
             </form>
         </div>
     )

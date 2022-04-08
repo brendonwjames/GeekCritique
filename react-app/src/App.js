@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllGames from './components/Game/AllGames';
 import Footer from './components/Footer/Footer';
+import UserShelves from './components/Shelf/UserShelves';
 import Error404 from './components/Error/Error404';
 
 function App() {
@@ -51,6 +52,11 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <NavBar />
           <AllGames />
+          <Footer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId/shelves' exact={true} >
+          <NavBar />
+          <UserShelves />
           <Footer />
         </ProtectedRoute>
         <Route path='/errors/404'>

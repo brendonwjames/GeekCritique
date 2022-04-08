@@ -67,11 +67,9 @@ def edit_game(id):
 
         edit_game = Game.query.get(id)
 
-        # edit_game.owner_id = current_user.id,
         edit_game.name = form.data['name'],
         edit_game.description = form.data['description'],
         edit_game.img_src = form.data['img_src']
-        # edit_game.created_at = datetime.now()
 
         db.session.commit()
         return edit_game.to_dict()

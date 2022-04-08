@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import GameReview from "../Review/GameReview";
 import PostReview from "../Review/PostReview";
 import { NavLink } from 'react-router-dom';
+import AddGameToShelf from "../Shelf/AddGameToShelf";
 
 import './GameDetails.css';
 
@@ -23,11 +24,12 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                     <div className='left-half-top'>
                         {/* <div className='top-of-top'> */}
                             <img className='game-details-image' src={game.img_src} alt='Faulty URL' onError={(e)=>{e.target.src=defaultImg}}></img>
-                            <p>{game.name}</p>
-                            <p>{game.description}</p>
+                            <p className='game-name'>{game.name}</p>
+                            <p className='game-description'>{game.description}</p>
                             <div className='edit-delete'>
                                     {user.id === game.owner_id && <EditModal setShowModal={setShowModal} game={game}/>}
                                     {user.id === game.owner_id && <DeleteModal setShowModal={setShowModal} game={game}/>}
+                                    {/* <RemoveGameFromShelf className='remove-game-from-shelf' setShowModal={setShowModal} game={game}/> */}
                             </div>
                         {/* </div> */}
                         <p>Posted By: <NavLink to={`/users/${game.owner_id}`} exact={true} activeClassName='active' >
@@ -35,6 +37,8 @@ const GameDetailsPage = ({ setShowModal, game }) => {
                         </NavLink> </p>
                         <div className='game-info'>
                         </div>
+                        <AddGameToShelf className='add-game-to-shelf-field' setShowModal={setShowModal} game={game}/>
+
                     </div>
                     {/* <div className='game-details'> */}
                     {/* <img className='profile-picture' src={user.profile_pic ? user.profile_pic : defaultProfileImg}/> */}

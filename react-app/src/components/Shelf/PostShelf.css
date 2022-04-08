@@ -1,0 +1,14 @@
+.shelf-name-field {
+    width: 200px;
+}
+
+.new-shelf-form-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    border: solid black 2px;
+    background-color: white;
+    height: 175px;
+    margin: 10px;
+}

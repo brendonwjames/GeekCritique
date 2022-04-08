@@ -1,4 +1,5 @@
 from .db import db
+from app.models.gamesshelves import games_shelves
 
 class Game(db.Model):
     __tablename__ = 'games'
@@ -10,8 +11,10 @@ class Game(db.Model):
     img_src = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime)
 
+    shelves = db.relationship('Shelf', secondary=games_shelves, back_populates='games')
     users = db.relationship('User', back_populates='games')
     reviews = db.relationship('Review', back_populates='games', cascade='all,delete')
+
 
     def to_dict(self):
         return {

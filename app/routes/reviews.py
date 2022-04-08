@@ -24,8 +24,9 @@ def validation_errors_to_error_messages(validation_errors):
 @reviews_routes.route('/<int:game_id>')
 def get_reviews(game_id):
     all_reviews = Review.query.filter(Review.game_id == game_id).all()
-    all_users = User.query.all()
-    return {'reviews': [review.to_dict() for review in all_reviews], 'users': [user.to_dict() for user in all_users]}
+    # all_users = User.query.all()
+    return {'reviews': [review.to_dict() for review in all_reviews]}
+    # 'users': [user.to_dict() for user in all_users]
 
 @reviews_routes.route('/new_review', methods=['POST'])
 @login_required
