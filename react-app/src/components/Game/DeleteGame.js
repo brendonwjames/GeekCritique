@@ -17,13 +17,14 @@ const DeleteGame = ({ setShowModal, game }) => {
     }
 
     return (
-        <>
-            <h3>Are you sure you want to delete your game? It will be gone forever!</h3>
+        <div className='delete-game-modal-container'>
+            <h3>Are you sure you want to delete {game.name}?</h3>
+            <h3>It will be gone forever!</h3>
             <div className='delete-popup-container'>
                 <button onClick={handleDelete} className='delete-button'>Confirm Delete</button>
                 <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
              </div>
-        </>
+        </div>
     )
 }
 

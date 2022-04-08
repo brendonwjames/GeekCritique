@@ -61,7 +61,7 @@
     overflow-y: auto;
     word-break: break-all;
 
-    border: solid black 3px;
+    /* border: solid black 3px; */
     margin-bottom: 10px;
     border-radius: 10px;
     padding: 5px;
