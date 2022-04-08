@@ -30,14 +30,14 @@ const EditShelf = ({ setShowModal, shelf }) => {
     }
 
     return (
-        <div className='new-game-form-container'>
-            <form className='new-game-form' onSubmit={handleEdit}>
+        <div className='edit-game-form-container'>
+            <form className='edit-game-form' onSubmit={handleEdit}>
                 <div className='postErrors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <p className='create-post-text'>Rename Shelf</p>
+                <p className='edit-post-text'>Rename Shelf</p>
                 <div className='choose-file-container'>
                 </div>
                 <div>
