@@ -1,0 +1,13 @@
+.game-to-shelf-top-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-to-shelf-top-div .review-submit-button {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}

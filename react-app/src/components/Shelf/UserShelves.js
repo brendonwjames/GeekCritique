@@ -10,7 +10,8 @@ import { getUsers } from "../../store/session";
 import PostShelf from "./PostShelf";
 import DeleteShelfModal from "../Modals/DeleteShelfModal";
 import EditShelfModal from "../Modals/EditShelfModal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import RemoveGameFromShelf from "./RemoveGameFromShelf";
 import './UserShelves.css';
 
 const UserShelves = () => {
@@ -24,7 +25,6 @@ const UserShelves = () => {
         dispatch(userGames(user.id))
         dispatch(allReviews(user.id));
         dispatch(getUserShelves(user.id));
-
     }, [dispatch])
 
     
@@ -50,6 +50,7 @@ return (
                             {shelf.games && shelf.games.map((game) => 
                             <div className='games-post' key={game.id}>
                                 <GameDetailsModal game={game}/>
+                                <RemoveGameFromShelf className='remove-game-from-shelf-field' shelf={shelf} game={game}/> 
                             </div>
                         )}
                         </div>

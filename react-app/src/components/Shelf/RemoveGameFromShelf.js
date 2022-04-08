@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeGameFromShelf } from '../../store/shelves';
 import { getUserShelves } from '../../store/shelves';
 import './RemoveGameFromShelf.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const RemoveGameFromShelf = ({ shelf, game }) => {
     // console.log('DELETE MODAL:', game)
@@ -21,13 +22,12 @@ const RemoveGameFromShelf = ({ shelf, game }) => {
     }
 
     return (
-        <>
+        <div className='delete-from-shelf-container'>
             <div className='delete-from-shelf-button'>
-                <button onClick={handleDelete} className='delete-button'>Remove From Shelf</button>
+                <button onClick={handleDelete} className='delete-game-from-shelf-button'><FontAwesomeIcon icon="fa-solid fa-trash-can" /></button>
             </div>
-        </>
+        </div>
     )
 }
-
 
 export default RemoveGameFromShelf;

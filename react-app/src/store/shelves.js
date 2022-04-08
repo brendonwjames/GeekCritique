@@ -121,14 +121,16 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
         const shelf = await response.json();
         console.log('added to Shelf:', shelf)
         dispatch((addToShelf(shelf)))
-        return 'Success!'
-    } else if (response.status < 500) {
-        const data = await response.json();
-        if (data.errors) {
-            return data.errors;
-        }
-    } else {
-        return ['An error occurred. Please try again.']
+        return ['Added to shelf!']
+    } 
+    // else if (response.status < 500) {
+    //     const data = await response.json();
+    //     if (data.errors) {
+    //         return data.errors;
+    //     }
+    // }
+     else {
+        return ['Please choose a valid shelf!']
     }
 }
 

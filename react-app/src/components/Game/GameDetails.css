@@ -1,44 +1,25 @@
 .game-details-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* gap: 10px; */
     grid-auto-rows: minmax(100px, auto);
     grid-auto-columns: minmax(70px, auto);
     border: solid black 3px;
-    /* height: 600px;
-    width: 1000px */
-    /* height: 80%;
-    width: 80% */
     width: 70vw;
     height: 45vw
 }
 
 .left-half {
-    /* grid-column: 1 / 2;
-    grid-row: 1; */
-
     display: flex;
     flex-direction: column;
     align-items: center;
     border: black solid 3px;
-    /* object-fit: contain; */
-    /* overflow-wrap: break-word; */
-    /* overflow-y: auto */
-    /* word-wrap: break-word;      */
-    /* overflow-wrap: break-word; */
-
-    /* height: 99%; */
     width: 100%;
     overflow-y: auto;
 }
 
 .right-half {
-    /* height: 45vw; */
-    /* height: 80%; */
     border: black solid 3px;
-    /* width: 100%; */
     overflow-y: auto;
-    /* object-fit: contain; */
 }
 
 .post-review {
@@ -49,16 +30,21 @@
 }
 
 .game-details-image {
-    object-fit: contain;
-    /* width: 30vw; */
-    height: 40%;
-    width: auto
+    object-fit: cover;
+    height: 150px;
+    width: 100px;
+    text-align: center;
+    border-radius: 1em;
+    outline: 2px solid black;
+    background-color: white;
 }
 
-.game-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.game-name {
+    font-weight: bolder;
+}
+
+.game-description {
+    font-style: italic;
 }
 
 .edit-delete {
@@ -70,15 +56,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    max-height: 65%;
+    justify-content: flex-start;
+    max-height: 60%;
     overflow-y: auto;
     word-break: break-all;
 
+    border: solid black 3px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .top-of-top {
     display: flex;
     justify-content: space-around;
 }
-

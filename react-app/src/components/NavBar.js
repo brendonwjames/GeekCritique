@@ -23,7 +23,7 @@ const NavBar = () => {
           </NavLink>
           <PostGameModal />
           <NavLink to={`/users/${user.id}/shelves`} exact={true} activeClassName='active'>
-              <i class="fa-solid fa-book-bookmark">
+              <i className="fa-solid fa-book-bookmark">
                 <div className='tooltip-box-3'>My Shelves</div>
               </i>
           </NavLink>

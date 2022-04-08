@@ -53,7 +53,7 @@ const PostShelf = () => {
                             name='name'
                             onChange={(e) => setName(e.target.value)}
                             value={name}
-                            placeholder='Type Shelf Name Here'
+                            placeholder='Shelf Name'
                             ></input>
                     </div>
                 </div>

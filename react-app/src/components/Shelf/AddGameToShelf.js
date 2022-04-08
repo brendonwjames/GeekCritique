@@ -7,15 +7,16 @@ import { userGames } from '../../store/usergames';
 import './AddGameToShelf.css';
 
 const AddGameToShelf = ({ game }) => {
-    const [shelf, setShelf] = useState();
     const [errors, setErrors] = useState([]);
-
+    const [shelf, setShelf] = useState();
+    
     // console.log('ERROR:', errors)
-
+    
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const game_id = game.id;
     const shelves = useSelector((state => Object.values(state.shelf)))
+
 
     // console.log('RATING', rating)
 
@@ -32,6 +33,7 @@ const AddGameToShelf = ({ game }) => {
 
         if (result === 'Success!') {
 
+            alert("Added to shelf!")
             dispatch(getAllGames())
             dispatch(getUserShelves(user.id))
             dispatch(userGames(user.id))
@@ -40,28 +42,28 @@ const AddGameToShelf = ({ game }) => {
         else if (result) {
             setErrors(result);
         } else {
+            alert("Unable to add to shelf!")
             reset()
         }
     }
 
     return (
-        <div className='post-review-container'>
-            <form className='new-review-form' onSubmit={handleSubmit}>
-                <div className='review-errors'>
+        <div className='post-game-shelf-container'>
+            <form className='game-to-shelf-form' onSubmit={handleSubmit}>
+                <div className='game-errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
                         ))}
                 </div>
-                <div className='review-top-div'>
-                    {/* <p className='create-review-text'>Add New Review</p> */}
+                <div className='game-to-shelf-top-div'>
                     <button className='review-submit-button' type='submit'>Add to Shelf</button>
+                    
                     <div>
                         <div>Select Shelf</div>
                         <select value={shelf} onChange={e => setShelf(e.target.value)}>
-                            <option value={-1}>--Choose a Shelf--</option>
+                            <option value={null}>--Choose a Shelf--</option>
                         {shelves[0] && shelves[0].map((shelf) => (
                             <option value={shelf.id}>{shelf.name}</option>
-                            // console.log(shelf.id)
                         ))}
                         </select>
                     </div>

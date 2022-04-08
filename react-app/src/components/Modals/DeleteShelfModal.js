@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function DeleteShelfModal({ shelf }) {
   const [showModal, setShowModal] = useState(false);
-  // const dispatch = useDispatch();
   
   return (
     <>

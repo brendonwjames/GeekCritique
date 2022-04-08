@@ -27,9 +27,30 @@
 .review-top-line {
     display: flex;
     justify-content: space-around;
+    border-bottom: 1px solid black;
 }
 
 .review-poster-info {
     display: flex;
     justify-content: space-between;
+}
+
+.review-average-rating {
+    border: solid black 3px;
+    margin: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 7px;
+}
+
+.review-total-rating {
+    border: solid black 3px;
+    margin: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 7px;
 }

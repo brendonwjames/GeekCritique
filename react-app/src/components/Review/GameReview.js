@@ -37,7 +37,7 @@ const GameReview = ({ game }) => {
         <div>
             <div className='review-top-line'>
                 <div className='review-total-rating'>Total Rating: {totalRating}</div>
-                <h3>Reviews</h3>
+                <h3 className='review-title'>Reviews</h3>
                 <div className='review-average-rating'>Average Rating: {avgRating}</div>
             </div>
             {review.map((review) => (
