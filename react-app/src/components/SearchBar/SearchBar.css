@@ -1,0 +1,19 @@
+.searchbar-results-container {
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchbar-results {
+    position: absolute;
+    right: 50%;
+    /* left: 150px;
+    width: 200px;
+    height: 120px; */
+}
+
+.searchbar-results-innercontainer {
+    display: flex;
+}
