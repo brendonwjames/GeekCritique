@@ -8,12 +8,14 @@
 
 .searchbar-results {
     position: absolute;
-    right: 50%;
-    /* left: 150px;
-    width: 200px;
-    height: 120px; */
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: 10px;
 }
 
 .searchbar-results-innercontainer {
     display: flex;
+    background-color: white;
+    border-radius: 10px;
 }

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GameDetailsModal from "../Modals/GameDetailsModal";
+import { getAllGames } from "../../store/games";
+import { allReviews } from "../../store/reviews";
+import { getUsers } from "../../store/session";
+import { getUserShelves } from "../../store/shelves";
 import './SearchBar.css';
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
     const [games, setGames] = useState([]);
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user);
+
 
     const reset = () => {
         setSearch('');
@@ -22,18 +28,14 @@ const SearchBar = () => {
         fetchData();
     }, [dispatch]);
 
-    const regex = `/[${search}]/g`
-    // arr.filter(x => x.title.toLowerCase().includes(searchStr.toLowerCase()))
-
     return (
         <div className='search-bar-container' >
             <div>
                 <input
                     className='search-input'
-                    placeholder='Search All Games'
-                    onChange={(e) => {
-                        setSearch(e.target.value)
-                    }}
+                    placeholder='Search for a game here!'
+                    onChange={(e) => {setSearch(e.target.value)}
+                }
                 />
             </div>
             <div className='searchbar-results-container'>
