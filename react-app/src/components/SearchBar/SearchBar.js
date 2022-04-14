@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GameDetailsModal from "../Modals/GameDetailsModal";
-import { getAllGames } from "../../store/games";
-import { allReviews } from "../../store/reviews";
-import { getUsers } from "../../store/session";
-import { getUserShelves } from "../../store/shelves";
 import './SearchBar.css';
 
 const SearchBar = () => {
@@ -22,9 +18,9 @@ const SearchBar = () => {
         async function fetchData() {
             const response = await fetch('/games');
             const searchResults = await response.json();
-            //   console.log('SEARCH GAMES HERE', games)
             setGames(searchResults.games);
         }
+        
         fetchData();
     }, [dispatch]);
 
