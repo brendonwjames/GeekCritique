@@ -1,21 +1,38 @@
+.search-bar-container {
+    display: flex;
+    height:100px
+}
+
 .searchbar-results-container {
-    background-color: white;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .searchbar-results {
-    position: absolute;
-    left: 50%;
-    margin-left: -200px;
-    top: 50%;
-    margin-top: 10px;
+    display: flex;
+    border-radius: 10px;
+    width: 500px;
+    overflow-x: auto;
+    /* height: 100px; */
 }
 
 .searchbar-results-innercontainer {
     display: flex;
-    background-color: white;
+}
+
+.search-bar-game {
+    height: 50x;
+    width: 50px
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    border: black solid 2px;
     border-radius: 10px;
+    padding: 5px;
+    background-color: white;
+    height: 100px
 }

@@ -60,6 +60,11 @@ function App() {
           <UserShelves />
           <Footer />
         </ProtectedRoute>
+        {/* <ProtectedRoute path='/users/:userId/search' exact={true} >
+          <NavBar />
+          <SearchResults />
+          <Footer />
+        </ProtectedRoute> */}
         <Route path='/errors/404'>
           <Error404 />
         </Route>

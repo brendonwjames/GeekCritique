@@ -31,7 +31,7 @@ const NavBar = () => {
               <img className="navbar-profile-picture" src={user.profile_picture} alt="Faulty Url"></img>
           </NavLink>
           <div className='username-greeting'>Hello, {user.username}</div>
-          <SearchBar />
+          {/* <SearchBar /> */}
           <LogoutButton />
         </div>
     </nav>

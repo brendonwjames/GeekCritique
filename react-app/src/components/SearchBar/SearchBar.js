@@ -7,12 +7,10 @@ const SearchBar = () => {
     const [search, setSearch] = useState('');
     const [games, setGames] = useState([]);
     const dispatch = useDispatch();
-    // const user = useSelector(state => state.session.user);
 
-
-    // const reset = () => {
-    //     setSearch('');
-    // }
+    const reset = () => {
+        setSearch('');
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -26,25 +24,29 @@ const SearchBar = () => {
 
     return (
         <div className='search-bar-container' >
-            <div>
+            <div className='search-box'>
+                <p className='search-text'>Looking for a game?</p>
                 <input
                     className='search-input'
                     placeholder='Search for a game here!'
-                    onChange={(e) => {setSearch(e.target.value)}
-                }
+                    value={search}
+                    onChange={(e) => { setSearch(e.target.value) }}
+                    // onBlur={reset}
                 />
+                {/* <button type='submit' >Search</button> */}
             </div>
             <div className='searchbar-results-container'>
                 <div className='searchbar-results'>
                     <div className='searchbar-results-innercontainer'>
                         {games.filter((game) => {
-                        if (search === '') return null;
+                            if (search === '') return null;
                             else if (game.name.toLowerCase().includes(search.toLowerCase()))
                                 return game;
                         })
                             .map((game) => (
                                 <div className='search-bar-game' key={game.id}  >
                                     <GameDetailsModal game={game} search={search} />
+                                    {/* {game.name} */}
                                 </div>
                             ))}
                     </div>

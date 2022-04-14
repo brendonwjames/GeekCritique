@@ -6,6 +6,7 @@ import { allReviews } from "../../store/reviews";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import { getUsers } from "../../store/session";
 import { getUserShelves } from "../../store/shelves";
+import SearchBar from "../SearchBar/SearchBar";
 import './AllGames.css';
 
 const AllGames = () => {
@@ -23,7 +24,8 @@ const AllGames = () => {
 return (
     <>
         <div className='feed-title'>
-            <h1>Games</h1>
+            <h1 className='feed-title-name'>Games</h1>
+            <SearchBar />
         </div>
         <div className='game-container'>
             {games && games.map((game) => (
