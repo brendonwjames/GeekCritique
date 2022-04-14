@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:flex-start;
+    justify-content: flex-start;
     border: solid rgb(182, 179, 179) 1px;
     height: 300px;
 }
@@ -57,7 +57,7 @@
 
 .login-button {
     width: 180px;
-    background-color: rgba(0,149,246,.3);
+    background-color: rgba(0, 149, 246, .3);
     color: white;
     border: none;
     border-radius: 3px;
@@ -65,7 +65,7 @@
 }
 
 .login-button:hover {
-    background-color: rgba(0,149,246);
+    background-color: rgba(0, 149, 246);
 }
 
 .buttons-container {
@@ -77,5 +77,19 @@
 
 .login-errors {
     color: red;
-    margin-top: 15px;
+    margin: 2px;
+}
+
+.login-errors-container {
+    display: flex;
+    flex-direction: column;
+    color: red;
+    margin-top: 20px;
+    border: solid red 2px;
+    background-color: pink;
+    border-radius: 10px;
+}
+
+.login-errors-container:empty {
+    display: none
 }

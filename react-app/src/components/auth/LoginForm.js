@@ -73,7 +73,7 @@ const LoginForm = () => {
               <button className='login-button' type='submit' onClick={demoUser}>Demo User</button>
             </div>
           </div>
-          <div>
+          <div className='login-errors-container'>
           {errors.map((error, ind) => (
             <div className='login-errors' key={ind}>{error}</div>
           ))}

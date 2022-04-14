@@ -25,10 +25,10 @@ const UserShelves = () => {
         dispatch(userGames(user.id))
         dispatch(allReviews(user.id));
         dispatch(getUserShelves(user.id));
-    }, [dispatch])
+    }, [dispatch, user.id])
 
     
-    console.log('SHELVES:',shelves)
+    // console.log('SHELVES:',shelves)
 
 return (
     <div>

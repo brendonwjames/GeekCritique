@@ -12,7 +12,7 @@ import AllGames from './components/Game/AllGames';
 import Footer from './components/Footer/Footer';
 import UserShelves from './components/Shelf/UserShelves';
 import Error404 from './components/Error/Error404';
-import SearchBar from './components/SearchBar/SearchBar';
+// import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

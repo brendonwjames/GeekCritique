@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import './SearchBar.css';
 
@@ -7,12 +7,12 @@ const SearchBar = () => {
     const [search, setSearch] = useState('');
     const [games, setGames] = useState([]);
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
 
 
-    const reset = () => {
-        setSearch('');
-    }
+    // const reset = () => {
+    //     setSearch('');
+    // }
 
     useEffect(() => {
         async function fetchData() {
@@ -20,7 +20,7 @@ const SearchBar = () => {
             const searchResults = await response.json();
             setGames(searchResults.games);
         }
-        
+
         fetchData();
     }, [dispatch]);
 
@@ -38,7 +38,7 @@ const SearchBar = () => {
                 <div className='searchbar-results'>
                     <div className='searchbar-results-innercontainer'>
                         {games.filter((game) => {
-                            if (search === '') return null;
+                        if (search === '') return null;
                             else if (game.name.toLowerCase().includes(search.toLowerCase()))
                                 return game;
                         })

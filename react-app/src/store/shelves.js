@@ -36,12 +36,12 @@ const removeFromShelf = (game) => ({
 })
 
 export const getUserShelves = (userId) => async (dispatch) => {
-    console.log('SHELVES: backend', userId)
+    // console.log('SHELVES: backend', userId)
     const response = await fetch(`/shelves/${userId}`)
 
     if (response.ok) {
         const shelves = await response.json();
-        console.log('SHELVES:', shelves)
+        // console.log('SHELVES:', shelves)
         dispatch(userShelves(shelves))
     }
     return response
@@ -58,7 +58,7 @@ export const newShelf = (newShelf) => async (dispatch) => {
 
     if (response.ok) {
         const newShelf = await response.json();
-        console.log('newShelf:', newShelf)
+        // console.log('newShelf:', newShelf)
         dispatch((createShelf(newShelf)))
         return 'Success!'
     } else if (response.status < 500) {
@@ -73,7 +73,7 @@ export const newShelf = (newShelf) => async (dispatch) => {
 }
 
 export const updateShelf = (shelf_Id, editedShelf) => async (dispatch) => {
-    console.log('EDITED SHELF', editedShelf)
+    // console.log('EDITED SHELF', editedShelf)
     const response = await fetch(`/shelves/${shelf_Id}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -102,14 +102,13 @@ export const removeShelf = (shelf_Id) => async(dispatch) => {
     })
 
     if (response.ok) {
-        const game = await response.json()
-        dispatch(deleteShelf(shelf_Id))
+        // const game = await response.json()
+        await dispatch(deleteShelf(shelf_Id))
     }
 }
 
 export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispatch) => {
     const { shelf_id, game_id } = gameToShelf;
-    console.log('this be the shelf id', shelf_Id)
 
     const response = await fetch(`/shelves/add_to_shelf/${shelf_Id}/games/${game_Id}`, {
         method: 'POST',
@@ -119,7 +118,7 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
 
     if (response.ok) {
         const shelf = await response.json();
-        console.log('added to Shelf:', shelf)
+        // console.log('added to Shelf:', shelf)
         dispatch((addToShelf(shelf)))
         return ['Added to shelf!']
     } 
@@ -158,7 +157,7 @@ export default function shelvesReducer(state = initialState, action) {
             newState.userShelves = [...action.userShelves.shelves]
             return newState
         case CREATE_SHELF:
-            console.log('CREATE SHELF REDUCER:', action.shelf)
+            // console.log('CREATE SHELF REDUCER:', action.shelf)
             newState[action.shelf] = action.shelf.userShelves; //works, has unused undefined in it
             return  newState
         // case EDIT_SHELF:

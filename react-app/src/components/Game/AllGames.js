@@ -18,7 +18,7 @@ const AllGames = () => {
         dispatch(allReviews());
         dispatch(getUsers());
         dispatch(getUserShelves(user.id));
-    }, [dispatch])
+    }, [dispatch, user.id])
 
 return (
     <>

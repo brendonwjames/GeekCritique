@@ -19,7 +19,7 @@ const SignUpForm = () => {
     e.preventDefault();
 
     const data = await dispatch(signUp(username, email, password, confirm_password, profile_img_src));
-    console.log(data)
+    // console.log(data)
     if (data) {
       setErrors(data)
     }

@@ -44,7 +44,7 @@ export const addReview = (newReview) => async (dispatch) => {
 
     if (response.ok) {
         const newReview = await response.json();
-        console.log('newReview:', newReview)
+        // console.log('newReview:', newReview)
         dispatch((createReview(newReview)))
         return 
     } else if (response.status < 500) {
@@ -66,7 +66,7 @@ export const updateReview = (reviewId, editedReview) => async(dispatch) => {
 
     if (response.ok) {
         const editedReview = await response.json();
-        console.log('editedReview:', editedReview)
+        // console.log('editedReview:', editedReview)
         dispatch((editReview(editedReview)))
         return 'Success!'
     } else if (response.status < 500) {

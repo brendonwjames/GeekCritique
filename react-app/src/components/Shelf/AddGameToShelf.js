@@ -27,7 +27,7 @@ const AddGameToShelf = ({ game }) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const gameToShelf = { shelf, game_id }
-        console.log('SHELF IN HANDLESUBMIT', shelf)
+        // console.log('SHELF IN HANDLESUBMIT', shelf)
         
         const result = await dispatch(addGameToShelf(gameToShelf, shelf, game_id))
 

@@ -11,7 +11,6 @@ import './NavBar.css';
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
   // const defaultImg="https://scienceline.org/wp-content/uploads/2020/01/tetris.jpg"
-  console.log(user, 'USER')
 
 
   return (
