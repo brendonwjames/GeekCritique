@@ -27,7 +27,7 @@ const AddGameToShelf = ({ game }) => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         const gameToShelf = { shelf, game_id }
-        console.log('SHELF IN HANDLESUBMIT', shelf)
+        // console.log('SHELF IN HANDLESUBMIT', shelf)
         
         const result = await dispatch(addGameToShelf(gameToShelf, shelf, game_id))
 
@@ -63,7 +63,7 @@ const AddGameToShelf = ({ game }) => {
                         <select value={shelf} onChange={e => setShelf(e.target.value)}>
                             <option value={null}>--Choose a Shelf--</option>
                         {shelves[0] && shelves[0].map((shelf) => (
-                            <option value={shelf.id}>{shelf.name}</option>
+                            <option key={shelf.id} value={shelf.id}>{shelf.name}</option>
                         ))}
                         </select>
                     </div>

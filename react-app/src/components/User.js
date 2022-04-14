@@ -25,31 +25,17 @@ function User() {
     dispatch(getAllGames());
     dispatch(userGames(userId));
     dispatch(allReviews(userId));
-    
-    
-
-  //   dispatch(userGames(userId)).then(data => {
-  //     console.log('WORKING WITH THIS:', data)
-  //     // if(data.username === undefined) {
-  //     //     history.push('/errors/404')
-  //     // }
-  // })
-
-    // if (!games) {
-    //   history.push('/errors/404')
-    // }
 
     if (!userId) {
       return;
     }
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
-      console.log('this one',response)
       if (response.status === 500) history.push('/errors/404')
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId, dispatch]);
+  }, [userId, dispatch, history]);
 
   if (!user) {
     return null;

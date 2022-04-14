@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateGame } from '../../store/games';
 import { userGames } from '../../store/usergames';
 import { getUserShelves } from '../../store/shelves';
-import UserShelves from '../Shelf/UserShelves';
+import { getAllGames } from '../../store/games';
 import './EditGame.css'
 
 const EditGame = ({ setShowModal, game }) => {
@@ -25,6 +25,7 @@ const EditGame = ({ setShowModal, game }) => {
 
         if (result === 'Success!') {
             setShowModal(false)
+            dispatch(getAllGames)
             dispatch(userGames(user.id))
             dispatch(getUserShelves(user.id)) 
         }

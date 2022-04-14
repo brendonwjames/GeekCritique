@@ -98,7 +98,7 @@ export const signUp = (username, email, password, confirm_password, profile_img_
   } else if (response.status < 500) {
    
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
     if (data.errors) {
       return data.errors;
     }

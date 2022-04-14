@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { removeGameFromShelf } from '../../store/shelves';
 import { getUserShelves } from '../../store/shelves';
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const RemoveGameFromShelf = ({ shelf, game }) => {
     // console.log('DELETE MODAL:', game)
     const game_id = game.id;
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
 

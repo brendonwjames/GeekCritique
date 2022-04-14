@@ -41,7 +41,7 @@ const GameReview = ({ game }) => {
                 <div className='review-average-rating'>Average Rating: {avgRating}</div>
             </div>
             {review.map((review) => (
-                <div className='review-container'>
+                <div key={review.id} className='review-container'>
                     <div className='review-poster-info'>
                         <NavLink to={`/users/${review.user_id}`} exact={true} activeClassName='active' key={review.id}>
                             {allUsers[review.user_id].username}

@@ -34,7 +34,7 @@ export const getAllGames = () => async(dispatch) => {
 
     if (response.ok) {
         const games = await response.json();
-        console.log('GAMES', games)
+        // console.log('GAMES', games)
         dispatch(getGames(games))
     }
     return response;
@@ -62,7 +62,7 @@ export const addGame = (formData) => async(dispatch) => {
 
     if (response.ok) {
         const newGame = await response.json();
-        console.log('NEWGAME:', newGame)
+        // console.log('NEWGAME:', newGame)
         dispatch(createGame(newGame))
         return 'Success!'
     }
@@ -77,7 +77,6 @@ export const addGame = (formData) => async(dispatch) => {
 }
 
 export const updateGame = (gameId, editedGame) => async (dispatch) => {
-    console.log('EDITED DATA THUNK:', editedGame)
     const response = await fetch(`/games/${gameId}/edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -131,7 +130,7 @@ export default function gameReducer(state = initialState, action) {
         //     // newState.userPosts = [...action.userPosts.posts];
         //     // return newState
         case GET_GAME:
-            console.log('GET GAME REDUCER:', action.game.id = action.game)
+            // console.log('GET GAME REDUCER:', action.game.id = action.game)
             // newState[action.game.id] = action.game;
             newState[action.game.id] = {...action.game}; //possible alternative?
             return newState;
@@ -141,7 +140,7 @@ export default function gameReducer(state = initialState, action) {
             // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         case EDIT_GAME:
-            console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
+            // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
             newState[action.game.id] = {...action.game};
             return newState
         case DELETE_GAME:

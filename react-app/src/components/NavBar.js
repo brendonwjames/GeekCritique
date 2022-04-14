@@ -4,13 +4,13 @@ import LogoutButton from './auth/LogoutButton';
 import PostGameModal from '../components/Modals/PostGameModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
+import SearchBar from './SearchBar/SearchBar';
 
 import './NavBar.css';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
   // const defaultImg="https://scienceline.org/wp-content/uploads/2020/01/tetris.jpg"
-  console.log(user, 'USER')
 
 
   return (
@@ -31,6 +31,7 @@ const NavBar = () => {
               <img className="navbar-profile-picture" src={user.profile_picture} alt="Faulty Url"></img>
           </NavLink>
           <div className='username-greeting'>Hello, {user.username}</div>
+          <SearchBar />
           <LogoutButton />
         </div>
     </nav>
