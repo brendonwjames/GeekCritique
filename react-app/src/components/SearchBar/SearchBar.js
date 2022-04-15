@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import GameDetailsModal from "../Modals/GameDetailsModal";
 import './SearchBar.css';
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
-    const [games, setGames] = useState([]);
-    const dispatch = useDispatch();
+    // const [games, setGames] = useState([]);
+    // const dispatch = useDispatch();
+    const games = useSelector((state => Object.values(state.game)));
+    console.log('search bar games', games)
 
-    const reset = () => {
-        setSearch('');
-    }
 
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/games');
-            const searchResults = await response.json();
-            setGames(searchResults.games);
-        }
+    // const reset = () => {
+    //     setSearch('');
+    //     setGames([]);
+    // }
 
-        fetchData();
-    }, [dispatch]);
+    // const fetched = async function fetchData() {
+    //     const response = await fetch('/games');
+    //     const searchResults = await response.json();
+    //     setGames(searchResults.games);
+    // }
+
+    // useEffect(() => {
+    // }, []);
 
     return (
         <div className='search-bar-container' >
@@ -30,10 +33,12 @@ const SearchBar = () => {
                     className='search-input'
                     placeholder='Search for a game here!'
                     value={search}
-                    onChange={(e) => { setSearch(e.target.value) }}
+                    onChange={(e) =>  setSearch(e.target.value) }
                     // onBlur={reset}
-                />
-                {/* <button type='submit' >Search</button> */}
+                >
+                </input>
+                <button onClick={() => setSearch(() => '')}>Reset</button>
+                {/* <button type='submit' onSubmit={console.log('reset')}>Clear</button> */}
             </div>
             <div className='searchbar-results-container'>
                 <div className='searchbar-results'>
@@ -42,13 +47,16 @@ const SearchBar = () => {
                             if (search === '') return null;
                             else if (game.name.toLowerCase().includes(search.toLowerCase()))
                                 return game;
+                            // else return <div>no games yet</div>
                         })
                             .map((game) => (
                                 <div className='search-bar-game' key={game.id}  >
                                     <GameDetailsModal game={game} search={search} />
                                     {/* {game.name} */}
                                 </div>
-                            ))}
+                            ))
+                            }
+                            
                     </div>
                 </div>
             </div>
