@@ -25,6 +25,7 @@ const PostReview = ({ game }) => {
         setContent("");
         setRating();
         setErrors([]);
+        setHover('off')
     }
 
 
