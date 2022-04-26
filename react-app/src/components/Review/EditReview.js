@@ -7,6 +7,7 @@ const EditReview = ({ setShowModal, game, review }) => {
     const [content, setContent] = useState(review.content);
     const [rating, setRating] = useState(review.rating);
     const [errors, setErrors] = useState([]);
+    const [hover, setHover] = useState(0);
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
@@ -39,16 +40,24 @@ const EditReview = ({ setShowModal, game, review }) => {
                 </div>
                 <div className='rating-top-div'>
                     <p className='create-post-text'>Edit Your Review</p>
-                    <div className='rating-box'>
-                        <div>Select Rating</div>
-                        <select value={rating} onChange={e => setRating(e.target.value)}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                        </select>
-                    </div>
+                    <div className='star-rating'>
+                            {[...Array(5)].map((star, index) => {
+                                index += 1;
+                                return (
+                                    <button
+                                        type='button'
+                                        key={index}
+                                        className={index <= (hover || rating) ? 'on' : 'off'}
+                                        onClick={() => setRating(index)}
+                                        onMouseEnter={() => setHover(index)}
+                                        onMouseLeave={() => setHover(rating)}
+                                    // onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <span className='star'>&#9733;</span>
+                                    </button>
+                                );
+                            })}
+                        </div>
                 </div>
                 <div className='content'>
                     <textarea

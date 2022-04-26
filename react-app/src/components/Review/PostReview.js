@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../../store/reviews";
 import './PostReview.css';
+// import StarRating from "./StarRating";
+import './StarRating.css';
 
 const PostReview = ({ game }) => {
     const [content, setContent] = useState('');
-    const [rating, setRating] = useState(3);
+    // const [rating, setRating] = useState();
     const [errors, setErrors] = useState([]);
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
 
     // console.log('ERROR:', errors)
 
@@ -19,13 +23,14 @@ const PostReview = ({ game }) => {
 
     const reset = () => {
         setContent("");
-        setRating(3);
+        setRating();
         setErrors([]);
     }
 
-    const handleSubmit = async(e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const review = {user_id, game_id, content, rating }
+        const review = { user_id, game_id, content, rating }
 
 
         const result = await dispatch(addReview(review))
@@ -43,19 +48,38 @@ const PostReview = ({ game }) => {
                 <div className='review-errors'>
                     {errors.map((error, ind) => (
                         <div key={ind}>{error}</div>
-                        ))}
+                    ))}
                 </div>
                 <div className='review-top-div'>
                     <button className='review-submit-button' type='submit'>Post Review</button>
                     <div>
                         <div>Select Game Rating</div>
-                        <select value={rating} onChange={e => setRating(e.target.value)}>
+                        {/* <select value={rating} onChange={e => setRating(e.target.value)}>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
+                        <StarRating /> */}
+                        <div className='star-rating'>
+                            {[...Array(5)].map((star, index) => {
+                                index += 1;
+                                return (
+                                    <button
+                                        type='button'
+                                        key={index}
+                                        className={index <= (hover || rating) ? 'on' : 'off'}
+                                        onClick={() => setRating(index)}
+                                        onMouseEnter={() => setHover(index)}
+                                        onMouseLeave={() => setHover(rating)}
+                                    // onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <span className='star'>&#9733;</span>
+                                    </button>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -66,7 +90,7 @@ const PostReview = ({ game }) => {
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
                         placeholder='Add your review here!'
-                        ></textarea>
+                    ></textarea>
                 </div>
             </form>
         </div>
