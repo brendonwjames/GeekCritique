@@ -1,0 +1,14 @@
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .on {
+    color: rgb(194, 225, 17);
+    transform: scale(1.5);
+  }
+  .off {
+    color: rgb(204, 204, 204);
+  }
+  
