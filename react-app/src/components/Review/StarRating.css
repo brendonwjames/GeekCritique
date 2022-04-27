@@ -4,11 +4,11 @@ button {
     outline: none;
     cursor: pointer;
   }
-  .on {
+.on {
     color: rgb(194, 225, 17);
     transform: scale(1.5);
-  }
-  .off {
+}
+
+.off {
     color: rgb(204, 204, 204);
-  }
-  
+}

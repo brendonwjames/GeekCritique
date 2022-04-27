@@ -5,25 +5,9 @@ import './SearchBar.css';
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
-    // const [games, setGames] = useState([]);
-    // const dispatch = useDispatch();
+
     const games = useSelector((state => Object.values(state.game)));
     console.log('search bar games', games)
-
-
-    // const reset = () => {
-    //     setSearch('');
-    //     setGames([]);
-    // }
-
-    // const fetched = async function fetchData() {
-    //     const response = await fetch('/games');
-    //     const searchResults = await response.json();
-    //     setGames(searchResults.games);
-    // }
-
-    // useEffect(() => {
-    // }, []);
 
     return (
         <div className='search-bar-container' >
@@ -37,7 +21,7 @@ const SearchBar = () => {
                     // onBlur={reset}
                 >
                 </input>
-                <button onClick={() => setSearch(() => '')}>Reset</button>
+                <button className='search-reset-button' onClick={() => setSearch(() => '')}>Reset</button>
                 {/* <button type='submit' onSubmit={console.log('reset')}>Clear</button> */}
             </div>
             <div className='searchbar-results-container'>
