@@ -5,7 +5,6 @@ import './GameDetailsModal.css';
 
 function GameDetailsModal({ game }) {
     const [showModal, setShowModal] = useState(false);
-    // console.log('test')
 
    const faultyImg = 'https://www.models-resource.com/resources/big_icons/2/1708.png'
 
