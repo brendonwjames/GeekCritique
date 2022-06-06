@@ -29,19 +29,17 @@ const deleteGame = (game) => ({
     game
 })
 
-export const getAllGames = () => async(dispatch) => {
+export const getAllGames = () => async(dispatch) => { 
     const response = await fetch('/games');
 
     if (response.ok) {
         const games = await response.json();
-        // console.log('GAMES', games)
         dispatch(getGames(games))
     }
     return response;
 }
 
 export const getOneGame = (gameId) => async(dispatch) => {
-    // console.log('GETONEGAME THUNK:', gameId)
     const response = await fetch(`/games/${gameId}`);
 
     if (response.ok) {
@@ -110,7 +108,7 @@ export const removeGame = (gameId) => async(dispatch) => {
     }
 }
 
-const initialState = {};
+const initialState = {}; 
 
 export default function gameReducer(state = initialState, action) {
     let newState = {...state}
@@ -120,31 +118,17 @@ export default function gameReducer(state = initialState, action) {
             // console.log('********', action.allgames.games)
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
-        // case GET_USER_GAMES:
-        //     console.log('ACTION.USERGAMES', action.userGames.usergames)
-        //     newState = {...state, userGames: []}
-        //     // action.userGames.usergames.forEach(game => newState[game.id] = game)
-        //     newState.userGames = [...action.userGames.usergames]
-        //     return newState
-        //     // newState = {...state, userPosts: []}
-        //     // newState.userPosts = [...action.userPosts.posts];
-        //     // return newState
         case GET_GAME:
-            // console.log('GET GAME REDUCER:', action.game.id = action.game)
-            // newState[action.game.id] = action.game;
-            newState[action.game.id] = {...action.game}; //possible alternative?
+            newState[action.game.id] = {...action.game};
             return newState;
         case CREATE_GAME:
             // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
-            // newState.userGames = [...newState.userGames, action.newGame]
             return newState
         case EDIT_GAME:
-            // console.log('EDIT GAME REDUCER ACTION.GAME', action.game)
             newState[action.game.id] = {...action.game};
             return newState
         case DELETE_GAME:
-            // console.log('DELETEGAME REDUCER:', action.game.id)
             delete newState[action.game.id]
             return newState
         default:

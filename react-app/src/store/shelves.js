@@ -81,6 +81,7 @@ export const updateShelf = (shelf_Id, editedShelf) => async (dispatch) => {
     })
 
     if (response.ok) {
+        console.log('SUCCESSFUL EDIT OF SHELF')
         const editedShelf = await response.json();
         dispatch(editShelf(editedShelf))
         return 'Success!'
@@ -122,12 +123,6 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
         dispatch((addToShelf(shelf)))
         return ['Added to shelf!']
     } 
-    // else if (response.status < 500) {
-    //     const data = await response.json();
-    //     if (data.errors) {
-    //         return data.errors;
-    //     }
-    // }
      else {
         return ['Please choose a valid shelf!']
     }
@@ -157,13 +152,13 @@ export default function shelvesReducer(state = initialState, action) {
             newState.userShelves = [...action.userShelves.shelves]
             return newState
         case CREATE_SHELF:
-            // console.log('CREATE SHELF REDUCER:', action.shelf)
+            console.log('CREATE SHELF REDUCER:', action.shelf)
             newState[action.shelf] = action.shelf.userShelves; //works, has unused undefined in it
             return  newState
         // case EDIT_SHELF:
         //     console.log('EDIT SHELF CASE STORE', action)
-        //     newState[action.shelf.id] = {...action.shelf};
-        //     return newState
+        //     newState[action.shelf.id] = action.shelf;
+        //     return {...newState}
         case DELETE_SHELF:
             delete newState[action.shelf.id]
             return newState
