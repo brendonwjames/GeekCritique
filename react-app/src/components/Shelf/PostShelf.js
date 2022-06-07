@@ -26,7 +26,7 @@ const PostShelf = () => {
 
         if (result === 'Success!') {
             // dispatch(getAllGames())
-            // dispatch(getUserShelves(user.id))
+            dispatch(getUserShelves(user.id))
             // dispatch(userGames(user.id))
             reset()
         }
