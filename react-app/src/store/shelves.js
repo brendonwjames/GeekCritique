@@ -58,7 +58,7 @@ export const newShelf = (newShelf) => async (dispatch) => {
 
     if (response.ok) {
         const newShelf = await response.json();
-        // console.log('newShelf:', newShelf)
+        console.log('newShelf:', newShelf)
         dispatch((createShelf(newShelf)))
         return 'Success!'
     } else if (response.status < 500) {
@@ -152,13 +152,14 @@ export default function shelvesReducer(state = initialState, action) {
             newState.userShelves = [...action.userShelves.shelves]
             return newState
         case CREATE_SHELF:
-            console.log('CREATE SHELF REDUCER:', action.shelf)
-            newState[action.shelf] = action.shelf.userShelves; //works, has unused undefined in it
-            return  newState
-        case EDIT_SHELF:
-            console.log('EDIT SHELF CASE STORE', action)
-            newState[action.shelf.userShelves] = action.shelf.userShelves;
-            return {...newState}
+            console.log('CREATE SHELF REDUCER:', action, newState)
+            newState.userShelves = [...newState.userShelves, action.shelf]; //works, possible refactor to minimize
+            return newState
+        // case EDIT_SHELF:
+        //     console.log('ACTION.SHELF.USERSHELVES', action.shelf.userShelves)
+        //     console.log('EDIT SHELF CASE STORE', action)
+        //     newState[action.shelf.userShelves] = action.shelf.userShelves;
+        //     return {...newState}
         case DELETE_SHELF:
             delete newState[action.shelf.id]
             return newState

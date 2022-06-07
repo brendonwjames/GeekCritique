@@ -28,7 +28,7 @@ const UserShelves = () => {
     }, [dispatch, user.id])
 
     
-    // console.log('SHELVES:',shelves)
+    console.log('SHELVES:',shelves)
 
 return (
     <div>

@@ -25,10 +25,9 @@ const PostShelf = () => {
         const result = await dispatch(newShelf(shelf))
 
         if (result === 'Success!') {
-
-            dispatch(getAllGames())
-            dispatch(getUserShelves(user.id))
-            dispatch(userGames(user.id))
+            // dispatch(getAllGames())
+            // dispatch(getUserShelves(user.id))
+            // dispatch(userGames(user.id))
             reset()
         }
 
