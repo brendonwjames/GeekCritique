@@ -14,7 +14,6 @@ const AllGames = () => {
     const games = useSelector((state => Object.values(state.game))); 
     const user = useSelector(state => state.session.user);
 
-    //console.log(test push)
     useEffect(() => {
         dispatch(getAllGames());
         dispatch(allReviews());
