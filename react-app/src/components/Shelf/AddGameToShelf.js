@@ -32,10 +32,10 @@ const AddGameToShelf = ({ game }) => {
         const result = await dispatch(addGameToShelf(gameToShelf, shelf, game_id))
 
         if (result === 'Success!') {
-
+            
             alert("Added to shelf!")
-            dispatch(getAllGames())
             dispatch(getUserShelves(user.id))
+            dispatch(getAllGames())
             dispatch(userGames(user.id))
         }
 
