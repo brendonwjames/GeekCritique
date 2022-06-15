@@ -24,7 +24,6 @@ def validation_errors_to_error_messages(validation_errors):
 @games_routes.route('')
 def all_games():
     all_games = Game.query.all()
-    # print('FROM GAMES_ROUTE:', all_games)
 
     return {'games': [game.to_dict() for game in all_games]}
 
@@ -40,11 +39,10 @@ def create_game():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        print('BACKEND FORMDATA:', form.data)
-        
+        # print('BACKEND FORMDATA:', form.data)
 
         if "img_src" not in request.files:
-            print('not in request.files')
+            # print('not in request.files')
 
             owner_id = request.form['owner_id']
             name = request.form['name']
@@ -59,13 +57,10 @@ def create_game():
                 created_at = datetime.now()
             )
         else:
-
-                # return {"errors": "image required"}, 400
-
             img_src = request.files['img_src']
 
             if not allowed_file(img_src.filename):
-                print('not allowed_file')
+                # print('not allowed_file')
 
                 return {"errors": "file type not permitted"}, 400
 
@@ -74,7 +69,7 @@ def create_game():
             upload = upload_file_to_s3(img_src)
 
             if "url" not in upload:
-                print('url not in upload')
+                # print('url not in upload')
 
                 return upload, 400
             
