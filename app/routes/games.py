@@ -41,37 +41,55 @@ def create_game():
 
     if form.validate_on_submit():
         print('BACKEND FORMDATA:', form.data)
+        
 
         if "img_src" not in request.files:
+            print('not in request.files')
 
-            return {"errors": "image required"}, 400
+            owner_id = request.form['owner_id']
+            name = request.form['name']
+            description = request.form['description']
+            img_src = request.form['img_src']
 
-        img_src = request.files['img_src']
+            new_game = Game(
+                owner_id = owner_id,
+                name = name,
+                description = description,
+                img_src = img_src,
+                created_at = datetime.now()
+            )
+        else:
 
-        if not allowed_file(img_src.filename):
+                # return {"errors": "image required"}, 400
 
-            return {"errors": "file type not permitted"}, 400
+            img_src = request.files['img_src']
 
-        img_src.filename = get_unique_filename(img_src.filename)
+            if not allowed_file(img_src.filename):
+                print('not allowed_file')
 
-        upload = upload_file_to_s3(img_src)
+                return {"errors": "file type not permitted"}, 400
 
-        if "url" not in upload:
+            img_src.filename = get_unique_filename(img_src.filename)
 
-            return upload, 400
-        
-        owner_id = current_user.id
-        name = request.form['name']
-        description = request.form['description']
-        img_src = upload['url']
+            upload = upload_file_to_s3(img_src)
 
-        new_game = Game(
-            owner_id = owner_id,
-            name = name,
-            description = description,
-            img_src = img_src,
-            created_at = datetime.now()
-        )
+            if "url" not in upload:
+                print('url not in upload')
+
+                return upload, 400
+            
+            owner_id = current_user.id
+            name = request.form['name']
+            description = request.form['description']
+            img_src = upload['url']
+
+            new_game = Game(
+                owner_id = owner_id,
+                name = name,
+                description = description,
+                img_src = img_src,
+                created_at = datetime.now()
+            )
 
         db.session.add(new_game)
         db.session.commit()
