@@ -44,9 +44,9 @@ const PostGame = ({ setShowModal }) => {
         }
 
         else {
-            console.log('Failure', formData)
-            // const data = await result.json();
-            // setErrors([data.errors]);
+            console.log('Failure', result)
+            const data = await result;
+            setErrors([data]);
             console.log('something went wrong with the request')
         }
     }
