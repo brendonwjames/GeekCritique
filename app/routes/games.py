@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from datetime import datetime
+from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 from app.models.db import db
 from app.models.game import Game
@@ -23,7 +24,6 @@ def validation_errors_to_error_messages(validation_errors):
 @games_routes.route('')
 def all_games():
     all_games = Game.query.all()
-    # print('FROM GAMES_ROUTE:', all_games)
 
     return {'games': [game.to_dict() for game in all_games]}
 
@@ -36,19 +36,56 @@ def one_game(id):
 @login_required
 def create_game():
     form = NewGameForm()
-    # print('HITTING THE BACKEND FORM:', (form))
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         # print('BACKEND FORMDATA:', form.data)
 
-        new_game = Game(
-            owner_id = current_user.id,
-            name = form.data['name'],
-            description = form.data['description'],
-            img_src = form.data['img_src'],
-            created_at = datetime.now()
-        )
+        if "img_src" not in request.files:
+            # print('not in request.files')
+
+            owner_id = request.form['owner_id']
+            name = request.form['name']
+            description = request.form['description']
+            img_src = request.form['img_src']
+
+            new_game = Game(
+                owner_id = owner_id,
+                name = name,
+                description = description,
+                img_src = img_src,
+                created_at = datetime.now()
+            )
+        else:
+            img_src = request.files['img_src']
+
+            if not allowed_file(img_src.filename):
+                # print('not allowed_file')
+
+                return {"errors": "file type not permitted"}, 400
+
+            img_src.filename = get_unique_filename(img_src.filename)
+
+            upload = upload_file_to_s3(img_src)
+
+            if "url" not in upload:
+                # print('url not in upload')
+
+                return upload, 400
+            
+            owner_id = current_user.id
+            name = request.form['name']
+            description = request.form['description']
+            img_src = upload['url']
+
+            new_game = Game(
+                owner_id = owner_id,
+                name = name,
+                description = description,
+                img_src = img_src,
+                created_at = datetime.now()
+            )
+
         db.session.add(new_game)
         db.session.commit()
         return new_game.to_dict()

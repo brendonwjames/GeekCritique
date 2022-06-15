@@ -50,12 +50,12 @@ export const getOneGame = (gameId) => async(dispatch) => {
 }
 
 export const addGame = (formData) => async(dispatch) => {
-    const { owner_id, name, description, img_src, createdAt } = formData;
+    // const { owner_id, name, description, img_src, createdAt } = formData;
 
     const response = await fetch('/games/new_game', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ owner_id, name, description, img_src, createdAt })
+        // headers: {'Content-Type': 'application/json'},
+        body: formData
     })
 
     if (response.ok) {
