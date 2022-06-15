@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from datetime import datetime
+from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 from app.models.db import db
 from app.models.game import Game
@@ -35,40 +36,43 @@ def one_game(id):
 @games_routes.route('/new_game', methods=['POST'])
 @login_required
 def create_game():
-    if "img_src" not in request.files:
-
-        return {"errors": "image required"}, 400
-
-    img_src = request.files['img_src']
-
-    if not allowed_file(img_src.filename):
-
-        return {"errors": "file type not permitted"}, 400
-
-    img_src.filename = get_unique_filename(img_src.filename)
-
-    upload = upload_file_to_s3(img_src)
-
-    if "url" not in upload:
-
-        return upload, 400
-    
-
     form = NewGameForm()
-    # print('HITTING THE BACKEND FORM:', (form))
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    img_src = upload['url']
     if form.validate_on_submit():
-        # print('BACKEND FORMDATA:', form.data)
+        print('BACKEND FORMDATA:', form.data)
+
+        if "img_src" not in request.files:
+
+            return {"errors": "image required"}, 400
+
+        img_src = request.files['img_src']
+
+        if not allowed_file(img_src.filename):
+
+            return {"errors": "file type not permitted"}, 400
+
+        img_src.filename = get_unique_filename(img_src.filename)
+
+        upload = upload_file_to_s3(img_src)
+
+        if "url" not in upload:
+
+            return upload, 400
+        
+        owner_id = current_user.id
+        name = request.form['name']
+        description = request.form['description']
+        img_src = upload['url']
 
         new_game = Game(
-            owner_id = current_user.id,
-            name = form.data['name'],
-            description = form.data['description'],
+            owner_id = owner_id,
+            name = name,
+            description = description,
             img_src = img_src,
             created_at = datetime.now()
         )
+
         db.session.add(new_game)
         db.session.commit()
         return new_game.to_dict()
