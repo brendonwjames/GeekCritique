@@ -7,7 +7,7 @@ import './PostGame.css'
 const PostGame = ({ setShowModal }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [img_src, setImg] = useState();
+    const [img_src, setImg] = useState('');
     // const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState([]);
     // const [createdAt] = useState(null);
@@ -26,7 +26,7 @@ const PostGame = ({ setShowModal }) => {
         formData.append('name', name);
         formData.append('description', description);
         formData.append('img_src', img_src);
-        formData.append('createdAt', 'n/a');
+        formData.append('createdAt', new Date().toISOString().slice(0, 10));
 
         const result = await dispatch(addGame(formData));
 
@@ -101,6 +101,7 @@ const PostGame = ({ setShowModal }) => {
                 </div>
             </form>
             <div className='postErrors'>
+                {/* {console.log(errors)} */}
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
