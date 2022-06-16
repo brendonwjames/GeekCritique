@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame, getAllGames } from '../../store/games';
 import { userGames } from '../../store/usergames';
 import './PostGame.css'
 
 const PostGame = ({ setShowModal }) => {
-    const history = useHistory();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [img_src, setImg] = useState(null);
-    const [imageLoading, setImageLoading] = useState(false);
+    const [img_src, setImg] = useState();
+    // const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState([]);
     // const [createdAt] = useState(null);
 
@@ -28,7 +26,7 @@ const PostGame = ({ setShowModal }) => {
         formData.append('name', name);
         formData.append('description', description);
         formData.append('img_src', img_src);
-        formData.append('createdAt', 'n/a')
+        formData.append('createdAt', 'n/a');
 
         const result = await dispatch(addGame(formData));
 
@@ -40,14 +38,14 @@ const PostGame = ({ setShowModal }) => {
             }
             dispatch(getAllGames())
             setShowModal(false);
-            setImageLoading(false);
+            // setImageLoading(false);
         }
 
         else {
-            console.log('Failure', result)
+            console.log('Failure, RESULT:', result)
             const data = await result;
             setErrors([data]);
-            console.log('something went wrong with the request')
+            console.log('errors:', errors)
         }
     }
 
@@ -71,6 +69,7 @@ const PostGame = ({ setShowModal }) => {
                             onChange={(e) => setName(e.target.value)}
                             value={name}
                             placeholder='Name'
+                            required
                         ></input>
                     </div>
                     <div>
@@ -90,6 +89,7 @@ const PostGame = ({ setShowModal }) => {
                             accept='image/*'
                             name='img_src'
                             onChange={updateImage}
+                            required
                             // hidden='hidden'
                         ></input>
                         {/* <label htmlFor='chooseFileInput' className='choose-file-button'/> */}

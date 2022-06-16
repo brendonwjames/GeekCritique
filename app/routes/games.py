@@ -47,7 +47,7 @@ def create_game():
             owner_id = request.form['owner_id']
             name = request.form['name']
             description = request.form['description']
-            img_src = request.form['img_src']
+            img_src = None
 
             new_game = Game(
                 owner_id = owner_id,
