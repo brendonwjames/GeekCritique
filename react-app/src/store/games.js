@@ -66,6 +66,7 @@ export const addGame = (formData) => async(dispatch) => {
     }
     else if (response.status < 500) {
         const data = await response.json();
+        console.log('backend DATA:', data)
         if (data.errors) {
           return data.errors;
         }
