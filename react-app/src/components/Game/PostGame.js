@@ -11,6 +11,7 @@ const PostGame = ({ setShowModal }) => {
     // const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState([]);
     // const [createdAt] = useState(null);
+    const [imagePreview, setImagePreview] = useState();
 
     const owner_id = useSelector(state => state.session.user.id)
     const dispatch = useDispatch();
@@ -54,6 +55,19 @@ const PostGame = ({ setShowModal }) => {
         setImg(file);
     }
 
+    const imageChange = (e) => {
+        updateImage(e);
+        if (e.target.files && e.target.files.length > 0) {
+            const reader = new FileReader();
+            const file = e.target.files[0];
+            setImagePreview(file);
+            reader.readAsDataURL(file);
+            reader.addEventListener('load', () => {
+                setImagePreview(reader.result);
+            });
+        };
+    };
+
     return (
         <div className='new-game-form-container'>
             <form className='new-game-form' onSubmit={handleSubmit}>
@@ -88,12 +102,13 @@ const PostGame = ({ setShowModal }) => {
                             id='chooseFileInput'
                             accept='image/*'
                             name='img_src'
-                            onChange={updateImage}
+                            onChange={imageChange}
                             required
                             // hidden='hidden'
                         ></input>
                         {/* <label htmlFor='chooseFileInput' className='choose-file-button'/> */}
                     </div>
+                    <img className='imagePreview' src={imagePreview}/>
                 </div>
                 <div className='buttons-div'>
                     <button className='post-submit-button' type='submit'>Post</button>
