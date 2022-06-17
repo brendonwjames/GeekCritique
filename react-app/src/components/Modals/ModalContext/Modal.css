@@ -24,3 +24,14 @@
   border-radius: 5%;
   border: solid black 3px;
 }
+
+.xButton{
+  color: white;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.xButtonDiv{
+  display: flex;
+  justify-content: flex-end;
+}
