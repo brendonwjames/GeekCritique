@@ -1,12 +1,10 @@
 .new-game-form-container {
-    height: 350px;
+    height: 250px;
     width: 420px;
-    border-radius: 10%;
-    /* display: flex; */
-    justify-content: flex-start;
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: stretch; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .buttons-div {

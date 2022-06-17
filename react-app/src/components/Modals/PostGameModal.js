@@ -8,7 +8,7 @@ function PostGameModal() {
   const [showModal, setShowModal] = useState(false);
   
   return (
-    <div>
+    <div className='post-game-modal'>
       <i className='fa-regular fa-square-plus' onClick={() => setShowModal(true)}>
         <div className='tooltip-box'>New Game+</div>
       </i>
