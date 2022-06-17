@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addGame, getAllGames } from '../../store/games';
 import { userGames } from '../../store/usergames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './PostGame.css'
 
 const PostGame = ({ setShowModal }) => {
@@ -23,7 +24,7 @@ const PostGame = ({ setShowModal }) => {
 
         const formData = new FormData();
 
-        formData.append('owner_id', owner_id); 
+        formData.append('owner_id', owner_id);
         formData.append('name', name);
         formData.append('description', description);
         formData.append('img_src', img_src);
@@ -69,58 +70,61 @@ const PostGame = ({ setShowModal }) => {
     };
 
     return (
-        <div className='new-game-form-container'>
-            <form className='new-game-form' onSubmit={handleSubmit}>
-                <div className='title-div'>
-                    <p className='create-post-text'>Create New Post</p>
-                </div>
-                <div className='choose-file-container'>
-                    <div>
-                        <input
-                            type='text'
-                            className='name-field'
-                            name='name'
-                            onChange={(e) => setName(e.target.value)}
-                            value={name}
-                            placeholder='Name'
-                            required
-                        ></input>
+        <div className='page container' >
+
+
+            <div className='new-game-form-container'>
+                <form className='new-game-form' onSubmit={handleSubmit}>
+                    <div className='title-div'>
+                        <p className='create-post-text'>Create New Post</p>
                     </div>
-                    <div>
-                        <textarea
-                            type='textarea'
-                            name='description'
-                            className='description-field'
-                            onChange={(e) => setDescription(e.target.value)}
-                            value={description}
-                            placeholder='Description'
-                        ></textarea>
+                    <div className='choose-file-container'>
+                        <div>
+                            <input
+                                type='text'
+                                className='name-field'
+                                name='name'
+                                onChange={(e) => setName(e.target.value)}
+                                value={name}
+                                placeholder='Name'
+                                required
+                            ></input>
+                        </div>
+                        <div>
+                            <textarea
+                                type='textarea'
+                                name='description'
+                                className='description-field'
+                                onChange={(e) => setDescription(e.target.value)}
+                                value={description}
+                                placeholder='Description'
+                            ></textarea>
+                        </div>
+                        <div>
+                            <input
+                                type='file'
+                                id='chooseFileInput'
+                                accept='image/*'
+                                name='img_src'
+                                onChange={imageChange}
+                                hidden='hidden'
+                            ></input>
+                            <div className='postErrors'>
+                                {/* {console.log(errors)} */}
+                                {errors.map((error, ind) => (
+                                    <div key={ind}>{error}</div>
+                                ))}
+                            </div>
+                            <label htmlFor='chooseFileInput' className='choose-file-button'>Select an Image</label>
+                        </div>
                     </div>
-                    <div>
-                        <input
-                            type='file'
-                            id='chooseFileInput'
-                            accept='image/*'
-                            name='img_src'
-                            onChange={imageChange}
-                            required
-                            // hidden='hidden'
-                        ></input>
-                        {/* <label htmlFor='chooseFileInput' className='choose-file-button'/> */}
+                    <div className='buttons-div'>
+                        <button className='post-submit-button' type='submit'>Post</button>
+                        <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
                     </div>
-                    <img className='imagePreview' src={imagePreview}/>
-                </div>
-                <div className='buttons-div'>
-                    <button className='post-submit-button' type='submit'>Post</button>
-                    <button className='cancel-button' onClick={() => setShowModal(false)}>Cancel</button>
-                </div>
-            </form>
-            <div className='postErrors'>
-                {/* {console.log(errors)} */}
-                {errors.map((error, ind) => (
-                    <div key={ind}>{error}</div>
-                ))}
+                </form>
             </div>
+            {imagePreview && <img className='imagePreview' src={imagePreview} />}
         </div>
     )
 }

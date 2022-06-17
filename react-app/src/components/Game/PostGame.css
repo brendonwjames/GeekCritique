@@ -52,3 +52,32 @@
     display: flex;
     justify-content: center;
 }
+
+.imagePreview {
+    position: absolute;
+    top: -20px;
+    right: 450px;
+    /* border-radius: 10%; */
+    object-fit: cover;
+    height: 300px;
+    width: 200px;
+    border-radius: 1em;
+    outline: 2px solid white;
+}
+
+.choose-file-button {
+    width: 100px;
+    background-color: rgba(0,149,246,.3);
+    color: black;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.choose-file-button:hover {
+    background-color: rgba(0,149,246);
+}
+
+.postErrors {
+    margin:5px;
+}

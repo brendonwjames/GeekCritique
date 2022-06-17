@@ -6,9 +6,9 @@ import App from './App';
 import configureStore from './store';
 import { ModalProvider } from '../src/components/Modals/ModalContext/Modal'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHouse, faCirclePlus, faSquarePlus, faRightFromBracket, faTrashCan, faBookBookmark, faFloppyDisk, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faCirclePlus, faSquarePlus, faRightFromBracket, faTrashCan, faBookBookmark, faFloppyDisk, faPenToSquare, faXmark, faImage } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faHouse, faCirclePlus, faSquarePlus, faRightFromBracket, faTrashCan, faBookBookmark, faFloppyDisk, faPenToSquare, faXmark)
+library.add(faHouse, faCirclePlus, faSquarePlus, faRightFromBracket, faTrashCan, faBookBookmark, faFloppyDisk, faPenToSquare, faXmark, faImage)
 
 const store = configureStore();
 
