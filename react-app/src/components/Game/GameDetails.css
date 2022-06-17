@@ -3,7 +3,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-auto-columns: minmax(70px, auto);
-    border: solid black 3px;
+    /* border: solid black 3px; */
     width: 70vw;
     height: 45vw
 }
@@ -12,18 +12,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: black solid 3px;
+    /* border: black solid 3px; */
     width: 100%;
     overflow-y: auto;
 }
 
 .right-half {
-    border: black solid 3px;
+    /* border: black solid 3px; */
     overflow-y: auto;
 }
 
 .post-review {
-    border-top: black solid 3px;
+    /* border-top: black solid 3px; */
     height: 35%;
     width: 100%;
     overflow-y: auto;

@@ -46,11 +46,6 @@ const PostReview = ({ game }) => {
     return (
         <div className='post-review-container'>
             <form className='new-review-form' onSubmit={handleSubmit}>
-                <div className='review-errors'>
-                    {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))}
-                </div>
                 <div className='review-top-div'>
                     <button className='review-submit-button' type='submit'>Post Review</button>
                     <div>
@@ -82,6 +77,11 @@ const PostReview = ({ game }) => {
                             })}
                         </div>
                     </div>
+                </div>
+                <div className='review-errors'>
+                    {errors.map((error, ind) => (
+                        <div key={ind}>{error}</div>
+                    ))}
                 </div>
                 <div>
                     <textarea

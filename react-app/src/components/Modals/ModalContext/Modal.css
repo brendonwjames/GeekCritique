@@ -16,11 +16,22 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  /* z-index: -1; */
 }
   
 #modal-content {
   position: absolute;
   background-color:white;
+  border-radius: 5%;
+  border: solid black 3px;
 }
-  
+
+.xButton{
+  color: white;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.xButtonDiv{
+  display: flex;
+  justify-content: flex-end;
+}

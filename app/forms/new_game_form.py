@@ -13,7 +13,7 @@ class NewGameForm(FlaskForm):
     owner_id = IntegerField('owner_id')
     name = StringField('name', validators=[DataRequired('Enter a title for your game!'), Length(max=65, message='Title must be 65 characters or less!')])
     description = TextAreaField('description', validators=[Length(max=65, message='Description must 65 characters or less!')])
-    img_src = StringField('img_src', validators=[DataRequired('Choose a valid picture!')])
+    img_src = StringField('img_src', validators=[DataRequired('Choose a valid image!')])
     created_at = DateTimeField('created_at')
 
 
