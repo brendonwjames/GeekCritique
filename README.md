@@ -3,6 +3,8 @@ GeekCritique is an app designed for users to create posts and reviews centered a
 
 ## Live Site
 Link to the live version of GeekCritique, hosted by Heroku: [GeekCritique](https://geekcritique.herokuapp.com/login)
+Link to the testing version of GeekCritique, hosted by Heroku: [GeekCritique](https://geek-critique.herokuapp.com/)
+
 
 ## Software
 GeekCritique is an Instragram/Yelp style video game review site built with the following software:
