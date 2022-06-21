@@ -17,6 +17,8 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{error}')
     return errorMessages
 
+    # print('Hello World')
+
 
 @auth_routes.route('/')
 def authenticate():
