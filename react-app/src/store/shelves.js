@@ -121,7 +121,8 @@ export const addGameToShelf = (gameToShelf, shelf_Id, game_Id ) => async (dispat
         const shelf = await response.json();
         // console.log('added to Shelf:', shelf)
         dispatch((addToShelf(shelf)))
-        return ['Added to shelf!']
+        // return ['Added to shelf!']
+        return 'Success!'
     } 
      else {
         return ['Please choose a valid shelf!']
