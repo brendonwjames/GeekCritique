@@ -33,9 +33,9 @@ const AddGameToShelf = ({ game }) => {
 
         if (result == 'Success!') {
             // alert("Added to shelf!")
-            dispatch(getAllGames())
+            // dispatch(getAllGames())
             dispatch(getUserShelves(user.id))
-            dispatch(userGames(user.id))
+            // dispatch(userGames(user.id))
         }
 
         else if (result) {
