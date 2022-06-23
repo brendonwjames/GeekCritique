@@ -21,7 +21,7 @@ const EditShelf = ({ setShowModal, shelf }) => {
         if (result === 'Success!') {
             setShowModal(false)
             // dispatch(userGames(user.id))
-            // dispatch(getUserShelves(user.id))
+            dispatch(getUserShelves(user.id))
         }
 
         else if (result) {
