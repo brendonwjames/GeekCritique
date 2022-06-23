@@ -116,14 +116,12 @@ export default function gameReducer(state = initialState, action) {
     switch (action.type) {
         case GET_GAMES:
             //newState is equivalent to accessing state.game
-            // console.log('********', action.allgames.games)
             action.allgames.games.forEach(game => newState[game.id] = game)
             return newState
         case GET_GAME:
             newState[action.game.id] = {...action.game};
             return newState;
         case CREATE_GAME:
-            // console.log('CREATEGAME NEWSTATE:', newState)
             newState[action.newGame.id] = action.newGame;
             return newState
         case EDIT_GAME:
