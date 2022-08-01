@@ -149,10 +149,10 @@ export default function shelvesReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case GET_USER_SHELVES:
-            newState.userShelves = [...action.userShelves.shelves]
+            newState.userShelves = {...action.userShelves.shelves}
             return newState
         case CREATE_SHELF:
-            console.log('CREATE SHELF REDUCER:', action, newState)
+            console.log('CREATE SHELF REDUCER:', 'ACTION:', action, 'NEWSTATE:', newState)
             newState.userShelves = [...newState.userShelves, action.shelf];
             return newState
         // case ADD_GAME_TO_SHELF:
@@ -160,11 +160,12 @@ export default function shelvesReducer(state = initialState, action) {
         //     console.log('ACTION.GAME:', action.game)
         //     newState.userShelves = [...newState.userShelves, action.game];
         //     return newState
-        // case EDIT_SHELF:
-        //     console.log('ACTION.SHELF.USERSHELVES', action.shelf.userShelves)
-        //     console.log('EDIT SHELF CASE STORE', action)
-        //     newState[action.shelf.userShelves] = action.shelf.userShelves;
-        //     return {...newState}
+        case EDIT_SHELF:
+            // console.log('ACTION.SHELF.USERSHELVES', action.shelf.userShelves)
+            console.log("**NEWSTATE**:", newState)
+            console.log('EDIT SHELF CASE STORE Action.shelf.id', action.shelf.id)
+            newState[action.shelf.userShelves] = action.shelf.userShelves;
+            return {...newState}
         case DELETE_SHELF:
             delete newState[action.shelf.id]
             return newState

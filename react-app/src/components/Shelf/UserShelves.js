@@ -38,7 +38,7 @@ return (
         <div className='shelf-page-container'>
             <PostShelf />
             <div className='shelf-container'>
-                {shelves[0] && shelves[0].map((shelf) => (
+                {shelves && shelves.map((shelf) => (
                     <div className='games-post' key={shelf.id}>
                         <div className='shelf-details-left'>
                             {shelf.name}
