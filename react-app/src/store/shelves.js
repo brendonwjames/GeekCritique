@@ -149,10 +149,14 @@ export default function shelvesReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case GET_USER_SHELVES:
-            newState.userShelves = {...action.userShelves.shelves}
+            console.log('user shelves newState before:', newState)
+            // action.allgames.games.forEach(game => newState[game.id] = game)
+            action.userShelves.shelves.forEach(shelf => newState[shelf.id] = shelf)
+            // newState.userShelves = {...action.userShelves.shelves}
+            console.log('user shelves newState after:', newState)
             return newState
         case CREATE_SHELF:
-            // console.log('CREATE SHELF REDUCER:', 'ACTION:', action, 'NEWSTATE:', newState)
+            console.log('CREATE SHELF REDUCER:', 'ACTION:', action, 'NEWSTATE:', newState)
             newState.userShelves = [...newState.userShelves, action.shelf];
             return newState
         // case ADD_GAME_TO_SHELF:
