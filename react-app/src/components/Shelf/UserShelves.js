@@ -17,7 +17,7 @@ import './UserShelves.css';
 const UserShelves = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const shelves = useSelector((state) => (state.shelf.userShelves))
+    const shelves = useSelector((state) => (state.shelf))
     console.log('state.shelf.userShelves', shelves)
     useEffect(() => {
         dispatch(getUsers());
@@ -38,7 +38,9 @@ return (
         <div className='shelf-page-container'>
             <PostShelf />
             <div className='shelf-container'>
-                
+                {/* {shelves.id && shelves.forEach(shelf => (
+                    shelf.name
+                ))} */}
                 {/* {shelves && shelves.map((shelf) => (
                     <div className='games-post' key={shelf.id}>
                         <div className='shelf-details-left'>
