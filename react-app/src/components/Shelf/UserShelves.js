@@ -17,7 +17,7 @@ import './UserShelves.css';
 const UserShelves = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const shelves = useSelector((state) => Object.entries(state.shelf))
+    const shelves = useSelector((state) => Object.values(state.shelf))
     console.log('state.shelf.userShelves', shelves)
     useEffect(() => {
         dispatch(getUsers());
@@ -40,15 +40,15 @@ return (
             <PostShelf />
             <div className='shelf-container'>
                 {shelves && shelves.map((shelf) => (
-                    <div className='games-post' key={shelf[1].id}>
+                    <div className='games-post' key={shelf.id}>
                         <div className='shelf-details-left'>
-                            {shelf[1].name}
+                            {shelf.name}
                         </div>
                         <div className='shelf-inner-container'>
                             <div className='shelf-container'>
                                 
                             </div>
-                            {shelf[1].games && shelf[1].games.map((game) => 
+                            {shelf.games && shelf.games.map((game) => 
                             <div className='games-post' key={game.id}>
                                 <GameDetailsModal game={game}/>
                                 <RemoveGameFromShelf className='remove-game-from-shelf-field' shelf={shelf} game={game}/> 
