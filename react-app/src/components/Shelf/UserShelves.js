@@ -17,7 +17,7 @@ import './UserShelves.css';
 const UserShelves = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
-    const shelves = useSelector((state) => (state.shelf))
+    const shelves = useSelector((state) => Object.entries(state.shelf))
     console.log('state.shelf.userShelves', shelves)
     useEffect(() => {
         dispatch(getUsers());
@@ -29,6 +29,7 @@ const UserShelves = () => {
 
     
     console.log('SHELVES:',shelves)
+    // console.log(Object.entries(shelves))
 
 return (
     <div>
@@ -38,19 +39,16 @@ return (
         <div className='shelf-page-container'>
             <PostShelf />
             <div className='shelf-container'>
-                {/* {shelves.id && shelves.forEach(shelf => (
-                    shelf.name
-                ))} */}
-                {/* {shelves && shelves.map((shelf) => (
-                    <div className='games-post' key={shelf.id}>
+                {shelves && shelves.map((shelf) => (
+                    <div className='games-post' key={shelf[1].id}>
                         <div className='shelf-details-left'>
-                            {shelf.name}
+                            {shelf[1].name}
                         </div>
                         <div className='shelf-inner-container'>
                             <div className='shelf-container'>
                                 
                             </div>
-                            {shelf.games && shelf.games.map((game) => 
+                            {shelf[1].games && shelf[1].games.map((game) => 
                             <div className='games-post' key={game.id}>
                                 <GameDetailsModal game={game}/>
                                 <RemoveGameFromShelf className='remove-game-from-shelf-field' shelf={shelf} game={game}/> 
@@ -60,7 +58,7 @@ return (
                         <EditShelfModal className='edit-shelf-name' shelf={shelf} />
                         <DeleteShelfModal className='remove-game-from-shelf-field' shelf={shelf} />
                     </div>
-                ))} */}
+                ))}
             </div>
         </div>
     </div>
