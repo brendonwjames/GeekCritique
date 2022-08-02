@@ -61,7 +61,7 @@ const AddGameToShelf = ({ game }) => {
                         <div>Select Shelf</div>
                         <select value={shelf} onChange={e => setShelf(e.target.value)}>
                             <option value={null}>--Choose a Shelf--</option>
-                        {shelves[0] && shelves[0].map((shelf) => (
+                        {shelves && shelves.map((shelf) => (
                             <option key={shelf.id} value={shelf.id}>{shelf.name}</option>
                         ))}
                         </select>
