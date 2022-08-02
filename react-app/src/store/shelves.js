@@ -154,7 +154,7 @@ export default function shelvesReducer(state = initialState, action) {
             return newState
         case CREATE_SHELF:
             console.log('CREATE SHELF REDUCER:', 'ACTION:', action, 'NEWSTATE:', newState)
-            newState.userShelves = [...newState.userShelves, action.shelf];
+            newState[action.shelf.id] = action.shelf
             return newState
         // case ADD_GAME_TO_SHELF:
         //     console.log(newState.userShelves);
